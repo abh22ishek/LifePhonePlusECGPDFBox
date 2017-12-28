@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/lMultiListLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/white_bg_theme" >
+
+    <ListView
+        android:id="@+id/lMultiListView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_single_menubar"
+        android:cacheColorHint="#F7F9F9"
+        android:divider="@color/green_shade"
+        android:dividerHeight="0.5dp" />
+
+    <include
+        android:id="@+id/layout_single_menubar"
+        layout="@layout/single_menu_bar" 
+        android:visibility="gone"/>
+
+</RelativeLayout>

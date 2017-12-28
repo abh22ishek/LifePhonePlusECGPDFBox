@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" 
+    android:focusableInTouchMode="true">
+
+    <ScrollView        
+        android:id="@+id/scroll_v"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginBottom="@dimen/buttom_bar_height"
+        android:background="@drawable/ic_background_blue" >
+
+        <RelativeLayout            
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="5dp" >
+
+            <TextView
+                android:id="@+id/tvdevid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/devicekey"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/tvMobileNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/tvdevid"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/user_id"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/etUserID"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/tvMobileNo"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:inputType="text"
+                android:padding="@dimen/default_padding"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/tvSetPin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/etUserID"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/enter_password"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/etSetPin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/tvSetPin"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:ems="10"
+                android:inputType="text|textPassword"
+                android:padding="@dimen/default_padding"
+                android:textSize="@dimen/text_size" />
+
+            <CheckBox
+                android:id="@+id/remember_user_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/etSetPin"
+                android:layout_marginLeft="15dp"
+                android:layout_marginTop="15dp"
+                android:text="@string/remember_user_id"
+                android:textColor="@color/heading_color" 
+                android:button="@xml/customdrawablecheckbox" />
+
+            <TextView
+                android:id="@+id/tvForgotPassLink"
+                android:text="@string/forgot_pass"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/remember_user_id"
+                android:layout_marginBottom="@dimen/default_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin"
+                android:textColor="@color/heading_color"
+                android:paddingBottom="@dimen/custom_padding" />
+
+            <TextView
+                android:id="@+id/btn_signup"
+                android:text="@string/signup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/remember_user_id"
+                android:layout_marginBottom="@dimen/default_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin"
+                android:textColor="@color/heading_color"
+                android:paddingBottom="@dimen/custom_padding" />
+
+        </RelativeLayout>
+    </ScrollView>
+
+    <include layout="@layout/menu_bar" />
+</RelativeLayout>

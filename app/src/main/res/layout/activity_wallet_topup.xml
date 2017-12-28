@@ -1,0 +1,183 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <RelativeLayout
+        android:id="@+id/current_balance_layout"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content" 
+    	android:background="@color/button_bar_bg_color"
+    	android:minHeight="@dimen/button_bar_height">
+
+        <TextView
+            android:id="@+id/balance_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/default_margin_left"
+            android:text="@string/current_balance" 
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <TextView
+            android:id="@+id/balance_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/default_margin_right"
+            android:text="0"
+            android:textAppearance="?android:attr/textAppearanceLarge" />   
+   	</RelativeLayout>       
+
+    <Spinner
+        android:id="@+id/topup_products"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/current_balance_layout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/default_margin_left"
+        android:layout_marginRight="@dimen/default_margin_right"
+        android:layout_marginTop="@dimen/default_margin_top"
+        android:padding="@dimen/default_padding"
+        android:textColor="@android:color/black" />
+    
+    <RelativeLayout
+        android:id="@+id/quantity_layout"
+        android:layout_width="match_parent"
+    	android:layout_height="wrap_content" 
+    	android:minHeight="@dimen/button_bar_height"
+    	android:layout_below="@+id/topup_products">
+
+        <TextView
+            android:id="@+id/quantity_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/default_margin_left"
+            android:text="@string/quantity" 
+            android:textSize="@dimen/text_size"/>
+
+        <EditText
+            android:id="@+id/quantity_value"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/default_margin_right"
+            android:background="@xml/edit_text_selector"
+            android:gravity="center_vertical|center_horizontal"
+            android:inputType="number"
+            android:padding="@dimen/default_padding"
+            android:text="0"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/text_size"
+            android:maxLength="2" />
+        <!--  
+        <ImageView
+	   	    android:id="@+id/line_seperator"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="@dimen/default_margin_left"
+		    android:layout_marginRight="@dimen/default_margin_right"
+		    android:layout_marginTop="@dimen/default_margin"
+		    android:layout_marginBottom="@dimen/default_margin_bottom"
+		    android:contentDescription="@string/title_app_name"
+		    android:scaleType="fitXY"
+		    android:src="@drawable/ic_dashboard_horizontal_delimiter"
+		    android:layout_below="@+id/quantity_value" />
+           -->
+   	</RelativeLayout> 
+   	
+   	
+   	
+    <RelativeLayout
+        android:id="@+id/summary_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/quantity_layout"
+        android:layout_marginLeft="@dimen/default_margin_left"
+        android:layout_marginRight="@dimen/default_margin_right"
+        android:layout_marginTop="@dimen/default_margin"
+        android:background="@drawable/custom_layout_border" 
+        android:paddingTop="@dimen/default_margin_top"
+        android:paddingBottom="@dimen/default_margin_bottom">
+        
+        <TextView
+            android:id="@+id/unit_price_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginBottom="@dimen/default_margin_bottom"
+            android:text="@string/unit_price_label" />
+        <TextView
+            android:id="@+id/unit_price_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="@dimen/default_margin_bottom"           
+            android:text="0" />
+        
+        <TextView
+            android:id="@+id/total_amount_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:text="@string/total_amount_label"
+            android:layout_below="@+id/unit_price_label"/>
+
+        <TextView
+            android:id="@+id/total_amount_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/unit_price_value"
+            android:layout_marginRight="5dp"
+            android:text="0" />
+    </RelativeLayout>	
+    
+    <ImageView
+	   	    android:id="@+id/line_seperator_2"
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginLeft="@dimen/default_margin_left"
+		    android:layout_marginRight="@dimen/default_margin_right"
+		    android:layout_marginTop="@dimen/default_margin"
+		    android:layout_marginBottom="@dimen/default_margin_bottom"
+		    android:contentDescription="@string/title_app_name"
+		    android:scaleType="fitXY"
+		    android:src="@drawable/ic_dashboard_horizontal_delimiter"
+		    android:layout_below="@+id/summary_layout" />
+    
+    <TextView
+            android:id="@+id/payment_mode_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_below="@+id/line_seperator_2"
+            android:layout_marginLeft="@dimen/default_margin_left"
+            android:layout_marginBottom="5dp"
+            android:text="@string/payment_mode_label" 
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+    
+    <Spinner
+        android:id="@+id/payment_mode_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/payment_mode_label"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="@dimen/default_margin_left"
+        android:layout_marginRight="@dimen/default_margin_right"
+        android:padding="@dimen/default_padding"
+        android:textColor="@android:color/black" />
+    
+    <include
+	    layout="@layout/menu_bar" />
+
+</RelativeLayout>

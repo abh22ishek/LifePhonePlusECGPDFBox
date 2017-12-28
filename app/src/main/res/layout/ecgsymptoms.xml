@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/tvEcgSymptomsHeading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/symptoms_1"
+        android:layout_alignLeft="@+id/tvText1"
+        android:layout_marginBottom="16dp"
+        android:text="@string/ecg_symptoms_heading" 
+        android:textSize="@dimen/text_size"
+        android:textColor="@android:color/white"/>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/ic_listitem_not_selected"
+        android:contentDescription="@string/image_desc" />
+
+    <TextView
+        android:id="@+id/tvText1"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/imageView1"
+        android:layout_marginLeft="15dp"
+        android:paddingTop="13dp"
+        android:text="@string/ecg_symptoms_1" 
+        android:textColor="@android:color/white"/>
+
+    <CheckBox
+        android:id="@+id/symptoms_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tvText1"
+        android:layout_alignBottom="@+id/tvText1"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/default_margin_right" 
+        android:button="@xml/customdrawablecheckbox"/>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/imageView1"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/ic_listitem_not_selected"
+        android:contentDescription="@string/image_desc" />
+
+    <TextView
+        android:id="@+id/tvText2"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/tvText1"
+        android:layout_alignTop="@+id/imageView2"
+        android:paddingTop="13dp"
+        android:text="@string/ecg_symptoms_2" 
+        android:textColor="@android:color/white"/>
+
+    <CheckBox
+        android:id="@+id/symptoms_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_alignLeft="@+id/symptoms_1" 
+        android:button="@xml/customdrawablecheckbox"
+        android:layout_marginBottom="3dp"/>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/imageView1"
+        android:layout_alignRight="@+id/imageView2"
+        android:layout_below="@+id/tvText2"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/ic_listitem_not_selected"
+        android:contentDescription="@string/image_desc" />
+
+    <TextView
+        android:id="@+id/tvText3"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/tvText1"
+        android:layout_below="@+id/imageView2"
+        android:paddingTop="13dp"
+        android:text="@string/ecg_symptoms_3" 
+        android:textColor="@android:color/white"/>
+
+    <CheckBox
+        android:id="@+id/symptoms_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView3"
+        android:layout_alignLeft="@+id/symptoms_1" 
+        android:button="@xml/customdrawablecheckbox"
+        android:layout_marginBottom="3dp"/>
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/imageView3"
+        android:layout_alignRight="@+id/imageView3"
+        android:layout_below="@+id/imageView3"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/ic_listitem_not_selected"
+        android:contentDescription="@string/image_desc" />
+
+    <TextView
+        android:id="@+id/tvText4"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/tvText3"
+        android:layout_below="@+id/imageView3"
+        android:paddingTop="13dp"
+        android:text="@string/ecg_symptoms_4" 
+        android:textColor="@android:color/white"/>
+
+    <CheckBox
+        android:id="@+id/symptoms_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/symptoms_3"
+        android:layout_alignTop="@+id/imageView4" 
+        android:button="@xml/customdrawablecheckbox"
+        android:layout_marginTop="3dp"/>
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/imageView4"
+        android:background="@drawable/ic_listitem_not_selected" 
+        android:layout_marginTop="2dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:contentDescription="@string/image_desc"/>
+
+    <TextView
+        android:id="@+id/tvText5"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_alignLeft="@+id/tvText4"
+        android:layout_below="@+id/imageView4"
+        android:paddingTop="13dp"
+        android:text="@string/ecg_symptoms_5" 
+        android:textColor="@android:color/white"/>
+
+    <CheckBox
+        android:id="@+id/symptoms_5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvText5"
+        android:layout_alignLeft="@+id/symptoms_4" 
+        android:button="@xml/customdrawablecheckbox"
+        android:layout_marginTop="5dp"/>
+<!-- 
+   <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/button_bar_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@color/button_bar_bg_color"
+        android:contentDescription="@string/image_desc" />
+
+    <Button
+        android:id="@+id/bECGReadingDelete"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_alignParentBottom="true"
+		android:layout_toRightOf="@+id/bECGSymptomsSave"
+        android:layout_marginLeft="@dimen/default_margin_left"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:background="@drawable/button_grey"
+        android:text="@string/discard" />
+
+
+    <Button
+        android:id="@+id/bECGSymptomsSave"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginLeft="@dimen/default_margin_left"
+        android:background="@drawable/button_green"
+        android:text="@string/save" /> -->
+        <include layout="@layout/menu_bar"/>
+    
+</RelativeLayout>

@@ -1,0 +1,34 @@
+<resources>
+
+    <style name="CustomWindowTitleBackground">
+        <item name="android:background">@drawable/ic_titlebar_bg</item>
+    </style>
+
+    <style name="CustomTheme" parent="android:Theme">
+        <item name="android:windowTitleSize">35dp</item>
+        <item name="android:windowTitleBackgroundStyle">@style/CustomWindowTitleBackground</item>
+        <item name="android:windowBackground">@drawable/ic_background_default_theme</item>
+    </style>
+
+    <style name="CustomTheme_white" parent="android:Theme">
+        <item name="android:windowTitleSize">35dp</item>
+        <item name="android:windowTitleBackgroundStyle">@style/CustomWindowTitleBackground</item>
+        <item name="android:windowBackground">@color/white_shade2</item>
+    </style>
+    
+	<style name="CustomDialogTheme" parent="@android:style/Theme.Dialog">
+		<item name="android:windowBackground">@color/white_shade2</item>
+		<item name="android:windowIsFloating">false</item>
+	</style>
+
+	<style name="AboutDialog" parent="@android:style/Theme.Holo.Dialog.NoActionBar">
+        <item name="android:textColor">#E5492A</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+	<style name="ListFont" parent="@android:style/Widget.TextView">
+    	<item name="android:textColor">@android:color/black</item>  
+	</style>
+	
+</resources>

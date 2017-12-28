@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:layout_weight="1"
+        android:background="@drawable/ic_background_blue" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/default_margin"
+            android:layout_marginLeft="@dimen/default_margin"
+            android:layout_marginRight="@dimen/default_margin"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/finish_account"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin"
+                android:contentDescription="@string/title_app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_dashboard_horizontal_delimiter" />
+
+            
+             <TextView
+                android:id="@+id/tvtermCond"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:layout_marginBottom="@dimen/default_margin_bottom"
+                android:text="@string/tncn_text"
+                android:textColor="@color/heading_color"/>
+             
+            <TextView
+                android:id="@+id/tvtermCondLink"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/default_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"                
+                android:textColor="@color/title_color" 
+                android:text="@string/title_tnc"/>
+
+            <TextView
+                android:id="@+id/privacyLink"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/default_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"                
+                android:textColor="@color/title_color" 
+                android:text="@string/title_privacy"/>
+
+            <CheckBox
+                android:id="@+id/tvtermCheck"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"                
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:text="@string/tncn_check"
+                android:textSize="12sp"
+                android:textStyle="italic" >
+            </CheckBox>
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" >
+
+        <include layout="@layout/menu_bar" />
+    </LinearLayout>
+
+</LinearLayout>

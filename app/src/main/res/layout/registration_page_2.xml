@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/scroll_v"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="@dimen/buttom_bar_height"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:background="@drawable/ic_background_blue"
+        android:paddingBottom="15dp" >
+
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/personal_details"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin"
+                android:contentDescription="@string/title_app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_dashboard_horizontal_delimiter" />
+
+            <TextView
+                android:id="@+id/txt_firstname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/first_name"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/edt_firstname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:inputType="text|textPersonName|textCapWords"
+                android:padding="@dimen/default_padding"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/txt_lastname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/last_name"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/edt_lastname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:inputType="text|textPersonName|textCapWords"
+                android:padding="@dimen/default_padding"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/txt_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/gender"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/rbMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/default_margin_right"
+                    android:checked="true"
+                    android:text="@string/male" />
+
+                <RadioButton
+                    android:id="@+id/rbFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/default_margin_right"
+                    android:text="@string/female" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txt_dob"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/dob"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/txt_date"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/txt_height"
+                android:layout_marginBottom="@dimen/default_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:background="@xml/single_listview_style"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/custom_padding"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/timestamp_text_size" />
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/menu_bar" />
+
+</RelativeLayout>

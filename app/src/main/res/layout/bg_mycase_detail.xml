@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/scroll_v"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_single_menubar"
+        android:focusableInTouchMode="true" >
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <ImageView
+                android:id="@+id/green_bg"
+                android:layout_width="fill_parent"
+                android:layout_height="110dp"
+                android:contentDescription="@string/image_desc"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_green_bg" />
+
+            <ImageView
+                android:id="@+id/dark_green_bg"
+                android:layout_width="fill_parent"
+                android:layout_height="45dp"
+                android:layout_below="@+id/symptoms_1"
+                android:contentDescription="@string/image_desc"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_darkgreen_bg" />
+
+            <TextView
+                android:id="@+id/tvyourbgvalue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginTop="40dp"
+                android:textColor="@android:color/black"
+                android:textSize="45sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvReadingIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tvyourbgvalue"
+                android:layout_alignBottom="@+id/tvyourbgvalue"
+                android:layout_marginLeft="3dp"
+                android:layout_toRightOf="@+id/tvyourbgvalue"
+                android:text="@string/mg_dl"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/comments_txtview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/dark_green_bg"
+                android:layout_marginLeft="@dimen/comment_margin_left"
+                android:layout_marginRight="@dimen/comment_margin_right"
+                android:layout_marginTop="80dp"
+                android:background="@xml/edit_text_selector"
+                android:paddingLeft="10dp"
+                android:textColor="@android:color/black"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvtimestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tvyourbgvalue"
+                android:layout_below="@+id/symptoms_1"
+                android:layout_marginTop="10dp"
+                android:text="@string/date_and_time"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/bg_image"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_alignRight="@+id/dark_green_bg"
+                android:layout_alignTop="@+id/tvyourbgvalue"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:contentDescription="@string/image_desc"
+                android:src="@drawable/ic_bloodsugar_green_big" />
+
+            <TextView
+                android:id="@+id/bgReading_type"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/green_bg"
+                android:background="@color/green_shade3"
+                android:paddingLeft="15dp"
+                android:textColor="@color/reading_color"
+                android:textSize="@dimen/timestamp_text_size" />
+
+            <TextView
+                android:id="@+id/bg_case_details"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bgReading_type"
+                android:layout_marginTop="0.1dp"
+                android:background="@color/green_shade3"
+                android:paddingLeft="15dp"
+                android:textColor="@color/reading_color"
+                android:textSize="@dimen/timestamp_text_size" />
+
+            <TextView
+                android:id="@+id/symptoms_1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/bg_case_details"
+                android:layout_marginTop="0.1dp"
+                android:background="@color/green_shade3"
+                android:paddingLeft="15dp"
+                android:textColor="@color/reading_color"
+                android:textSize="@dimen/timestamp_text_size"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <include
+        android:id="@+id/layout_single_menubar"
+        layout="@layout/single_menu_bar" />
+
+</RelativeLayout>

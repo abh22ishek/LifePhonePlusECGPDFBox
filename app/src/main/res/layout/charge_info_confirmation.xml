@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" 
+>
+    
+  <!--   <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/button_bar_height"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:background="@color/button_bar_bg_color"
+        android:contentDescription="@string/image_desc" /> -->
+    
+    <TextView
+        android:id="@+id/doctor_consulted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin_top"
+        android:text="@string/consult_doc_result"
+        android:textColor="#474747"
+        android:textSize="@dimen/text_size" />
+
+   <!--  <Button
+        android:id="@+id/ok"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_alignParentBottom="true"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="@dimen/default_margin"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/button_green"
+        android:onClick="callMainActivity"
+        android:text="@string/OK" /> -->
+        <include layout="@layout/single_menu_bar"/>
+    
+</RelativeLayout>

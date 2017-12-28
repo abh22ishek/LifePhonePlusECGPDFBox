@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/dialog_bg"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/alertTitle"
+        style="?android:attr/textAppearanceLarge"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/ic_dialog_info"
+        android:drawablePadding="5dp"
+        android:ellipsize="end"
+        android:padding="5dp"
+        android:paddingLeft="15dp"
+        android:singleLine="true" />
+
+    <ImageView
+        android:id="@+id/titleDivider"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_below="@+id/alertTitle"
+        android:contentDescription="@string/image_desc"
+        android:gravity="fill_horizontal"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/dialog_frame" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/titleDivider"
+        android:padding="@dimen/default_padding"
+        android:weightSum="0.7" >
+
+        <TextView
+            android:id="@+id/message"
+            style="?android:attr/textAppearanceMedium"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_padding" />
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/titleDivider2"
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:layout_below="@+id/alertTitle"
+        android:contentDescription="@string/image_desc"
+        android:gravity="fill_horizontal"
+        android:scaleType="fitXY"
+        android:src="@android:drawable/divider_horizontal_bright" />
+
+    <LinearLayout
+        android:id="@+id/main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/scrollView"
+        android:layout_marginTop="5dp"
+        android:background="@color/button_bar_bg_color"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btnPositive"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/menubar_grey_button"
+            android:gravity="center"
+            android:visibility="visible" />
+    </LinearLayout>
+
+</RelativeLayout>

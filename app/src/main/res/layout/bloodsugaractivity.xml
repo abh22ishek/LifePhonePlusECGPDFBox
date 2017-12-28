@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll_v"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_margin="@dimen/default_margin" >
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <ImageButton
+            android:id="@+id/ibBgInstruction"
+            android:layout_width="@dimen/bg_blood_drop_image_weight"
+            android:layout_height="@dimen/bg_blood_drop_image_height"
+            android:layout_alignParentTop="true"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="@dimen/default_margin_left"
+            android:layout_marginRight="@dimen/default_margin_right"
+            android:layout_marginTop="@dimen/default_margin_top"
+            android:contentDescription="@string/image_desc"
+            android:scaleType="fitXY"
+            android:src="@drawable/ic_bloodsugar_strip" />
+
+        <TextView
+            android:id="@+id/tvBGInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ibBgInstruction"
+            android:layout_margin="@dimen/default_margin_left"
+            android:layout_marginTop="0dp"
+            android:text="@string/instruction_insert_strip"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/text_size" />
+    </RelativeLayout>
+
+</ScrollView>

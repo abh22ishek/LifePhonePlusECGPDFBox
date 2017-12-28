@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lppbpl.android.userapp"
+    android:versionCode="60"
+    android:versionName="TG.1.00" >
+
+    <uses-sdk
+        android:maxSdkVersion="22"
+        android:minSdkVersion="9"
+        android:targetSdkVersion="10" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <supports-screens
+        android:largeScreens="true"
+        android:xlargeScreens="true" />
+
+    <application
+        android:name="com.lppbpl.android.userapp.SouthFallsUserApp"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:largeHeap="true"
+        android:label="@string/app_name"
+        android:theme="@style/CustomTheme" >
+        <meta-data
+            android:name="Server_Address_Editable"
+            android:value="false" />
+        <meta-data
+            android:name="Demo_Mode"
+            android:value="false" />
+        <meta-data
+            android:name="Use_Control_Solution"
+            android:value="false" />
+        <meta-data
+            android:name="API_KEY"
+            android:value="OEM1" />
+        <meta-data
+            android:name="DEVICE_NAME"
+            android:value="ISPHRDV1" />
+        <meta-data
+            android:name="SF_API_ACCESS_KEY"
+            android:value="user|android" />
+        <meta-data
+            android:name="SF_API_SECRAT"
+            android:value="[B@1fe1feb" />
+        <meta-data
+            android:name="TOTAL_ECG_LEAD"
+            android:value="12" />
+        <meta-data
+            android:name="SUPPORT_CONTACT_NUMBER"
+            android:value="1800 4252355" />
+        <meta-data
+            android:name="SERVER_ADDRESS"
+            android:value="https://www.bpllifephoneplus.in" />
+
+        <activity
+            android:name="com.lppbpl.android.userapp.SplashScreenActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.lppbpl.android.userapp.TnCnPrivacyActivity" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.TnCnPrivacyActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.BluetoothPairingActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.BluetoothPairingActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.RegistrationActivity"
+            android:label="@string/title_registration" >
+            <intent-filter>
+                <action android:name="com.southfallActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.LoginActivity"
+            android:label="@string/title_login" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.LoginActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.MainMenuActivity"
+            android:configChanges="orientation|keyboardHidden" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.INTELSCREENACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.ECGActivity"
+            android:label="Measurement Mode"
+            android:windowSoftInputMode="adjustPan" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.ECGACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.EcgGraphActivity"
+            android:configChanges="orientation|screenLayout" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.EcgGraphActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.SavedECGGraph"
+            android:configChanges="orientation|screenLayout" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.SavedECGGraph" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.BloodSugarActivity"
+            android:label="Measurement Mode" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.BLOODSUGARACTIVITY" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.BGMycaseDetailActivity"
+            android:label="Blood Sugar" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.BGMycaseDetailActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.ActivityON"
+            android:label="Measurement Mode" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.ACTIVITYON" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.ActivityFinalDisplay"
+            android:label="Measurement Mode" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.ActivityFinalDisplay" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.ProfileActivity"
+            android:label="Profile" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.PROFILE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.DeviceConfiguration"
+            android:label="Profile" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.DEVICECONFIGURATION" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.EcgSymptomsListActivity"
+            android:label="@string/ecg_symptoms_heading" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.EcgSymptomsListActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.BgReadingTypeListActivity"
+            android:label="Blood Sugar" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.BgReadingTypeListActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.BgSymtemsActivity"
+            android:label="Blood Sugar" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.BgSymtemsActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.RecordsListActivity"
+            android:label="Records" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.RecordsListActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.DiagnosisActivity"
+            android:label="Diagnosis"
+            android:theme="@style/CustomTheme_white" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.DiagnosisActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.DiagnosisMainList"
+            android:label="Diagnosis"
+            android:theme="@style/CustomTheme_white" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.DiagnosisActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.AlertPopupActivity"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.UnsavedRecordsList"
+            android:label="Unsaved Records"
+            android:theme="@style/CustomTheme_white" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.UnsavedRecordsList" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.ChargeInfoAuthActivity"
+            android:label="Consult Doctor" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.ChargeInfoAuthActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.ChargeInfoConfirmation"
+            android:label="Consult Doctor"
+            android:theme="@style/CustomTheme_white" >
+            <intent-filter>
+                <action android:name="com.lppbpl.android.userapp.ChargeInfoConfirmation" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.GetRecords"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="GetRecords" >
+            <intent-filter>
+                <action android:name="android.intent.action.specificrecord" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.LatestRecordsList"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="LatestRecordsList" >
+            <intent-filter>
+                <action android:name="android.intent.action.LatestRecordsList" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.GetRecordsDataList"
+            android:theme="@style/CustomTheme_white" >
+            <intent-filter>
+                <action android:name="android.intent.action.GetRecordsDataList" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.lppbpl.android.userapp.ActGraphActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.ActGraphActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.lppbpl.android.userapp.BgGraphActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.BgGraphActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.BluetoothPinChangeActivity"
+            android:label="Change PIN" >
+            <intent-filter>
+                <action android:name="android.intent.action.BluetoothPinChangeActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.lppbpl.android.userapp.SettingsActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.SettingsActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.ChangePasswordActivity"
+            android:label="@string/title_login" >
+            <intent-filter>
+                <action android:name="android.intent.action.ChangePasswordActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.ChangeMobileNumberActivity"
+            android:label="@string/change_mobile_no" >
+            <intent-filter>
+                <action android:name="android.intent.action.ChangeMobileNumberActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.TncnPrivacyPopup"
+            android:theme="@android:style/Theme.Dialog" >
+            <intent-filter>
+                <action android:name="android.intent.action.TncnPrivacyPopup" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.ForgotPasswordActivity"
+            android:label="@string/forgot_password" >
+            <intent-filter>
+                <action android:name="android.intent.action.ForgotPasswordActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.MyCasesRecordsList"
+            android:label="MyCasesRecordsList" >
+            <intent-filter>
+                <action android:name="android.intent.action.MyCasesRecordsList" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.RecordsGroupActivty"
+            android:label="RecordsGroup" >
+            <intent-filter>
+                <action android:name="android.intent.action.RecordsGroupActivty" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.BillPaymentActivity"
+            android:configChanges="orientation|screenLayout"
+            android:label="Payment" >
+            <intent-filter>
+                <action android:name="android.intent.action.BillPaymentActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.MyMembersList"
+            android:label="MyMembers" >
+            <intent-filter>
+                <action android:name="android.intent.action.MyMembersList" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.UpdateProfileActivity"
+            android:label="@string/update_profile" >
+            <intent-filter>
+                <action android:name="android.intent.action.UpdateProfileActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.EmergContactActivity"
+            android:label="@string/emergency_contact" >
+            <intent-filter>
+                <action android:name="android.intent.action.EmergContactActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.UpdateAddressActivity"
+            android:label="@string/update_address" >
+            <intent-filter>
+                <action android:name="android.intent.action.UpdateAddress" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="com.lppbpl.android.userapp.SMSReceiver" >
+            <intent-filter android:priority="1000" >
+                <action android:name="android.intent.action.DATA_SMS_RECEIVED" />
+
+                <data android:scheme="sms" />
+                <data android:port="6666" />
+            </intent-filter>
+        </receiver>
+
+        <activity
+            android:name="com.lppbpl.android.userapp.WalletTopupActivity"
+            android:label="@string/title_activity_wallet_topup" >
+            <intent-filter>
+                <action android:name="android.intent.action.WalletTopupActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.lppbpl.android.userapp.TPAActivity"
+            android:label="@string/title_activity_tpa" >
+        </activity>
+    </application>
+
+</manifest>

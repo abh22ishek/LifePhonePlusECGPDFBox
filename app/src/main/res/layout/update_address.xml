@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/scroll_v"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="@dimen/buttom_bar_height"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:background="@drawable/ic_background_blue"
+        android:paddingBottom="15dp" >
+
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/txt_address_1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/address1"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/edt_address_1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:inputType="text|textPersonName|textCapWords"
+                android:padding="@dimen/default_padding"
+                android:singleLine="false"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/txt_address_2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/address2"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/edt_address_2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:inputType="text|textPersonName|textCapWords"
+                android:padding="@dimen/default_padding"
+                android:singleLine="false"
+                android:hint="@string/optional"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/txt_address_3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/address3"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/edt_address_3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:inputType="text|textPersonName|textCapWords"
+                android:padding="@dimen/default_padding"
+                android:singleLine="false"
+                android:hint="@string/optional"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/txt_country"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/country"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/edt_country"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                    android:layout_marginLeft="@dimen/default_margin_left"
+                    android:layout_marginRight="@dimen/default_margin_right"
+                    android:layout_marginTop="@dimen/textfield_margin_top"
+                    android:layout_weight="1"
+                    android:background="@xml/edit_text_selector"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size" />
+
+                <ImageButton
+                    android:id="@+id/btn_country"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                    android:layout_marginRight="@dimen/default_margin_right"
+                    android:layout_marginTop="@dimen/textfield_margin_top"
+                    android:layout_weight="0.25"
+                    android:contentDescription="@string/country"
+                    android:src="@drawable/ic_add_item" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_state"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/state"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/edt_state"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                    android:layout_marginLeft="@dimen/default_margin_left"
+                    android:layout_marginRight="@dimen/default_margin_right"
+                    android:layout_marginTop="@dimen/textfield_margin_top"
+                    android:layout_weight="1"
+                    android:background="@xml/edit_text_selector"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size" />
+
+                <ImageButton
+                    android:id="@+id/btn_state"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                    android:layout_marginRight="@dimen/default_margin_right"
+                    android:layout_marginTop="@dimen/textfield_margin_top"
+                    android:layout_weight="0.25"
+                    android:contentDescription="@string/state"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_add_item" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_city"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/city"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/edt_city"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                    android:layout_marginLeft="@dimen/default_margin_left"
+                    android:layout_marginRight="@dimen/default_margin_right"
+                    android:layout_marginTop="@dimen/textfield_margin_top"
+                    android:layout_weight="1"
+                    android:background="@xml/edit_text_selector"
+                    android:inputType="none"
+                    android:singleLine="true"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size" />
+
+                <ImageButton
+                    android:id="@+id/btn_city"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                    android:layout_marginRight="@dimen/default_margin_right"
+                    android:layout_marginTop="@dimen/textfield_margin_top"
+                    android:layout_weight="0.25"
+                    android:contentDescription="@string/city"
+                    android:visibility="gone"
+                    android:src="@drawable/ic_add_item" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_zipcode"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/zipcode"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/edt_zipcode"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:inputType="text|number"
+                android:padding="@dimen/default_padding"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/txt_email"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/email"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/edt_email"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:inputType="text|textEmailAddress"
+                android:padding="@dimen/default_padding"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/single_menu_bar" />
+
+</RelativeLayout>

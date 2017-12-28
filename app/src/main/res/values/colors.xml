@@ -1,0 +1,13 @@
+<resources>
+    <color name="white_shade">#F7F6F6</color>
+    <color name="white_shade2">#F7F7F7</color>
+    <color name="green_shade">#9FD251</color>    
+    <color name="heading_color">#FFFFFF</color>
+    <color name="title_color">#FFFFFF</color>
+    <color name="reading_color">#162c01</color>
+    <color name="timestamp_title_color">#405d14</color>
+    <color name="button_bar_bg_color">#062A3D</color>    
+    <color name="black_color">#000000</color>
+    <color name="green_shade3">#95C834</color>
+    <color name="grayed_disable">#FFaaaaaa</color>
+</resources>

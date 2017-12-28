@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <string name="bg_timeout"><b>Time out:</b>\nDuring insertion of test strip. Please start the measurement using a new test strip.</string>
+    <string name="bg_timeout_tryagain"><b>Time out:</b>\nDuring placement of blood sample. Please start the measurement using a new test strip.</string>
+    <string name="instruction_insert_strip">Insert the strip in device BG slot.</string>
+    <string name="instruction_drop_blood">Please wait for the beep and place a drop of blood on the mark of the inserted strip.</string>
+    <string name="instruction_ctl_sol_drop_blood">Please wait for the beep and place a drop of control solution on the mark of the strip inserted.</string>    
+    <string name="bg_normal_error"><b>Error:</b>\nEncountered an error in blood sugar measurement.</string>
+    <string name="bg_self_check_err"><b>Error:</b>\nBG module installation. Please verify the BG module installation and firmware version.</string>
+    <string name="bg_strip_removed_too_soon"><b>Error:</b>\nWe notice that you removed the strip too soon, before the measurement was completed. Please start the measurement using a new test strip.</string>
+    <string name="bg_blood_applied_too_soon"><b>Error:</b>\nWe notice that you placed the blood sample too soon, wait for the beep before placing the sample. Please start the measurement using a new test strip.</string>
+    <string name="bg_strip_contaminated"><b>Error:</b>\nTest strip is contaminated or damaged. Please start the measurement using a new test strip.</string>
+    <string name="bg_not_enough_blood"><b>Error:</b>\nInsufficient quantity of blood to perform the measurement. Please start the measurement using a new test strip with a sufficient quantity of blood drop.</string>
+    <string name="bg_battery_low"><b>Error:</b>\nDevice is low on battery, please charge before performing the measurement.</string>
+    <string name="bg_wrong_strip_type"><b>Error:</b>\nTest strip is contaminated or damaged. Please start the measurement using a new test strip.</string>
+    <string name="bg_high_ambient_temparature"><b>Error:</b>\nWe notice that the surrounding environment is too hot for BG measurement. We suggest you move to a cooler surroundings and start the measurement using a new test strip.</string>
+    <string name="bg_low_ambient_temparature"><b>Error:</b>\nWe notice that the surrounding environment is too cold for BG measurement. We suggest you move to a warmer surroundings and start the measurement using a new test strip.</string>
+    <string name="bg_glucose_high"><b>Error:</b>\nWe notice that the blood sugar is out of range. Try measuring again with a new test strip. If you notice this error continuously call %1$s.</string>
+    <string name="bg_glucose_low"><b>Error:</b>\nWe notice that the blood sugar is out of range. Try measuring again with a new test strip. If you notice this error continuously call %1$s.</string>
+    <!--  <string name="bg_invalid_data_error">Unknown error. Please start again with a new test strip.</string>-->
+    
+    <string name="device_off"><b>Error:</b>\nYour device is either not switched on or not connected to the app. Please switch on the device and wait for it to connect to the app.</string>
+    <string name="service_charge_info">You have selected the payment mode as %1$s.</string>
+    <string name="payment_mode_with_wallet_info">You have selected the payment mode as %1$s.\n\n Your current wallet balance: Rs. %2$s</string>
+    <string name="consult_doc_result">Your consultation request has been created and assigned to the specialist.\n\n<b>Ref ID #%1$d.</b>\n\n In case of an emergency  please call %2$s.</string>
+    <string name="tncn_text">To access the application, you need to <b>read and accept</b> the following:</string>
+    <string name="tncn_check">I understand and accept the \"Terms and conditions\" and \"Privacy consent\".</string>
+    <string name="discard_confirmation">Are you sure you want to discard the measurement?</string>
+    <string name="no_subscriptions_found">You have not subscribed to any services. Please subscribe to the services by visiting %1$s or call %2$s.</string>
+    <string name="unable_to_save"><b>Error:</b>\nWe are unable to upload the measurement, please try again after some time. If you notice this error continuously, please call %1$s.</string>
+    <string name="deactive_account">We notice that your account is inactive. So you cannot upload the data to cloud. Please call %1$s</string>
+    <string name="successfully_saved">Your measurement is uploaded successfully.</string>
+    <string name="cancel_measurement">Are you sure you want to cancel the measurement?</string>
+    <string name="unable_to_find_southfalls"><b>Error:</b>\nUnable to connect to the device, please check whether bluetooth is enabled and the device is near your phone.</string>
+    <string name="unable_to_connect_southfalls"><b>Error:</b>\nUnable to connect to the device, please check whether bluetooth is enabled and the device is near your phone.</string>
+    <string name="pin_successfully_changed">Your PIN is changed successfully. Please re-launch the application and restart your device to connect using the new PIN.</string>
+    <string name="remeasure_ecg">We notice an error in the ECG measurement. Do you want to re-measure?</string>
+    <string name="exit_confirmation">Are you sure you want to exit?</string>
+    <string name="skip_confirmation"><b>Info:</b>\nYou will have to login to upload / view the measurements.</string>
+    <string name="activity_running">We notice that your activity measurement is on. Do you want to stop the measurement?</string>
+    <string name="delete_consfirmation">Are you sure you want to delete?</string>
+    <string name="diagnosis_received">1 new feedback received. Do you wish to view it now?</string>
+    <string name="enter_currect_mobile_no">Enter the correct mobile number.</string>
+    <string name="password_empty">Please enter the Password.</string>
+    <string name="password_incorrect_length">Password length should be minimum of 8 characters.</string>
+    <string name="conf_password_empty">Please enter "Confirm password."</string>
+    <string name="pass_and_conf_same">Password and confirm password must be the same.</string>
+    <string name="user_id_empty">Please enter the User ID.</string>
+    <string name="user_id_incorrect_length">User Id length should be minimum of 6 characters.</string>
+    <string name="name_empty">The field "name" cannot be empty.</string>
+    <string name="valid_name">Please enter a valid name.</string>
+    <string name="valid_height">Please enter a valid height.</string>
+    <string name="valid_weight">Please enter a valid weight.</string>
+    <string name="device_charging">Device is charging.</string>
+    <string name="please_cant_default">New PIN cannot be same as the default PIN.</string>
+    <string name="quick_registration">Account registration is successful. You can access the services once your account is approved by the administrator. For any help please call %1$s.</string>
+    <string name="member_registration">You have successfully added a member. Please share the credentials to your member to update their information.</string>
+    <string name="current_password_empty">The field "Current Password" cannot be empty.</string>
+    <string name="new_password_empty">The field "New Password" cannot be empty.</string>
+    <string name="confirm_new_password_empty">The field "Confirm new password" cannot be empty.</string>
+    <string name="change_password_info">We notice that this is your first login. For security reasons please change your password.</string>
+    <string name="password_expired_info">We notice that your password is expired. Please change your password.</string>
+    <string name="newpass_and_conf_newpass_same">New password and confirm new password must be the same.</string>
+    <string name="currpass_and_newpass_same">Current password cannot be same as the new password.</string>
+    <string name="session_expired">Your session expired. Please login again.</string>
+    <string name="http_auth_fail">Please enter a valid user-id and password.</string>
+    <string name="http_bad_request">Bad request. Request from client is not valid.</string>
+    <string name="http_method_not_supported">Method not supported.</string>
+    <string name="http_server_down">Server error occurred and the processing could not be completed at this point in time.</string>
+    <string name="http_connection_down">There is no network connection right now. Please try again later.</string>
+    <string name="http_general_error">Unable to connect to server. Please try again later.</string>
+    <string name="consult_prompt">Your measurement is uploaded successfully with id: %1$d\n\nDo you wish to consult the specialist for this measurement?\n\nConsultation fee: Rs. %2$d \nSLA: %3$d mins.</string>
+    <string name="consult_prompt_with_cc_sla">Your measurement is uploaded successfully with id: %1$d\n\nDo you wish to consult the specialist for this measurement?\n\nConsultation fee: Rs. %2$d \nSLA: %3$d mins.\n\nIn case the hospital SLA is crossed, you will receive the advisory from call center in %4$d mins.</string>
+    <string name="record_saved_only_prompt">Your measurement is uploaded successfully with id: %d</string>
+    <string name="bg_consult_prompt">Do you wish to consult the specialist for this measurement?\n\nConsultation fee: Rs. %1$d \nSLA: %2$d mins.</string>
+    <string name="bg_consult_prompt_with_cc_sla">Do you wish to consult the specialist for this measurement?\n\nConsultation fee: Rs. %1$d \nSLA: %2$d mins.\n\nIn case the hospital SLA is crossed, you will receive the advisory from call center in %3$d mins.</string>
+    <string name="successfully_changed_mobile_no">Your mobile number is changed successfully.</string>
+    <string name="ht_wt_info">Recorded Info: \n Your Height is %1$s\n\n and Your weight is %2$s kg</string>
+    <string name="pass_hint">(Password must be atleast 8 characters in length. Use a password with a mix of letters, numbers and symbols)</string>
+    <string name="pass_reset_sucsess">Your new password has been sent via sms. Use the new password to login.</string>
+    <string name="valid_url">Server address needs to begin with either https:// or http://</string>
+    <string name="server_address_save">Server address changed. Please login again.</string>
+    <string name="https_not_suppoted">https:// version not supported,\nPlease try with http://</string>
+    <string name="http_pagenotfound_error">Could not find the server. Please check the address.</string>
+    <string name="http_server_unavailable">Service unavailable. Please try again.</string>
+    <string name="url_empty">The field "URL" cannot be empty.</string>
+    <string name="deviceid_empty">Switch on the device to login.</string>
+    <string name="skip_pair_southfalls"><b>Error:</b>\nYour device is either not switched on or not connected to the app. Please switch on the device and wait for it to connect to the app.</string>
+    <string name="delete_paired_device">Do you want to unpair the paired device?\nPlease re-launch the application and switch on the new device to pair.</string>
+    <string name="measurement_saved">Measurement is saved locally.</string>
+    <string name="logout_confirmation">Are you sure you want to logout?</string>
+    <string name="first_name_empty">The field "First name" cannot be empty.</string>
+    <string name="last_name_empty">The field "Last name" cannot be empty.</string>
+    <string name="unexpected_error">Unexpected error occurred. Please login again.</string>
+    <string name="customer_segment_hint">(select the appropriate consumer category)</string>
+    <string name="invalid_quantity">Quantity must be greater than 0</string>
+    <string name="tpa_text">We notice that latest version of TPA is not accepted. In order to access the application, you need to <b>read and accept</b> the following:</string>
+    <string name="tpa_check">I understand and accept the \"Third Party Agreement (TPA)\".</string>
+    <string name="tpa_member_acceptance_error">You are a member user.\n\nTo proceed further please ask your primary user to accept the new Third Party Agreement.</string>
+    <string name="tpa_consult_feature_disabled">Your service provider does not support consultation requests. Please call %1$s for more information.</string>
+    <string name="update_address_success">Your address is updated successfully.</string>
+    <string name="update_emergency_details_success">Your emergency contact details are updated successfully.</string>
+    <string name="no_records_found">No records found. Please try with a different range.</string>
+    <string name="ecg_record_fetch_error">Unable to fetch the selected ECG record.</string>
+    <string name="bg_record_fetch_error">Unable to fetch the selected BG record.</string>
+    <string name="record_saved_successfully">Your measurement is uploaded successfully with id: </string>
+    <string name="doctor_consultaion_info">The doctor will be consulted and will get back in 30 minutes. Your consultation id: </string>
+    <string name="request_placing_failed">Unable to place your request. Do you want to retry?</string>
+    <string name="relation_field_empty">The field "Relation" cannot be empty.</string>
+    <string name="address1_field_empty">The field "Address 1" cannot be empty.</string>
+    <string name="country_field_empty">The field "Country" cannot be empty.</string>
+    <string name="state_field_empty">The field "State" cannot be empty.</string>
+    <string name="city_field_empty">The field "City" cannot be empty.</string>
+    <string name="zipcode_field_empty">The field "Zipcode" cannot be empty.</string>
+    <string name="emailid_invalid">Please enter a valid Email id.</string>
+    <string name="enter_correct_date">Incorrect date: select a date in the past.</string>
+    <string name="fetch_payment_modes_error">Unable to get the list of payment modes. Please try again.</string>
+    <string name="fetch_consumer_category_error">Unable to load the consumer category. Please try again.</string>
+    <string name="cancel_registration">Are you sure you want to cancel the registration?</string>
+    <string name="pending_record_upload">Upload is in progress, please try after some time.</string>
+
+    <integer name="anotation_max_length">200</integer>
+
+    <string name="device_sw_major_version">1</string>
+    <string name="device_sw_minor_version">01</string>
+    <string name="title_registration">Registration</string>
+    <string name="title_login">Login</string>
+    <string name="title_app_name">Life Phone Plus Lite</string>
+    <string name="app_name">Life Phone Plus Lite</string>
+    <string name="title_profile">Activity Profile</string>
+    <string name="title_diagnosis">Feedback</string>
+    <!-- <string name="title_trends">Trends</string> -->
+    <string name="enter_password">Password</string>
+    <string name="devicekey">Device ID</string>
+    <string name="devicekeyLogin">Device ID: %s</string>
+    <string name="mobile_num_in_reg">Enter your mobile number</string>
+    <string name="mob_num">Mobile Number</string>
+    <string name="Edit">Edit</string>
+    <string name="create_user_id">Create a User ID</string>
+    <string name="user_id">User ID</string>
+    <string name="CreatePwd">Create a password</string>
+    <string name="ConfPwd">Confirm the password</string>
+    <string name="remember_user_id">Remember my User ID</string>
+    <string name="title_device_configuration">Server Configuration</string>
+    <string name="cloudAddress">Enter the URL\n(For example, http://example.com)</string>    
+    <string name="title_consultdoctor">Consult Specialist</string>
+    <string name="title_confirmation">Confirmation</string>    
+    <string name="optional">Optional</string>
+    
+    <!--
+    <string name="scanning">Scanning for devices…</string>
+    <string name="select_device">Select a device to connect</string>
+    <string name="none_paired">No device is paired</string>
+    <string name="none_found">No device found</string>
+    <string name="title_paired_devices">Paired devices</string>
+    <string name="title_other_devices">Other devices available</string>
+    <string name="button_scan">Scan for devices</string>
+    -->
+    
+    <!-- GetSpecificRecordsActivity -->
+    <string name="title_get_specific_records">Get Specific Records</string>
+    <string name="title_latest_records">Latest Records</string>
+    <string name="title_unsaved_records">Unsaved Records</string>
+    <string name="title_latest_cases">Latest Cases</string>
+    <string name="title_specific_cases">Get Specific Cases</string>
+    <string name="title_my_data">My Data</string>
+    <string name="title_my_cases">My Cases</string>
+    <string name="title_recrods">Records</string>
+    <string name="no_recrods">No Records</string>
+    <string name="title_consulted_cases">Consulted cases</string>
+    <string name="start_date">Start Date</string>
+    <string name="specificrecord_headding">Number of records to get</string>
+    <string name="recordstype_headding">Record type</string>
+    <string name="date_headding">Specify date</string>
+    <string name="date">1 week ago</string>
+
+    <!-- Custom Dialog -->
+    <!-- ECG steps -->
+    <string name="title_ecg">ECG</string>
+    <string name="ecg_measure_step_msg">Measuring step %d</string>
+    <string name="ecg_start_step_msg">Relax and start step %d</string>
+    <string name="ecg_step_1">1</string>
+    <string name="ecg_step_2">2</string>
+    <string name="ecg_step_3">3</string>
+    <string name="ecg_step_4">4</string>
+
+    <!-- Ecg symptoms -->
+    <string name="ecg_symptoms_heading">Are you feeling:</string>
+    <string name="ecg_symptoms_1">Chest Pain</string>
+    <string name="ecg_symptoms_2">Palpitations</string>
+    <string name="ecg_symptoms_3">Sweating</string>
+    <string name="ecg_symptoms_4">Dizziness</string>
+    <string name="ecg_symptoms_5">Anxiety</string>
+
+    <!-- BG symtoms -->
+    <string name="bg_symptoms_heading">Are you feeling:</string>
+    <string name="bg_symptoms_1">Tired</string>
+    <string name="bg_symptoms_2">Dizzy</string>
+    <string name="bg_symptoms_3">Sweating</string>
+    <string name="bg_symptoms_4">Excessive hunger</string>
+    <string name="bg_symptoms_5">Tremors</string>
+    <string name="add_comment">Add a comment</string>
+    <string name="comment">Comment:</string>
+    <string name="heart_rate">Heart Rate</string>
+    <string name="heart_rate_bpm">bpm</string>
+
+    <!-- Activity -->
+    <string name="title_activity">Activity</string>
+    <string name="start">Start</string>
+    <string name="calories_burnt">calories spent</string>
+    <string name="meters">0</string>
+    <string name="meters_travelled">meters travelled</string>
+    <string name="steps">0</string>
+    <string name="steps_taken">steps taken</string>
+    <string name="how_long">How long</string>
+    <string name="when">When</string>
+
+    <!-- Blood sugar -->
+    <string name="specify_sample_type">Specify Sample Type</string>
+    <string name="title_bloodsugar">Blood Sugar</string>
+    <string name="mg_dl"> mg/dL</string>
+    <string name="date_and_time">data and time</string>    
+
+    <!-- \u003E equal to > sympol -->
+    <string name="bg_reading_high_error">BG reading out of range (\u003E 600 mg/dL) </string>
+    <!-- \u003C equal to < sympol -->
+    <string name="bg_reading_low_error">BG reading out of range (\u003C 9 mg/dL) </string>
+    <string name="select_bg_reading_type">Please select the BG sample type.</string>
+
+    <!-- Terms and condition / privacy -->
+    <string name="title_tnc">Terms and conditions</string>
+    <string name="title_privacy">Privacy consent</string>
+    <string name="title_authentication">Authentication</string>
+    <string name="auth_progress">Authenticating&#8230;</string>
+    <string name="saving_to_service">Saving to Service&#8230;</string>
+    <string name="agree">Agree</string>
+    <string name="decline">Decline</string>
+    <string name="save">Save</string>
+    <string name="OK">OK</string>
+    <string name="login">Login</string>
+    <string name="login_underline"><u>Login</u></string>
+    <string name="signup"><u>New user? Sign Up</u></string>
+    <string name="forgot_pass"><u>Forgot password?</u></string>
+    <string name="skip">Skip</string>
+    <string name="registration">Registration</string>
+    <string name="register">Register</string>
+    <string name="get">Get</string>
+    <string name="next">Next</string>
+    <string name="stop">Stop</string>
+    <string name="cancel">Cancel</string>
+    <string name="discard">Discard</string>
+    <string name="continue_label">Continue</string>
+    <string name="delete">Delete</string>
+    <string name="name">Name</string>
+    <string name="gender">Gender</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="height">Height (in cm)</string>
+    <string name="weight">Weight (in kg)</string>
+    <string name="menu_ecg">ECG</string>
+    <string name="menu_bg">Blood Sugar</string>
+    <string name="menu_act">Activity</string>
+    <string name="menu_records">Records</string>
+    <string name="menu_diagnosis">Feedback</string>
+    <string name="menu_trends">Trends</string>
+    <string name="menu_wallet_topup">Wallet</string>
+    <string name="zero">0</string>
+    <string name="view_now">View Now</string>
+    <string name="later">Later</string>
+    <string name="catched_records">Cached Records</string>
+    <string name="enter_new_pin">Enter your new 6 digit PIN</string>
+    <string name="title_pin_change">Change PIN</string>    
+    <string name="discard_record">Discard record</string>
+    <string name="upload_failed">Upload failed</string>    
+    <string name="success">Success</string>    
+    <string name="network_connection">Network connection</string>
+    <string name="save_record">Save Record</string>
+    <string name="consult_doctor">Consultation</string>
+    <string name="consultation">Consultation</string>
+    <!-- <string name="you_have_not_subscribed">You have not subscribed for this service. In case of an emergency, call %1$s.</string> -->
+    <string name="error">Error</string>
+    <string name="information">Information</string>    
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="bluetooth">Bluetooth</string>    
+    <string name="re_measure">Measure Again</string>
+    <string name="exit_app">Exit</string>    
+    <string name="country_code">91</string>    
+    <string name="device_blevel_critical">Critically low</string>
+    <string name="device_blevel_low">Low</string>
+    <string name="device_blevel_normal">Normal</string>    
+    <string name="charging">Charging</string>
+    <string name="device">Device</string>
+    <string name="power">Power</string>
+    <string name="battery">Battery</string>
+    <string name="on">ON</string>
+    <string name="off">OFF</string>
+    <string name="bg_calibration">Blood glucose calibration</string>
+    <string name="single_step_ecg">Single step ECG</string>
+    <string name="settings">Settings</string>
+    <string name="please_enter_pin">Please enter 6 digit PIN.</string>    
+    <string name="fasting">Fasting</string>
+    <string name="post">Post</string>
+    <string name="random">Random</string>
+    <string name="image_desc">image</string>    
+    <string name="waiting_for_device_resp">Waiting for Device response..</string>
+    <string name="invalid_device_id">Invalid device id</string>
+    <string name="Your_health_companion">Your Health Partner for Life</string>
+    <string name="enable_bluetooth">Bluetooth is not enabled</string>
+    <string name="update_device_id">Logged in device does not match with registered device. Do you want to update new device?</string>
+    <string name="current_password">Current password</string>
+    <string name="new_password">New password</string>
+    <string name="confirm_new_password">Confirm new password</string>    
+    <string name="change_password">Change password</string>    
+    <string name="updating_device">Updating device. . .</string>    
+    <string name="network_error">Network error</string>    
+    <string name="enter_new_mobile_no">Enter your new mobile number.</string>
+    <string name="enter_country_code">Enter your country code.</string>
+    <string name="change_mobile_no">Change mobile number</string>    
+    <string name="single_measurement">measurement received from device.</string>
+    <string name="plural_measurement">measurements received from device.</string>
+    
+    <!-- Forgot password -->
+    <string name="forgot_password"><u>Forgot password</u></string>
+    <string name="email">Email ID</string>
+    <string name="dob">DOB</string>
+    <string name="reset">Reset</string>
+    <string name="email_empty">Please enter the Email id.</string>    
+    <string name="recordsstatus_headding">Record status</string>
+    <string name="option_assigned">Assigned cases</string>
+    <string name="option_pending">Pending cases</string>
+    <string name="option_closed">Closed cases</string>
+    <string name="option_all">All cases</string>
+    <string name="select_record_type">Please select the record type to get.</string>
+    <string name="title_norecords">No records</string>
+    <string name="norecords">No records found.</string>
+    <string name="response_failed">Response failed, Please try again.</string>        
+    <string name="serveraddress">Server Address</string>    
+    <string name="delete_pair">Remove paired device</string>    
+    <string name="logout">Sign out</string>    
+    <string name="logging_out">Signing out</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="back">Back</string>
+    <string name="my_members">My Members</string>
+    <string name="add_members">Add Members</string>    
+    <string name="loading_mymembers">Loading Members</string>
+    <string name="contact_details">Contact Details</string>
+    <string name="members">Members</string>
+    <string name="self_data">Self Data</string>
+    <string name="payment_mode">Payment Mode</string>
+
+    <string-array name="payment_mode">
+        <item>CARD</item>
+        <item>WALLET</item>
+    </string-array>
+    
+    <string name="consumer_category">Consumer Category</string>
+    <string name="create_account"><b>Create a Account</b></string>
+    <string name="personal_details"><b>Personal Details</b></string>
+    <string name="finish_account"><b>Finish Account</b></string>    
+    <string name="update_profile">Update Profile</string>
+    <string name="update_address">Update Address</string>
+    <string name="emergency_contact">Emergency Contact</string>
+    <string name="update_emergency_contact">Update Emergency Contact</string>
+    <string name="relationship">Relationship</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="address1">Address 1</string>
+    <string name="address2">Address 2</string>
+    <string name="address3">Address 3</string>
+    <string name="country">Country</string>
+    <string name="state">State</string>
+    <string name="city">City</string>
+    <string name="zipcode">Zip code</string>
+    <string name="about">About</string>
+    <string name="duration">Duration</string>
+    <string name="started">Started</string>
+    <string name="tnc_loading_wait_text">Please wait. . .</string>
+
+    <!-- Wallet Topup stings -->
+    <string name="title_activity_wallet_topup">Wallet Topup</string>
+    <string name="current_balance">Balance (Rs.)</string>
+    <string name="payment_mode_label">Pay by</string>
+    <string name="quantity">Quantity</string>
+    <string name="unit_price_label">Unit price (Rs.)</string>
+    <string name="total_amount_label">Total (Rs.)</string>
+    <string name="buy_now_button">Buy now</string>    
+    <string name="please_wait_text">Please wait&#8230;</string>    
+    <string name="loading_text">Loading&#8230;</string>
+    
+    <!-- TPA Strings -->
+    <string name="title_activity_tpa">Third Party Agreement</string>
+    <string name="tpa_link_text">Third Party Agreement (TPA)</string>     
+    <string name="repeat_step">Please repeat the step </string>
+    
+    <string name="update">Update</string>
+    <string name="retry">Retry</string>
+
+</resources>

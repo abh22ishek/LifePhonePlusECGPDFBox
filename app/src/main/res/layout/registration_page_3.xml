@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/scroll_v"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="@dimen/buttom_bar_height"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:background="@drawable/ic_background_blue"
+        android:paddingBottom="15dp" >
+
+        <LinearLayout
+            android:id="@+id/linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/contact_details"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin"
+                android:contentDescription="@string/title_app_name"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_dashboard_horizontal_delimiter" />
+            <!-- Mobile Number -->
+
+            <TextView
+                android:id="@+id/txt_phonenumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/mobile_num_in_reg"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <EditText
+                    android:id="@+id/edt_country_code"
+                    android:layout_width="45dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                    android:layout_marginLeft="@dimen/default_margin_left"
+                    android:layout_marginTop="@dimen/textfield_margin_top"
+                    android:background="@xml/edit_text_selector"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:maxLength="3"
+                    android:text="@string/country_code"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size" />
+
+                <EditText
+                    android:id="@+id/edt_phonenumber"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                    android:layout_marginLeft="@dimen/default_margin_left"
+                    android:layout_marginRight="@dimen/default_margin_right"
+                    android:layout_marginTop="@dimen/textfield_margin_top"
+                    android:background="@xml/edit_text_selector"
+                    android:inputType="numberDecimal|phone"
+                    android:padding="@dimen/default_padding"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/text_size" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txt_email"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/email"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/edt_email"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:inputType="text|textEmailAddress"                
+                android:padding="@dimen/default_padding"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+
+            
+        </LinearLayout>
+    </ScrollView>
+
+    <include layout="@layout/menu_bar" />
+
+</RelativeLayout>

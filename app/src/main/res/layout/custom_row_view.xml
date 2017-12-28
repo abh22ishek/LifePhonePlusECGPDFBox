@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="15dip" >
+
+    <TextView
+        android:id="@+id/measurementVal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/text_size" />
+
+    <TextView
+        android:id="@+id/measurementInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/measurementVal"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="15sp" />
+
+    <ImageView
+        android:id="@+id/statusImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/measurementVal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="5dp"
+        android:contentDescription="@string/image_desc"
+        android:gravity="right" />
+
+</RelativeLayout>

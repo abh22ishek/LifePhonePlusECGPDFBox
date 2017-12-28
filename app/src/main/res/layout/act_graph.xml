@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scroll_v"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:focusableInTouchMode="true" >
+
+    <com.lppbpl.android.userapp.ActGraphComponent
+        android:id="@+id/act_graph"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+</ScrollView>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <ImageView
+        android:id="@+id/ivRec_1"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_listitem_not_selected" 
+        android:contentDescription="@string/image_desc"/>
+
+    <ImageView
+        android:id="@+id/ivRec_2"
+        android:layout_width="fill_parent"
+        android:layout_height="50dp"
+        android:layout_below="@+id/ivRec_1"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="2dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ic_listitem_not_selected" 
+        android:contentDescription="@string/image_desc"/>
+
+    <TextView
+        android:id="@+id/tvRecView_2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ivRec_2"
+        android:layout_alignLeft="@+id/ivRec_2"
+        android:layout_alignRight="@+id/ivRec_2"
+        android:layout_alignTop="@+id/ivRec_2"
+        android:background="@xml/single_listview_style"
+        android:clickable="true"
+        android:paddingLeft="10dp"
+        android:paddingTop="13dp"
+        android:text="@string/title_get_specific_records"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+    <TextView
+        android:id="@+id/tvRecView_1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ivRec_1"
+        android:layout_alignLeft="@+id/ivRec_1"
+        android:layout_alignRight="@+id/ivRec_1"
+        android:layout_alignTop="@+id/ivRec_1"
+        android:background="@xml/single_listview_style"
+        android:clickable="true"
+        android:paddingLeft="10dp"
+        android:paddingTop="13dp"
+        android:text="@string/title_latest_records"
+        android:textColor="@android:color/white"
+        android:textSize="18sp" />
+
+</RelativeLayout>

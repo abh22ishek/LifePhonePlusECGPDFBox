@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/iv_scroll"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="@dimen/button_bar_height" >
+
+        <RelativeLayout            
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/reading_bg_size"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_green_bg"
+                android:contentDescription="@string/image_desc" />
+
+            <ImageView
+                android:id="@+id/dark_green_bg"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/timestamp_bg_size"
+                android:layout_below="@+id/imageView4"
+                android:scaleType="fitXY"
+                android:src="@drawable/ic_darkgreen_bg"
+                android:contentDescription="@string/image_desc" />
+
+            <TextView
+                android:id="@+id/tvBSAnotateRecordValue"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginTop="40dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/reading_text_size"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvBSText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dark_green_bg"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/specify_sample_type"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size" />
+
+            <RelativeLayout                
+                android:id="@+id/singleChoiceList"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvBSText"
+                android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginRight="@dimen/default_margin"
+                android:layout_marginTop="@dimen/default_margin"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/ivBg_1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentLeft="true"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_listitem_not_selected" 
+                    android:contentDescription="@string/image_desc"/>
+
+                <TextView
+                    android:id="@+id/tvReadingType_1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/ivBg_1"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignTop="@+id/ivBg_1"
+                    android:clickable="true"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="13dp"
+                    android:text="@string/fasting"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/timestamp_text_size" />
+
+                <ImageView
+                    android:id="@+id/ivBg_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/ivBg_1"
+                    android:layout_marginTop="1dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_listitem_not_selected" 
+                    android:contentDescription="@string/image_desc"/>
+
+                <TextView
+                    android:id="@+id/tvReadingType_2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/ivBg_2"
+                    android:layout_alignLeft="@+id/tvReadingType_1"
+                    android:layout_alignTop="@+id/ivBg_2"
+                    android:clickable="true"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="13dp"
+                    android:text="@string/post"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/timestamp_text_size" />
+
+                <ImageView
+                    android:id="@+id/ivBg_3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/ivBg_2"
+                    android:layout_marginTop="1dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_listitem_not_selected"
+                    android:contentDescription="@string/image_desc" />
+
+                <TextView
+                    android:id="@+id/tvReadingType_3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/ivBg_3"
+                    android:layout_alignLeft="@+id/tvReadingType_2"
+                    android:layout_alignTop="@+id/ivBg_3"
+                    android:clickable="true"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="13dp"
+                    android:text="@string/random"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/timestamp_text_size" />
+
+                <ImageView
+                    android:id="@+id/ivBg_Radio_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/tvReadingType_2"
+                    android:layout_alignRight="@+id/tvReadingType_2"
+                    android:layout_alignTop="@+id/tvReadingType_2"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_radiobutton_notselected" 
+                    android:contentDescription="@string/image_desc"/>
+
+                <ImageView
+                    android:id="@+id/ivBg_Radio_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/tvReadingType_1"
+                    android:layout_alignRight="@+id/tvReadingType_1"
+                    android:layout_alignTop="@+id/tvReadingType_1"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_radiobutton_notselected"
+                    android:contentDescription="@string/image_desc" />
+
+                <ImageView
+                    android:id="@+id/ivBg_Radio_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/tvReadingType_3"
+                    android:layout_alignRight="@+id/tvReadingType_3"
+                    android:layout_alignTop="@+id/tvReadingType_3"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/ic_radiobutton_notselected"
+                    android:contentDescription="@string/image_desc" />
+            </RelativeLayout>
+
+            <EditText
+                android:id="@+id/etBSAnotate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@layout/menu_bar"
+                android:layout_below="@+id/singleChoiceList"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@xml/edit_text_selector"
+                android:hint="@string/add_comment"
+                android:maxLength="@integer/anotation_max_length"
+                android:paddingLeft="10dp"
+                android:textColor="@android:color/black"
+                android:visibility="visible" />
+
+            <TextView
+                android:id="@+id/tvBSType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/reading_text_size"
+                android:visibility="invisible" />
+
+            <TextView
+                android:id="@+id/tvBSTypeUnit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBaseline="@+id/tvBSAnotateRecordValue"
+                android:layout_alignBottom="@+id/tvBSAnotateRecordValue"
+                android:layout_marginLeft="3dp"
+                android:layout_toRightOf="@+id/tvBSAnotateRecordValue"
+                android:text="@string/mg_dl"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/bg_image"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_alignBottom="@+id/tvBSTypeUnit"
+                android:layout_alignRight="@+id/singleChoiceList"
+                android:src="@drawable/ic_bloodsugar_green_big" 
+                android:contentDescription="@string/image_desc"/>
+
+            <TextView
+                android:id="@+id/bg_timestamp_txtview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/tvBSAnotateRecordValue"
+                android:layout_alignTop="@+id/dark_green_bg"
+                android:layout_marginTop="10dp"
+                android:text="@string/date_and_time"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/timestamp_text_size" />
+        </RelativeLayout>
+    </ScrollView>
+	<include layout="@layout/menu_bar"
+        android:id="@+id/id_menubars"
+        />
+  
+</RelativeLayout>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
+    <ScrollView        
+        android:id="@+id/scroll_v"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/buttom_bar_height"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:background="@drawable/ic_background_blue" >
+
+        <RelativeLayout            
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/txt_update_mobile_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/enter_new_mobile_no"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/text_size" />
+            
+             <EditText
+                android:id="@+id/country_code"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_update_mobile_no"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:gravity="center"
+                android:text="@string/country_code"
+                android:inputType="number"
+                android:maxLength="3"
+                android:textColor="@android:color/black"
+                android:background="@xml/edit_text_selector"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/edt_update_mobile_no"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_update_mobile_no"
+                android:layout_toRightOf="@+id/country_code"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_left"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:ems="10"
+                android:inputType="number"
+                android:padding="@dimen/default_padding"
+                android:singleLine="true"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" >
+            </EditText>
+        </RelativeLayout>
+    </ScrollView>
+
+    <include layout="@layout/single_menu_bar" />
+
+</RelativeLayout>

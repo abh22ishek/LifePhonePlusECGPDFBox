@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical" >
+
+    <ScrollView
+        android:id="@+id/scroll_v"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="@dimen/buttom_bar_height"
+        android:layout_marginLeft="@dimen/default_margin"
+        android:layout_marginRight="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        android:paddingBottom="15dp"
+        android:background="@drawable/ic_background_blue" >
+
+        <RelativeLayout
+            android:id="@+id/relativeLayout2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <!-- Device ID Entry -->
+
+            <TextView
+                android:id="@+id/tvkey"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/devicekey"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/tvUserID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/tvkey"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/create_user_id"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/etUserID"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/tvUserID"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:inputType="text"
+                android:padding="@dimen/default_padding"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+            <!-- password and confirm Password -->
+
+            <TextView
+                android:id="@+id/tvCreatePwd"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/etUserID"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/CreatePwd"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/etCreatePwd"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvCreatePwd"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:inputType="text|textPassword"
+                android:padding="@dimen/default_padding"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/tvConfPwd"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/etCreatePwd"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/ConfPwd"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/etConfPwd"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvConfPwd"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:inputType="text|textPassword"
+                android:padding="@dimen/default_padding"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/txt_pwd_hint"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/etConfPwd"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:text="@string/pass_hint" />
+
+            <TextView
+                android:id="@+id/txt_firstname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_pwd_hint"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/first_name"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/edt_firstname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_firstname"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:inputType="text|textPersonName|textCapWords"
+                android:padding="@dimen/default_padding"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/txt_lastname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/edt_firstname"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/last_name"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/edt_lastname"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_lastname"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:inputType="text|textPersonName|textCapWords"
+                android:padding="@dimen/default_padding"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+
+            <!-- Mobile Number -->
+
+            <TextView
+                android:id="@+id/tvPhoneNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_below="@+id/edt_lastname"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/mobile_num_in_reg"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/country_code"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvPhoneNumber"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:gravity="center"
+                android:inputType="numberDecimal"
+                android:maxLength="3"
+                android:text="@string/country_code"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/etPhoneNumber"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvPhoneNumber"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:layout_toRightOf="@+id/country_code"
+                android:background="@xml/edit_text_selector"
+                android:inputType="numberDecimal|phone"
+                android:padding="@dimen/default_padding"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/txt_email"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/etPhoneNumber"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/email"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <EditText
+                android:id="@+id/edt_email"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/txt_email"
+                android:layout_marginBottom="@dimen/textfield_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/textfield_margin_top"
+                android:background="@xml/edit_text_selector"
+                android:inputType="text|textEmailAddress"
+                android:padding="@dimen/default_padding"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/txt_gender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edt_email"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/gender"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <RadioGroup
+                android:id="@+id/radioGroup1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/txt_gender"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:orientation="horizontal" >
+
+                <RadioButton
+                    android:id="@+id/rbMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/default_margin_right"
+                    android:layout_marginTop="@dimen/default_margin_top"
+                    android:checked="true"
+                    android:text="@string/male" />
+
+                <RadioButton
+                    android:id="@+id/rbFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/default_margin_right"
+                    android:layout_marginTop="@dimen/default_margin_top"
+                    android:text="@string/female" />
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/txt_dob"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/radioGroup1"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:layout_marginTop="@dimen/default_margin_top"
+                android:text="@string/dob"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/text_size" />
+
+            <TextView
+                android:id="@+id/txt_date"
+                android:layout_width="fill_parent"
+                android:layout_height="@dimen/txt_height"
+                android:layout_below="@id/txt_dob"
+                android:layout_marginBottom="@dimen/default_margin_bottom"
+                android:layout_marginLeft="@dimen/default_margin_left"
+                android:layout_marginRight="@dimen/default_margin_right"
+                android:background="@xml/single_listview_style"
+                android:clickable="true"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/custom_padding"
+                android:textColor="@color/heading_color"
+                android:textSize="@dimen/timestamp_text_size" />
+        </RelativeLayout>
+    </ScrollView>
+
+    <include layout="@layout/single_menu_bar" />
+
+</RelativeLayout>
