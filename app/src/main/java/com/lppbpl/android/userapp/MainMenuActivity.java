@@ -64,6 +64,7 @@ import com.lppbpl.android.userapp.model.PendingRecord;
 import com.lppbpl.android.userapp.model.Profile;
 import com.lppbpl.android.userapp.util.DeletePairUtility;
 import com.lppbpl.android.userapp.util.HttpUtil;
+import com.tom_roush.pdfbox.util.PDFBoxResourceLoader;
 
 import java.lang.ref.WeakReference;
 
@@ -101,6 +102,7 @@ public class MainMenuActivity extends NetworkConnBaseActivity implements
 		Logger.log(Level.DEBUG, TAG, "onCreate");
 
 		setContentView(R.layout.mainmenu);
+		setUpPdfBox();
 		setCustomNoIconTitle(R.string.title_app_name);
 
 		/*if(!checkRunningService())
@@ -163,6 +165,13 @@ public class MainMenuActivity extends NetworkConnBaseActivity implements
 			}
 		});
 	}
+
+	// set up pdfbox
+	private void setUpPdfBox()
+	{
+		PDFBoxResourceLoader.init(getApplicationContext());
+	}
+
 
 	/**
 	 * Enables/disables the wallet topup feature based upon the user role. If it is primary user wallet feature will be enabled otherwise disabled.

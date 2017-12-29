@@ -24,11 +24,15 @@
 
 package com.lppbpl.android.userapp;
 
+import android.Manifest;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -52,6 +56,7 @@ import com.lppbpl.android.userapp.db.PendingRecordDb;
 import com.lppbpl.android.userapp.model.PendingRecord;
 import com.lppbpl.android.userapp.model.SfSendModel;
 import com.lppbpl.android.userapp.util.HttpUtil;
+import com.pdfbox.EcgPdfBox;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -542,6 +547,7 @@ public class EcgSymptomsListActivity extends NetworkConnBaseActivity implements
 			Logger.log(Level.DEBUG,TAG,"**Heart Rate**="+heart_rate_);
 			// saving Ecg to xml file
 			ConvertTexttoXml.saveEcgtoFile(true,symptoms_selected,String.valueOf(heart_rate_));
+			new EcgPdfBox().createtable(EcgSymptomsListActivity.this);
 
 
 			if (mPinModel.isLoginForSessionSuccess()) {
@@ -707,4 +713,9 @@ public class EcgSymptomsListActivity extends NetworkConnBaseActivity implements
 					false);
 		}
 	}
+
+
+
+
+
 }

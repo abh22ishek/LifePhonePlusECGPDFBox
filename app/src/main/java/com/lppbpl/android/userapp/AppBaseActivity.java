@@ -24,6 +24,7 @@
 
 package com.lppbpl.android.userapp;
 
+import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -46,6 +47,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -76,6 +78,7 @@ import com.lppbpl.android.userapp.model.SfApplicationModel;
 import com.lppbpl.android.userapp.model.SfPinModel;
 import com.lppbpl.android.userapp.util.HttpUtil;
 import com.lppbpl.android.userapp.util.Util;
+import com.pdfbox.EcgPdfBox;
 
 import java.lang.ref.WeakReference;
 
@@ -1136,4 +1139,34 @@ public class AppBaseActivity extends Activity implements SfBTDataListener {
 	public String toString() {
 		return super.toString();
 	}
+
+
+	/*public boolean isStoragePermissionGranted() {
+		if (Build.VERSION.SDK_INT >= 23) {
+			if (checkSelfPermission(android.Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+				Logger.log(Level.DEBUG,TAG,"--Permission is granted--");
+				return true;
+			} else {
+
+				Logger.log(Level.ERROR,TAG,"--Permission is revoked--");
+				ActivityCompat.requestPermissions(this, new String[]
+						{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+				return false;
+			}
+		} else {
+			System.out.println("------///Run Time Permission  not required----//");
+			return true;
+		}
+	}
+
+	@Override
+	public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+		super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+		if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+			//Logger.log(Level.DEBUG, TAG, "Permission: " + permissions[0] + "was " + grantResults[0]);
+			Log.v("TAG","Permission: "+permissions[0]+ "was "+grantResults[0]);
+			//(new EcgPdfBox()).createtable(EcgSymptomsListActivity.this);
+		}
+	}*/
+
 }
