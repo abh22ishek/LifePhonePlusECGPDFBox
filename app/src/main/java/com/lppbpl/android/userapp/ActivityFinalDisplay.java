@@ -24,9 +24,11 @@
 
 package com.lppbpl.android.userapp;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.format.DateFormat;
@@ -54,6 +56,8 @@ import com.lppbpl.android.userapp.model.ActivityMeasurementModel;
 import com.lppbpl.android.userapp.model.PendingRecord;
 import com.lppbpl.android.userapp.model.SfSendModel;
 import com.lppbpl.android.userapp.util.HttpUtil;
+import com.pdfbox.ActivityPdfBox;
+import com.pdfbox.EcgPdfBox;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -358,9 +362,13 @@ public class ActivityFinalDisplay extends AppBaseActivity implements
 			View view = findViewById(R.id.scroll_v).getRootView();
 		//	CaptureScreen.captureScreen(ActivityFinalDisplay.this, view, menubar, "ScreenActivity");
 			//captureScreen(R.id.scroll_v);
-			ConvertTexttoXml.writetoXmlActivityData(activityMeasurementModelList, ActivityFinalDisplay.this);
+
+			new ExecutePdfOperation().execute();
 			//ReadFileResponse f = new ReadFileResponse(ActivityFinalDisplay.this);
 			//f.execute("ActivityMeasurement", "ActivityMeasurement.xml", Constants.ACTIVITY_RUNNING);
+
+
+
 		} else if (v == mDelete) {
 			mDialogType = Constants.SHOW_DISCARD_DIALOGE;
 			showAlertDialog(R.drawable.ic_dialog_delete,
@@ -384,7 +392,40 @@ public class ActivityFinalDisplay extends AppBaseActivity implements
 		}
 	}
 
+	class ExecutePdfOperation extends AsyncTask<Void,Void,Void> {
 
+		ProgressDialog progressDialog;
+
+		@Override
+		protected Void doInBackground(Void... voids) {
+			new ActivityPdfBox().createActivityPdfTable(ActivityFinalDisplay.this);
+			return null;
+		}
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			progressDialog=new ProgressDialog(ActivityFinalDisplay.this);
+			progressDialog.setCancelable(true);
+			progressDialog.setIndeterminate(true);
+			progressDialog.setMessage("Generating Pdf !. Please wait .....");
+			progressDialog.show();
+
+		}
+
+		@Override
+		protected void onPostExecute(Void aVoid) {
+			super.onPostExecute(aVoid);
+			if(progressDialog.isShowing()){
+				progressDialog.dismiss();
+			}
+			ConvertTexttoXml.writetoXmlActivityData(activityMeasurementModelList,
+					ActivityFinalDisplay.this);
+
+
+
+		}
+	}
 
 	/**
 	 * Uploads measured activity data to cloud.
@@ -450,8 +491,7 @@ public class ActivityFinalDisplay extends AppBaseActivity implements
 			finish();
 		} else if (mDialogType == Constants.SHOW_SESSION_EXPIRED_DIALOG) {
 			mPinModel.setLoginForSessionSuccess(false);
-			final Intent intent = new Intent(ActivityFinalDisplay.this,
-					MainMenuActivity.class);
+			final Intent intent = new Intent(ActivityFinalDisplay.this, MainMenuActivity.class);
 			intent.putExtra("show_discard_dialog", !showUnsavedRecord);
 			startActivityForResult(intent, 1);
 		} else {

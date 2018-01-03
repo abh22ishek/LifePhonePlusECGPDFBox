@@ -25,10 +25,12 @@
 package com.lppbpl.android.userapp;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -547,16 +549,14 @@ public class EcgSymptomsListActivity extends NetworkConnBaseActivity implements
 			Logger.log(Level.DEBUG,TAG,"**Heart Rate**="+heart_rate_);
 			// saving Ecg to xml file
 			ConvertTexttoXml.saveEcgtoFile(true,symptoms_selected,String.valueOf(heart_rate_));
-			new EcgPdfBox().createtable(EcgSymptomsListActivity.this);
+
 
 
 			if (mPinModel.isLoginForSessionSuccess()) {
 				uploadData(true);
 			} else {
-				Toast.makeText(EcgSymptomsListActivity.this, "Ecg Measurement is saved into a File", Toast.LENGTH_SHORT).show();
-				final Intent intent = new Intent(this,MainMenuActivity.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-				startActivity(intent);
+				new ExecutePdfOperation().execute();
+
 				//intent.putExtra("show_discard_dialog", !mShowUnsavedRecord);
 				//startActivityForResult(intent, Constants.REQUEST_CODE_LOGIN);
 			}
@@ -567,6 +567,44 @@ public class EcgSymptomsListActivity extends NetworkConnBaseActivity implements
 					get(R.string.discard_record),
 					get(R.string.discard_confirmation), get(R.string.discard),
 					get(R.string.cancel), false);
+		}
+	}
+
+
+	class ExecutePdfOperation extends AsyncTask<Void,Void,Void>{
+
+		ProgressDialog progressDialog;
+
+		@Override
+		protected Void doInBackground(Void... voids) {
+			new EcgPdfBox().createtable(EcgSymptomsListActivity.this,"Heart beat is 79","Patient 1",
+					"Male");
+			return null;
+		}
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			progressDialog=new ProgressDialog(EcgSymptomsListActivity.this);
+			progressDialog.setCancelable(true);
+			progressDialog.setIndeterminate(true);
+			progressDialog.setMessage("Generating Pdf !. Please wait .....");
+			progressDialog.show();
+
+		}
+
+		@Override
+		protected void onPostExecute(Void aVoid) {
+			super.onPostExecute(aVoid);
+			if(progressDialog.isShowing()){
+				progressDialog.dismiss();
+			}
+			Toast.makeText(EcgSymptomsListActivity.this, "Ecg Measurement is saved into a File", Toast.LENGTH_SHORT).show();
+			final Intent intent = new Intent(EcgSymptomsListActivity.this,MainMenuActivity.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+
+
 		}
 	}
 

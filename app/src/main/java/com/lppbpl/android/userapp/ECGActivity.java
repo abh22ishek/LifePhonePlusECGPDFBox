@@ -676,6 +676,7 @@ public class ECGActivity extends AppBaseActivity {
 					Logger.log(Level.INFO, TAG, "Ecg response ---> " + response);
 					ConvertTexttoXml.writeToxmlEcg(response, v, ECGActivity.this, count);
 					Logger.log(Level.INFO,TAG,"Count Value-->"+count);
+					response.getEcgData().getMulLead();
 					if (response.hasEcgData()) {
 						@SuppressWarnings("unchecked")
 						final Vector<EcgMultipleLead> v = response.getEcgData()

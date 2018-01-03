@@ -14,6 +14,7 @@ import com.lppbpl.android.userapp.ECGActivity;
 import com.lppbpl.android.userapp.EcgGraphActivity;
 import com.lppbpl.android.userapp.MainMenuActivity;
 import com.lppbpl.android.userapp.constants.Constants;
+import com.lppbpl.android.userapp.listener.EcgLLeadsListner;
 import com.lppbpl.android.userapp.model.ActivityMeasurementModel;
 import com.lppbpl.android.userapp.model.BgMeasurementModel;
 
@@ -28,7 +29,26 @@ import java.util.Vector;
 
 public class ConvertTexttoXml {
 
+	EcgLLeadsListner ecgLLeadsListner;
 	private static final String TAG = "ConvertTexttoXml";
+	public static  Vector <Integer>Ecglead1;
+	public static  Vector <Integer>Ecglead2;
+	public static  Vector <Integer>Ecglead3;
+	public static  Vector <Integer>Ecglead4;
+
+	public static  Vector <Integer>Ecglead5;
+	public static  Vector <Integer>Ecglead6;
+	public static  Vector <Integer>Ecglead7;
+	public static  Vector <Integer>Ecglead8;
+
+	public static  Vector <Integer>Ecglead9;
+	public static  Vector <Integer>Ecglead10;
+	public static  Vector <Integer>Ecglead11;
+	public static  Vector <Integer>Ecglead12;
+
+
+
+
 	// Xml Pull Parser
 	// text to xml for BloodGlucose Data
 
@@ -164,6 +184,7 @@ public class ConvertTexttoXml {
 
 		StringWriter writer=new StringWriter();
 		v=response.getEcgData().getMulLead();
+		Logger.log(Level.WARNING,TAG,"size of EcgMultiplelead vector-->"+v.size());
 
 		try {
 			serializer.setOutput(writer);
@@ -194,6 +215,48 @@ public class ConvertTexttoXml {
 				serializer.attribute("", "MullLeadRecordSize", String.valueOf(v.size()));
 				for(int i=0;i<v.size();i++)
 				{
+					if(count==1)
+					{
+						Ecglead1=v.get(i).getEcgStrip();
+						Logger.log(Level.WARNING,TAG,"---EcgLead1-->"+Ecglead1.size() +" "+Ecglead1);
+
+
+					}else if(count==2){
+						Ecglead2=v.get(i).getEcgStrip();
+					}else if(count==3){
+						Ecglead3=v.get(i).getEcgStrip();
+					}
+					else if(count==4){
+						Ecglead4=v.get(i).getEcgStrip();
+					}
+					else if(count==5){
+						Ecglead5=v.get(i).getEcgStrip();
+					}
+					else if(count==6){
+						Ecglead6=v.get(i).getEcgStrip();
+					}else if(count==7){
+						Ecglead7=v.get(i).getEcgStrip();
+					}else if(count==8){
+						Ecglead8=v.get(i).getEcgStrip();
+					}else if(count==9){
+						Ecglead9=v.get(i).getEcgStrip();
+					}else if(count==10){
+						Ecglead10=v.get(i).getEcgStrip();
+					}else if(count==11){
+						Ecglead11=v.get(i).getEcgStrip();
+					}else if(count==12){
+						Ecglead12=v.get(i).getEcgStrip();
+					}
+
+
+
+
+
+
+
+
+
+
 					serializer.startTag("","MullRecords");
 					serializer.attribute("", "code1", "code1");
 

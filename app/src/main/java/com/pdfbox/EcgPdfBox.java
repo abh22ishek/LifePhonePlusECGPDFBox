@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.pdf.PdfDocument;
 
+import com.lpp.xmldata.ConvertTexttoXml;
 import com.tom_roush.pdfbox.pdmodel.PDDocument;
 import com.tom_roush.pdfbox.pdmodel.PDPage;
 import com.tom_roush.pdfbox.pdmodel.PDPageContentStream;
@@ -29,7 +31,7 @@ public class EcgPdfBox {
 
 
 
-    public  void createtable(Context context)
+    public  void createtable(Context context,String comments,String patientName,String gender)
     {
         PDDocument document = new PDDocument();
         PDPage page = new PDPage(new PDRectangle(PDRectangle.A4.getHeight(), PDRectangle.A4.getWidth()));
@@ -42,10 +44,9 @@ public class EcgPdfBox {
         System.out.println(page.getMediaBox().getHeight());
         System.out.println(page.getMediaBox().getWidth());
 
-        float f=0;
-        System.out.println("float icrement="+f++);
 
-        String path = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() + "/Download/EcgPdfBox.pdf";
+        String path = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() +
+                "/Download/EcgPdfBox.pdf";
         document.addPage(page);
 
         float cursorX =60f;
@@ -130,8 +131,8 @@ public class EcgPdfBox {
             AssetManager assetManager = context.getAssets();
             InputStream is = null;
             InputStream alpha;
-            is =  assetManager.open("apna_csc.png");
-            alpha =  assetManager.open("apollo.png");
+            is =  assetManager.open("bpl.png");
+            alpha =  assetManager.open("bpl.png");
 
             Bitmap b= BitmapFactory.decodeStream(alpha);
             Bitmap bitmap = BitmapFactory.decodeStream(is);
@@ -305,7 +306,7 @@ public class EcgPdfBox {
             for(int i=0;i<2500;i++)
             {
                 if (noOfLeads >= 12) {
-                    mP1 = (1 *graphHeight)+(int) ( PlotXYarray3.ecgdata12[i] / heightScale);
+                    mP1 = (1 *graphHeight)+( ConvertTexttoXml.Ecglead12.get(i)/ heightScale);
                     contentStream.setStrokingColor(AWTColor.black);
                     contentStream.moveTo(mPx1, mPp1);
                     contentStream.lineTo(mX,mP1);
@@ -318,7 +319,7 @@ public class EcgPdfBox {
 
 
                 if (noOfLeads >= 11) {
-                    mP2 = (2 *graphHeight)+(int) ( PlotXYarray3.ecgdata11[i] / heightScale);
+                    mP2 = (2 *graphHeight)+( ConvertTexttoXml.Ecglead11.get(i)/ heightScale);
                     contentStream.setStrokingColor(AWTColor.black);
                     contentStream.moveTo(mPx2, mPp2);
                     contentStream.lineTo(mX,mP2);
@@ -332,7 +333,7 @@ public class EcgPdfBox {
 
 
                 if (noOfLeads >= 10) {
-                    mP3 = (3 *graphHeight)+(int) ( PlotXYarray3.ecgdata10[i] / heightScale);
+                    mP3 = (3 *graphHeight)+( ConvertTexttoXml.Ecglead10.get(i) / heightScale);
                     contentStream.setStrokingColor(AWTColor.black);
                     contentStream.moveTo(mPx3, mPp3);
                     contentStream.lineTo(mX,mP3);
@@ -345,7 +346,7 @@ public class EcgPdfBox {
 
 
                 if (noOfLeads >= 9) {
-                    mP4 = (4 *graphHeight)+(int) ( PlotXYarray2.ecgdata9[i] / heightScale);
+                    mP4 = (4 *graphHeight)+ ( ConvertTexttoXml.Ecglead9.get(i) / heightScale);
                     contentStream.setStrokingColor(AWTColor.black);
                     contentStream.moveTo(mPx4, mPp4);
                     contentStream.lineTo(mX,mP4);
@@ -358,7 +359,7 @@ public class EcgPdfBox {
 
 
                 if (noOfLeads >= 8) {
-                    mP5 = (5 *graphHeight)+(int) ( PlotXYarray2.ecgdata8[i] / heightScale);
+                    mP5 = (5 *graphHeight)+( ConvertTexttoXml.Ecglead8.get(i) / heightScale);
                     contentStream.setStrokingColor(AWTColor.black);
                     contentStream.moveTo(mPx5, mPp5);
                     contentStream.lineTo(mX,mP5);
@@ -370,7 +371,7 @@ public class EcgPdfBox {
                 }
 
                 if (noOfLeads >= 7) {
-                    mP6 = (6 *graphHeight)+(int) ( PlotXYarray2.ecgdata7[i] / heightScale);
+                    mP6 = (6 *graphHeight)+( ConvertTexttoXml.Ecglead7.get(i) / heightScale);
                     contentStream.setStrokingColor(AWTColor.black);
                     contentStream.moveTo(mPx6, mPp6);
                     contentStream.lineTo(mX,mP6);
@@ -381,7 +382,7 @@ public class EcgPdfBox {
 
                 }
                 if (noOfLeads >= 6) {
-                    mP7 = (7 *graphHeight)+(int) ( PlotXYarray1.ecgdata6[i] / heightScale);
+                    mP7 = (7 *graphHeight)+( ConvertTexttoXml.Ecglead6.get(i)/ heightScale);
                     contentStream.setStrokingColor(AWTColor.black);
                     contentStream.moveTo(mPx7, mPp7);
                     contentStream.lineTo(mX,mP7);
@@ -392,7 +393,7 @@ public class EcgPdfBox {
 
                 }
                 if (noOfLeads >= 5) {
-                    mP8 = (8 *graphHeight)+(int) ( PlotXYarray1.ecgdata5[i] / heightScale);
+                    mP8 = (8 *graphHeight)+( ConvertTexttoXml.Ecglead5.get(i)/ heightScale);
                     contentStream.setStrokingColor(AWTColor.black);
                     contentStream.moveTo(mPx8, mPp8);
                     contentStream.lineTo(mX,mP8);
@@ -403,7 +404,7 @@ public class EcgPdfBox {
 
                 }
                 if (noOfLeads >= 4) {
-                    mP9 = (9 *graphHeight)+(int) ( PlotXYarray1.ecgdata4[i] / heightScale);
+                    mP9 = (9 *graphHeight)+ ( ConvertTexttoXml.Ecglead4.get(i) / heightScale);
                     contentStream.setStrokingColor(AWTColor.black);
                     contentStream.moveTo(mPx9, mPp9);
                     contentStream.lineTo(mX,mP9);
@@ -414,7 +415,7 @@ public class EcgPdfBox {
 
                 }
                 if (noOfLeads >= 3) {
-                    mP10 = (10 *graphHeight)+(int) ( PlotXYarray.ecgdata3[i] / heightScale);
+                    mP10 = (10 *graphHeight)+(ConvertTexttoXml.Ecglead3.get(i) / heightScale);
                     contentStream.setStrokingColor(AWTColor.black);
                     contentStream.moveTo(mPx10, mPp10);
                     contentStream.lineTo(mX,mP10);
@@ -426,7 +427,7 @@ public class EcgPdfBox {
                 }
 
                 if (noOfLeads >= 2) {
-                    mP11 = (11 *graphHeight)+(int) ( PlotXYarray.ecgdata2[i] / heightScale);
+                    mP11 = (11 *graphHeight)+( ConvertTexttoXml.Ecglead2.get(i) / heightScale);
                     contentStream.setStrokingColor(AWTColor.black);
                     contentStream.moveTo(mPx11, mPp11);
                     contentStream.lineTo(mX,mP11);
@@ -438,7 +439,7 @@ public class EcgPdfBox {
                 }
 
                 if (noOfLeads >= 1) {
-                    mP12 = (12 *graphHeight)+(int) ( PlotXYarray.ecgdata1[i] / heightScale);
+                    mP12 = (12 *graphHeight)+( ConvertTexttoXml.Ecglead1.get(i) / heightScale);
                     contentStream.setStrokingColor(AWTColor.black);
                     contentStream.moveTo(mPx12, mPp12);
                     contentStream.lineTo(mX,mP12);
@@ -480,7 +481,78 @@ public class EcgPdfBox {
             }
 
             contentStream.close();
-            document.save(path);
+
+            // Add Second Page
+
+
+            createSecondPage(context,document,page_height);
+           /* PDPage page2 = new PDPage(new PDRectangle(PDRectangle.A4.getHeight(), PDRectangle.A4.getWidth()));
+            PDPageContentStream pdPageContentStream2=new PDPageContentStream(document,page2);
+
+            document.addPage(page2);*/
+
+
+            // Add image
+
+           /* AssetManager assetManager2 = context.getAssets();
+            InputStream inputStream ;
+            inputStream =  assetManager2.open("consumerapplite.png");
+
+            Bitmap bitmap2= BitmapFactory.decodeStream(inputStream);
+            PDImageXObject ximage2 = LosslessFactory.createFromImage(document,bitmap2);
+
+
+            pdPageContentStream2.drawImage(ximage2,40+4,page_height-100);
+
+
+            //draw text
+            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
+            pdPageContentStream2.beginText();
+            pdPageContentStream2.setFont(font,11);
+            pdPageContentStream2.newLineAtOffset(120f,page_height-200);
+            pdPageContentStream2.showText("* Step1 : Lead I,II,III,aVR,aVL,aVF were simultaneously acquired");
+            pdPageContentStream2.endText();
+
+            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
+            pdPageContentStream2.beginText();
+            pdPageContentStream2.setFont(font,11);
+            pdPageContentStream2.newLineAtOffset(120f,page_height-250);
+            pdPageContentStream2.showText("* Step 2 : Lead MCL1,MCL2 were acquired by STEP 1");
+
+            pdPageContentStream2.endText();
+
+            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
+            pdPageContentStream2.beginText();
+            pdPageContentStream2.setFont(font,10);
+            pdPageContentStream2.newLineAtOffset(120f,page_height-300);
+            pdPageContentStream2.showText("* Step 3 : Lead MCL3,MCL4 were acquired by STEP 2");
+            pdPageContentStream2.endText();
+
+
+            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
+            pdPageContentStream2.beginText();
+            pdPageContentStream2.setFont(font,10);
+            pdPageContentStream2.newLineAtOffset(120f,page_height-350);
+            pdPageContentStream2.showText("* Step 4 : Lead MCL5,MCL6 were acquired by STEP 3");
+            pdPageContentStream2.endText();
+
+
+
+
+            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
+            pdPageContentStream2.beginText();
+            pdPageContentStream2.setFont(font,10);
+            pdPageContentStream2.newLineAtOffset(120f,page_height-380);
+            pdPageContentStream2.showText("* This sequential ECG report does not replace the 12-lead" );
+            //"resting ECG disclosure from a diagnostic electrocardiograph." +"\n"+"The pacemaker spike positions are not indicated");
+            pdPageContentStream2.endText();
+
+
+
+            pdPageContentStream2.close();*/
+
+
+           document.save(path);
             document.close();
 
 
@@ -495,10 +567,131 @@ public class EcgPdfBox {
     }
 
 
-    private void get_assets_image(Context context,PDDocument document,PDPageContentStream contentStream)
+    public void createSecondPage(Context context, PDDocument document,float page_height)
     {
+        PDPage page = new PDPage(new PDRectangle(PDRectangle.A4.getHeight(), PDRectangle.A4.getWidth()));// landscape mode
 
-        //imageView.setImageBitmap(bitmap);
+        float cursorX =10f;
+        float cursorY = 10f;
+        PDPageContentStream pdPageContentStream2 = null;
+
+        float offsetX=60f;
+
+        float unit_per_cm=28.34f;
+        float rect_width=unit_per_cm*25f;
+        float rect_height=unit_per_cm*20f;
+
+
+        try {
+            pdPageContentStream2 = new PDPageContentStream(document,page);
+            document.addPage(page);
+            PDFont font = PDType1Font.TIMES_ITALIC;
+            pdPageContentStream2.setNonStrokingColor(200, 200, 200); //gray background
+            pdPageContentStream2.addRect(cursorX, cursorY,rect_width, rect_height);
+
+
+
+            // draw image
+
+            AssetManager assetManager = context.getAssets();
+            InputStream inputStream1 ;
+            inputStream1 =  assetManager.open("bpl.png");
+
+            Bitmap bitmap= BitmapFactory.decodeStream(inputStream1);
+            PDImageXObject ximage = LosslessFactory.createFromImage(document,bitmap);
+
+
+            pdPageContentStream2.drawImage(ximage,offsetX,page_height-65);
+
+
+
+//dra
+// text
+            pdPageContentStream2.setNonStrokingColor(200, 200, 200); //black text
+            pdPageContentStream2.beginText();
+            pdPageContentStream2.setFont(font,21);
+            pdPageContentStream2.newLineAtOffset(150f,page_height-50);
+            pdPageContentStream2.showText("Notes to the Consulting Physician");
+            pdPageContentStream2.endText();
+
+            font = PDType1Font.TIMES_BOLD;
+
+            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
+            pdPageContentStream2.beginText();
+            pdPageContentStream2.setFont(font,12);
+            pdPageContentStream2.newLineAtOffset(offsetX,page_height-85);
+            pdPageContentStream2.showText("* The 12 ECG report was generated from ECG obtained in 4 sequential steps");
+            pdPageContentStream2.endText();
+
+
+            AssetManager assetManager2 = context.getAssets();
+            InputStream inputStream ;
+            inputStream =  assetManager2.open("consumerapplite.png");
+
+            Bitmap bitmap2= BitmapFactory.decodeStream(inputStream);
+            PDImageXObject ximage2 = LosslessFactory.createFromImage(document,bitmap2);
+
+
+            pdPageContentStream2.drawImage(ximage2,offsetX,page_height-220);
+
+            font = PDType1Font.TIMES_BOLD_ITALIC;
+            //draw text
+            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
+            pdPageContentStream2.beginText();
+            pdPageContentStream2.setFont(font,13);
+            pdPageContentStream2.newLineAtOffset(offsetX,page_height-260);
+            pdPageContentStream2.showText("* Step1 : Lead I,II,III,aVR,aVL,aVF were simultaneously acquired");
+            pdPageContentStream2.endText();
+
+            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
+            pdPageContentStream2.beginText();
+            pdPageContentStream2.setFont(font,13);
+            pdPageContentStream2.newLineAtOffset(offsetX,page_height-290);
+            pdPageContentStream2.showText("* Step 2 : Leads MCL1,MCL2 were acquired by STEP 1");
+
+            pdPageContentStream2.endText();
+
+            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
+            pdPageContentStream2.beginText();
+            pdPageContentStream2.setFont(font,13);
+            pdPageContentStream2.newLineAtOffset(offsetX,page_height-320);
+            pdPageContentStream2.showText("* Step 3 : Leads MCL3,MCL4 were acquired by STEP 2");
+            pdPageContentStream2.endText();
+
+
+            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
+            pdPageContentStream2.beginText();
+            pdPageContentStream2.setFont(font,13);
+            pdPageContentStream2.newLineAtOffset(offsetX,page_height-350);
+            pdPageContentStream2.showText("* Step 4 : Leads MCL5,MCL6 were acquired by STEP 3");
+            pdPageContentStream2.endText();
+
+
+
+            font = PDType1Font.TIMES_BOLD;
+            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
+            pdPageContentStream2.beginText();
+            pdPageContentStream2.setFont(font,13);
+            pdPageContentStream2.newLineAtOffset(offsetX,page_height-450);
+            pdPageContentStream2.showText("* This sequential ECG report does not replace the 12-lead resting ECG disclosure from a diagnostic electrocardiograph.  " );
+            //"resting ECG disclosure from a diagnostic electrocardiograph." +"\n"+"The pacemaker spike positions are not indicated");
+            pdPageContentStream2.endText();
+            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
+            pdPageContentStream2.beginText();
+            pdPageContentStream2.setFont(font,13);
+            pdPageContentStream2.newLineAtOffset(offsetX,page_height-465);
+            pdPageContentStream2.showText("The pacemaker spike positions are not indicated" );
+            //"resting ECG disclosure from a diagnostic electrocardiograph." +"\n"+"The pacemaker spike positions are not indicated");
+            pdPageContentStream2.endText();
+
+
+            pdPageContentStream2.close();
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
 
 
     }
