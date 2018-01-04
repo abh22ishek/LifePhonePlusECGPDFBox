@@ -5,9 +5,6 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
-import com.lpp.xmldata.ConvertTexttoXml;
-import com.lppbpl.android.userapp.ActivityFinalDisplay;
-import com.lppbpl.android.userapp.model.ActivityMeasurementModel;
 import com.tom_roush.pdfbox.pdmodel.PDDocument;
 import com.tom_roush.pdfbox.pdmodel.PDPage;
 import com.tom_roush.pdfbox.pdmodel.PDPageContentStream;
@@ -16,65 +13,39 @@ import com.tom_roush.pdfbox.pdmodel.font.PDFont;
 import com.tom_roush.pdfbox.pdmodel.font.PDType1Font;
 import com.tom_roush.pdfbox.pdmodel.graphics.image.LosslessFactory;
 import com.tom_roush.pdfbox.pdmodel.graphics.image.PDImageXObject;
-import com.tom_roush.pdfbox.util.awt.AWTColor;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.List;
 
 /**
- * Created by abhishek.raj on 29-12-2017.
+ * Created by abhishek.raj on 04-01-2018.
  */
 
-public class ActivityPdfBox {
-
-    String totalStepsTaken;
-    String totalMetresTravelled;
-    String totalCaloriesBurnt;
-    String userCmments;
-    String startEndTime;
-
-    String userName;
-    String mHeight;
-    String mWeight;
-
-    public  void createActivityPdfTable(Context context,List<ActivityMeasurementModel>
-            activityMeasurementModelList) {
-
-       for( ActivityMeasurementModel m: activityMeasurementModelList)
-       {
-          totalStepsTaken= m.getTotalstepstaken();
-          totalCaloriesBurnt= m.getTotalcaloriesburnt();
-          startEndTime= m.getStartEndtime();
-          totalMetresTravelled= m.getTotalmetrestravelled();
-           userCmments=m.getUsercomments();
-
-           userName=m.getUserName();
-           mHeight=m.getHeight();
-           mWeight=m.getWeight();
-       }
-
+public class BGPdfBox {
+    public void createBGTable(Context context, boolean isCalibaration)
+    {
         PDDocument document = new PDDocument();
         PDPage page = new PDPage(new PDRectangle(PDRectangle.A4.getHeight(), PDRectangle.A4.getWidth()));
 
-        float f = 0;
-        System.out.println("float increment=" + f++);
 
         String path = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()
-                + "/Download/ActivityTable.pdf";
+                + "/Download/BloodGlucoseTable.pdf";
         document.addPage(page);
         float unit_per_cm = 28.34f;
 
         float cursorX = 60f;
         float cursorY = unit_per_cm * 8f;
-        PDPageContentStream pdPageContentStream = null;
+        PDPageContentStream pdPageContentStream ;
 
 
 
         float rect_width = unit_per_cm * 25f;
         float rect_height = unit_per_cm * 12f;
 
-        float marginTop=40f;
+
+        String bG="Blood Glucose Calibration Report";
+        if(!isCalibaration)
+            bG="Blood Glucose Value Report";
 
 
         try {
@@ -104,9 +75,9 @@ public class ActivityPdfBox {
             AssetManager assetManager = context.getAssets();
             InputStream inputStream;
             inputStream =  assetManager.open("bpl.png");
-            Bitmap bitmap=BitmapFactory.decodeStream(inputStream);
+            Bitmap bitmap= BitmapFactory.decodeStream(inputStream);
 
-            PDImageXObject imageXObject=LosslessFactory.createFromImage(document,bitmap);
+            PDImageXObject imageXObject= LosslessFactory.createFromImage(document,bitmap);
 
             pdPageContentStream.drawImage(imageXObject,cursorX+5f,cursorY+5f);// cursor y value updated
 
@@ -115,7 +86,7 @@ public class ActivityPdfBox {
             pdPageContentStream.beginText();
             pdPageContentStream.setFont(font, 20);
             pdPageContentStream.newLineAtOffset(5*cursorX,cursorY+10f);
-            pdPageContentStream.showText("Activity Profile Report");
+            pdPageContentStream.showText(bG);
             pdPageContentStream.endText();
 
 
@@ -136,33 +107,33 @@ public class ActivityPdfBox {
             for(int i=0;i<10;i++)
             {
                 if(i==0){
-                    text="Comments : "+userCmments;
+                    text="Comments :";
                 }else if(i==1)
                 {
-                    text="No. of meters Travelled : "+totalMetresTravelled;
+                    text="Symptoms :";
                 }else if(i==2){
-                    text="No. of calories burnt : "+totalCaloriesBurnt;
+                    text="Measurement Time : ";
 
                 }
 
                 else if(i==3){
-                    text="No. of steps walked : "+totalStepsTaken;
+                    text="No. of steps walked";
                 }else if(i==4)
                 {
-                    text="Duration";
+                    text="Before Breakfast : ";
                 }else if(i==5)
                 {
-                    text="Activity Measurement Time : "+startEndTime;
+                    text="After Breakfast : ";
                 }else if(i==6){
-                    text="Gender : ";
+                    text="Gender";
                 }else if(i==7){
-                    text="Patient Weight : "+mWeight;
+                    text="Patient Weight : ";
                 }
                 else if(i==8){
                     text="Patient Age : ";
                 }
                 else if(i==9){
-                    text="Patient Name : "+userName;
+                    text="Patient Name : ";
                 }
 
 
@@ -187,13 +158,6 @@ public class ActivityPdfBox {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-
-
-
-
-
 
 
     }

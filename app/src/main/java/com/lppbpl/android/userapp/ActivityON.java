@@ -66,6 +66,9 @@ public class ActivityON extends AppBaseActivity implements OnClickListener {
 	 * @param savedInstanceState
 	 *            Bundle
 	 */
+
+	 String userName;
+	 Profile mProfile;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -74,7 +77,7 @@ public class ActivityON extends AppBaseActivity implements OnClickListener {
 		setCustomHeaderImage(R.drawable.ic_title_activity);
 
 		final TextView mName = (TextView) findViewById(R.id.tvName);
-		final String userName = this.getIntent().getStringExtra("name");
+		 userName = this.getIntent().getStringExtra("name");
 		if (null != userName) {
 			mName.setText(userName);
 		}
@@ -89,7 +92,7 @@ public class ActivityON extends AppBaseActivity implements OnClickListener {
 
 		mStopBtn.setOnClickListener(this);
 		mStopBtn.setBackgroundResource(R.drawable.button_grey);
-		final Profile mProfile = mActModel.getUserProfile();
+		 mProfile = mActModel.getUserProfile();
 		if (null == userName) {
 			mName.setText(mProfile.getUserName());
 		}
@@ -271,6 +274,9 @@ public class ActivityON extends AppBaseActivity implements OnClickListener {
 		final Intent intent = new Intent(this, ActivityFinalDisplay.class);
 		intent.putExtra("start_time", mStartTime);
 		intent.putExtra("stop_time", mStopTime);
+		intent.putExtra("name",userName);
+		intent.putExtra("height",String.valueOf(mProfile.getUserHeight()));
+		intent.putExtra("weight",String.valueOf(mProfile.getUserWeight()));
 		startActivity(intent);
 		finish();
 	}

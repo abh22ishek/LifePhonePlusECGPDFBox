@@ -11,6 +11,36 @@ public class ActivityMeasurementModel {
     String usercomments;
     String startEndtime;
 
+    String userName;
+    String height;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getHeight() {
+        return height;
+    }
+
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    public String getWeight() {
+        return weight;
+    }
+
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    String weight;
+
+
 
     public String getTotalmetrestravelled() {
         return totalmetrestravelled;

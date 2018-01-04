@@ -459,16 +459,6 @@ public class EcgPdfBox {
             }
 
 
-
-            //---
-            // PDRectangle pageSize = page.getMediaBox();
-            // PDPageContentStream p=new PDPageContentStream()
-            // contentStream.addRect(cursorX,unit_per_cm*18f,rect_width,unit_per_cm*19f);
-            //contentStream.setNonStrokingColor(26, 255,255);
-            // contentStream.setStrokingColor(AWTColor.BLACK);
-            //contentStream.fill();
-
-
             cursorX=60;
             for(int x=1;x<=leadArr.length;x++)
             {
@@ -486,70 +476,6 @@ public class EcgPdfBox {
 
 
             createSecondPage(context,document,page_height);
-           /* PDPage page2 = new PDPage(new PDRectangle(PDRectangle.A4.getHeight(), PDRectangle.A4.getWidth()));
-            PDPageContentStream pdPageContentStream2=new PDPageContentStream(document,page2);
-
-            document.addPage(page2);*/
-
-
-            // Add image
-
-           /* AssetManager assetManager2 = context.getAssets();
-            InputStream inputStream ;
-            inputStream =  assetManager2.open("consumerapplite.png");
-
-            Bitmap bitmap2= BitmapFactory.decodeStream(inputStream);
-            PDImageXObject ximage2 = LosslessFactory.createFromImage(document,bitmap2);
-
-
-            pdPageContentStream2.drawImage(ximage2,40+4,page_height-100);
-
-
-            //draw text
-            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
-            pdPageContentStream2.beginText();
-            pdPageContentStream2.setFont(font,11);
-            pdPageContentStream2.newLineAtOffset(120f,page_height-200);
-            pdPageContentStream2.showText("* Step1 : Lead I,II,III,aVR,aVL,aVF were simultaneously acquired");
-            pdPageContentStream2.endText();
-
-            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
-            pdPageContentStream2.beginText();
-            pdPageContentStream2.setFont(font,11);
-            pdPageContentStream2.newLineAtOffset(120f,page_height-250);
-            pdPageContentStream2.showText("* Step 2 : Lead MCL1,MCL2 were acquired by STEP 1");
-
-            pdPageContentStream2.endText();
-
-            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
-            pdPageContentStream2.beginText();
-            pdPageContentStream2.setFont(font,10);
-            pdPageContentStream2.newLineAtOffset(120f,page_height-300);
-            pdPageContentStream2.showText("* Step 3 : Lead MCL3,MCL4 were acquired by STEP 2");
-            pdPageContentStream2.endText();
-
-
-            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
-            pdPageContentStream2.beginText();
-            pdPageContentStream2.setFont(font,10);
-            pdPageContentStream2.newLineAtOffset(120f,page_height-350);
-            pdPageContentStream2.showText("* Step 4 : Lead MCL5,MCL6 were acquired by STEP 3");
-            pdPageContentStream2.endText();
-
-
-
-
-            pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
-            pdPageContentStream2.beginText();
-            pdPageContentStream2.setFont(font,10);
-            pdPageContentStream2.newLineAtOffset(120f,page_height-380);
-            pdPageContentStream2.showText("* This sequential ECG report does not replace the 12-lead" );
-            //"resting ECG disclosure from a diagnostic electrocardiograph." +"\n"+"The pacemaker spike positions are not indicated");
-            pdPageContentStream2.endText();
-
-
-
-            pdPageContentStream2.close();*/
 
 
            document.save(path);
@@ -599,14 +525,9 @@ public class EcgPdfBox {
 
             Bitmap bitmap= BitmapFactory.decodeStream(inputStream1);
             PDImageXObject ximage = LosslessFactory.createFromImage(document,bitmap);
-
-
             pdPageContentStream2.drawImage(ximage,offsetX,page_height-65);
 
-
-
-//dra
-// text
+            //draw text
             pdPageContentStream2.setNonStrokingColor(200, 200, 200); //black text
             pdPageContentStream2.beginText();
             pdPageContentStream2.setFont(font,21);
@@ -626,7 +547,7 @@ public class EcgPdfBox {
 
             AssetManager assetManager2 = context.getAssets();
             InputStream inputStream ;
-            inputStream =  assetManager2.open("consumerapplite.png");
+            inputStream =  assetManager2.open("ecg_steps.png");
 
             Bitmap bitmap2= BitmapFactory.decodeStream(inputStream);
             PDImageXObject ximage2 = LosslessFactory.createFromImage(document,bitmap2);
@@ -683,8 +604,6 @@ public class EcgPdfBox {
             pdPageContentStream2.showText("The pacemaker spike positions are not indicated" );
             //"resting ECG disclosure from a diagnostic electrocardiograph." +"\n"+"The pacemaker spike positions are not indicated");
             pdPageContentStream2.endText();
-
-
             pdPageContentStream2.close();
 
 

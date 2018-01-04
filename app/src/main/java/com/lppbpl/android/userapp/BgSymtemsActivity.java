@@ -24,9 +24,11 @@
 
 package com.lppbpl.android.userapp;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -52,6 +54,8 @@ import com.lppbpl.android.userapp.model.PendingRecord;
 import com.lppbpl.android.userapp.model.SfSendModel;
 import com.lppbpl.android.userapp.util.HttpUtil;
 import com.lppbpl.android.userapp.util.Util;
+import com.pdfbox.ActivityPdfBox;
+import com.pdfbox.BGPdfBox;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -115,7 +119,7 @@ public class BgSymtemsActivity extends NetworkConnBaseActivity implements
 	String symptom_3="";
 	String symptom_4="";
 	String symptom_5="";
-
+	String symptoms_selected="";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -262,7 +266,7 @@ public class BgSymtemsActivity extends NetworkConnBaseActivity implements
 			}
 */
 
-			String symptoms_selected="";
+
 			List<String> symptoms_list=new ArrayList<String>();
 
 			symptoms_list.add(symptom_1);
@@ -313,7 +317,7 @@ public class BgSymtemsActivity extends NetworkConnBaseActivity implements
 
 
 
-			ConvertTexttoXml.WriteXml(BgMeasurementlist,symptoms_selected,BgSymtemsActivity.this);
+			new ExecutePdfOperation().execute();
 			//ReadFileResponse f=new ReadFileResponse(BgSymtemsActivity.this);
 			//f.execute("BGActivityMeasurement","MeasurementBloodSugar.xml",Constants.BG_GLUCOSE);
 		} else if (v.getId() == R.id.btn_menu_negative) {
@@ -324,6 +328,41 @@ public class BgSymtemsActivity extends NetworkConnBaseActivity implements
 					get(R.string.cancel), false);
 		}
 	};
+
+
+	class ExecutePdfOperation extends AsyncTask<Void,Void,Void> {
+
+		ProgressDialog progressDialog;
+
+		@Override
+		protected Void doInBackground(Void... voids) {
+			new BGPdfBox().createBGTable(BgSymtemsActivity.this,false);
+			return null;
+		}
+
+		@Override
+		protected void onPreExecute() {
+			super.onPreExecute();
+			progressDialog=new ProgressDialog(BgSymtemsActivity.this);
+			progressDialog.setCancelable(true);
+			progressDialog.setIndeterminate(true);
+			progressDialog.setMessage("Generating Pdf !. Please wait .....");
+			progressDialog.show();
+
+		}
+
+		@Override
+		protected void onPostExecute(Void aVoid) {
+			super.onPostExecute(aVoid);
+			if(progressDialog.isShowing()){
+				progressDialog.dismiss();
+			}
+			ConvertTexttoXml.WriteXml(BgMeasurementlist,symptoms_selected,BgSymtemsActivity.this);
+
+
+
+		}
+	}
 
 	/**
 	 * Uploads data to the cloud.

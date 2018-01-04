@@ -129,6 +129,7 @@ public class ActivityFinalDisplay extends AppBaseActivity implements
 		mDelete.setOnClickListener(this);
 
 		final PendingRecord record = mAppModel.getPendingRecord();
+
 		if (null != record) {
 			final Response resp = record.getResponse();
 			if (null != resp) {
@@ -155,6 +156,7 @@ public class ActivityFinalDisplay extends AppBaseActivity implements
 		long tempActStartTime = tempStopTime;
 		if (null != record && null != mActData) {
 			tempActStartTime = mActData.getStartingTime();
+
 			tempStopTime = tempActStartTime
 					+ (mActData.getTimeCoveredSofar() * 60 * 1000L);
 		}
@@ -163,6 +165,9 @@ public class ActivityFinalDisplay extends AppBaseActivity implements
 				tempStopTime);
 		startTime = getIntent().getLongExtra("start_time",
 				tempActStartTime);
+
+
+
 		if (null != mActData) {
 			mCalsBurntValueTxtView.setText(Integer.toString(mActData
 					.getTotalEnergy()));
@@ -358,12 +363,18 @@ public class ActivityFinalDisplay extends AppBaseActivity implements
 			act.setTotalmetrestravelled(String.valueOf(mActData.getTotalDistance()));
 			act.setUsercomments(mEditTxt.getText().toString());
 
+
+
+			act.setUserName(getIntent().getExtras().get("name").toString());
+			act.setHeight(getIntent().getExtras().get("height").toString());
+			act.setWeight(	getIntent().getExtras().get("weight").toString());
+
 			activityMeasurementModelList.add(act);
 			View view = findViewById(R.id.scroll_v).getRootView();
 		//	CaptureScreen.captureScreen(ActivityFinalDisplay.this, view, menubar, "ScreenActivity");
 			//captureScreen(R.id.scroll_v);
 
-			new ExecutePdfOperation().execute();
+			new ExecutePdfOperation().execute("");
 			//ReadFileResponse f = new ReadFileResponse(ActivityFinalDisplay.this);
 			//f.execute("ActivityMeasurement", "ActivityMeasurement.xml", Constants.ACTIVITY_RUNNING);
 
@@ -392,13 +403,13 @@ public class ActivityFinalDisplay extends AppBaseActivity implements
 		}
 	}
 
-	class ExecutePdfOperation extends AsyncTask<Void,Void,Void> {
+	class ExecutePdfOperation extends AsyncTask<String,Void,String> {
 
 		ProgressDialog progressDialog;
 
 		@Override
-		protected Void doInBackground(Void... voids) {
-			new ActivityPdfBox().createActivityPdfTable(ActivityFinalDisplay.this);
+		protected String doInBackground(String... Strings) {
+			new ActivityPdfBox().createActivityPdfTable(ActivityFinalDisplay.this,activityMeasurementModelList);
 			return null;
 		}
 
@@ -414,8 +425,8 @@ public class ActivityFinalDisplay extends AppBaseActivity implements
 		}
 
 		@Override
-		protected void onPostExecute(Void aVoid) {
-			super.onPostExecute(aVoid);
+		protected void onPostExecute(String result) {
+			super.onPostExecute(result);
 			if(progressDialog.isShowing()){
 				progressDialog.dismiss();
 			}
