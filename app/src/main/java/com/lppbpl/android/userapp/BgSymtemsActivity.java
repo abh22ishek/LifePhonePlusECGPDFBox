@@ -112,7 +112,7 @@ public class BgSymtemsActivity extends NetworkConnBaseActivity implements
 	 */
 // abhishek
 	private String data;
-	private List<BgMeasurementModel> BgMeasurementlist;
+	private List<BgMeasurementModel> BgMeasurementList;
 
 	String symptom_1="";
 	String symptom_2="";
@@ -130,7 +130,7 @@ public class BgSymtemsActivity extends NetworkConnBaseActivity implements
 
 		mShowUnsavedRecord = getIntent().getBooleanExtra(
 				Constants.UNSAVED_RECORD, false);
-		BgMeasurementlist=new ArrayList<BgMeasurementModel>();
+		BgMeasurementList=new ArrayList<BgMeasurementModel>();
 		if(getIntent()!=null)
 		{
 
@@ -142,7 +142,7 @@ public class BgSymtemsActivity extends NetworkConnBaseActivity implements
 			BgMeasurementModel bg=new BgMeasurementModel(getIntent().getExtras().getString("BLOODSUGAR"),
 					getIntent().getExtras().getString("TimeStamp"),getIntent().getExtras().getString("Comments")
 			,getIntent().getExtras().getString("FASTING_TYPE"));
-			BgMeasurementlist.add(bg);
+			BgMeasurementList.add(bg);
 
 		}
 
@@ -336,7 +336,7 @@ public class BgSymtemsActivity extends NetworkConnBaseActivity implements
 
 		@Override
 		protected Void doInBackground(Void... voids) {
-			new BGPdfBox().createBGTable(BgSymtemsActivity.this,false);
+			new BGPdfBox().createBGTable(BgSymtemsActivity.this,false,BgMeasurementList);
 			return null;
 		}
 
@@ -357,7 +357,7 @@ public class BgSymtemsActivity extends NetworkConnBaseActivity implements
 			if(progressDialog.isShowing()){
 				progressDialog.dismiss();
 			}
-			ConvertTexttoXml.WriteXml(BgMeasurementlist,symptoms_selected,BgSymtemsActivity.this);
+			ConvertTexttoXml.WriteXml(BgMeasurementList,symptoms_selected,BgSymtemsActivity.this);
 
 
 

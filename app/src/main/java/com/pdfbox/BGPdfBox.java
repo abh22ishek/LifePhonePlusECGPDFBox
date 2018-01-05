@@ -5,6 +5,8 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.lppbpl.android.userapp.model.ActivityMeasurementModel;
+import com.lppbpl.android.userapp.model.BgMeasurementModel;
 import com.tom_roush.pdfbox.pdmodel.PDDocument;
 import com.tom_roush.pdfbox.pdmodel.PDPage;
 import com.tom_roush.pdfbox.pdmodel.PDPageContentStream;
@@ -16,14 +18,31 @@ import com.tom_roush.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by abhishek.raj on 04-01-2018.
  */
 
 public class BGPdfBox {
-    public void createBGTable(Context context, boolean isCalibaration)
+
+    public void createBGTable(Context context, boolean isCalibaration, List<BgMeasurementModel> BGList)
     {
+
+        String bloodGlucose="",dateOfTest="",fastingType="",mSymptoms = "",userComments = "";
+
+
+        for( BgMeasurementModel m: BGList)
+        {
+            bloodGlucose=m.getBloodglucose();
+            dateOfTest=m.getDateOftest();
+            fastingType=m.getFasting_type();
+            mSymptoms=m.getSymptoms();
+            userComments=m.getUsercomments();
+        }
+
+
+
         PDDocument document = new PDDocument();
         PDPage page = new PDPage(new PDRectangle(PDRectangle.A4.getHeight(), PDRectangle.A4.getWidth()));
 
@@ -107,23 +126,23 @@ public class BGPdfBox {
             for(int i=0;i<10;i++)
             {
                 if(i==0){
-                    text="Comments :";
+                    text="Comments : "+userComments;
                 }else if(i==1)
                 {
-                    text="Symptoms :";
+                    text="Symptoms : "+mSymptoms;
                 }else if(i==2){
-                    text="Measurement Time : ";
+                    text="Measurement Time : "+dateOfTest;
 
                 }
 
                 else if(i==3){
-                    text="No. of steps walked";
+                    text="Fasting Type : "+fastingType;
                 }else if(i==4)
                 {
-                    text="Before Breakfast : ";
+                    text="Blood Glucose Value : "+bloodGlucose;
                 }else if(i==5)
                 {
-                    text="After Breakfast : ";
+                    text="Patient Height : ";
                 }else if(i==6){
                     text="Gender";
                 }else if(i==7){
