@@ -166,9 +166,12 @@ public class EcgPdfBox {
             contentStream.stroke();
 
 
-            contentStream.moveTo(rect_width+cursorX-20,marginLowerLine);
+            // remove second box
+
+
+           /* contentStream.moveTo(rect_width+cursorX-20,marginLowerLine);
             contentStream.lineTo(rect_width+cursorX-20,marginUpperLine+15);
-            contentStream.stroke();
+            contentStream.stroke();*/
 
 
 
@@ -485,7 +488,36 @@ public class EcgPdfBox {
                 contentStream.endText();
             }
 
+
+            // Add calibration in ECG Page
+            cursorX=42f;
+            cursorY=page_height/2+10f;
+
+            contentStream.moveTo(cursorX,cursorY);
+            contentStream.lineTo(cursorX+(unit_per_cm/10),cursorY);
+            contentStream.stroke();
+
+
+            contentStream.moveTo(cursorX+(unit_per_cm/10),cursorY);
+            contentStream.lineTo(cursorX+(unit_per_cm/10),cursorY+unit_per_cm);
+            contentStream.stroke();
+
+            contentStream.moveTo(cursorX+(unit_per_cm/10),cursorY+unit_per_cm);
+            contentStream.lineTo((cursorX+unit_per_cm/10)+(unit_per_cm/10*3),cursorY+unit_per_cm);
+            contentStream.stroke();
+
+            contentStream.moveTo((cursorX+unit_per_cm/10)+(unit_per_cm/10*3),cursorY+unit_per_cm);
+            contentStream.lineTo((cursorX+unit_per_cm/10)+(unit_per_cm/10*3),cursorY);
+            contentStream.stroke();
+
+            contentStream.moveTo((cursorX+unit_per_cm/10)+(unit_per_cm/10*3),cursorY);
+            contentStream.lineTo((cursorX+unit_per_cm/10*3)+2*(unit_per_cm/10),cursorY);
+            contentStream.stroke();
+
+
             contentStream.close();
+
+            //---------------------
 
             // Add Second Page
 
