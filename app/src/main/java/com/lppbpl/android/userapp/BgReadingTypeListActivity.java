@@ -44,6 +44,7 @@ import com.lppbpl.Response;
 import com.lppbpl.android.userapp.constants.Constants;
 import com.lppbpl.android.userapp.db.PendingRecordDb;
 import com.lppbpl.android.userapp.model.PendingRecord;
+import com.lppbpl.android.userapp.model.Profile;
 import com.lppbpl.android.userapp.model.SfSendModel;
 import com.lppbpl.android.userapp.util.Util;
 
@@ -216,6 +217,8 @@ public class BgReadingTypeListActivity extends AppBaseActivity implements
 						get(R.string.select_bg_reading_type), get(R.string.OK),
 						null, true);
 			} else {
+				Profile mProfile = mActModel.getUserProfile();
+
 				updateBGResponse(mSelectedId);
 				// capture the screen for converting to pdf
 				View view= findViewById(R.id.iv_scroll).getRootView();
@@ -226,6 +229,10 @@ public class BgReadingTypeListActivity extends AppBaseActivity implements
 				main.putExtra("BLOODSUGAR",String.valueOf(response.getBgData().getBgReading()));
 				main.putExtra("Comments",editBSAnotate.getText().toString().trim());
 				main.putExtra("TimeStamp",timestampTxtView.getText().toString().trim());
+
+
+
+
 				if(response.getBgData().getBgReadingType()==1)
 				{
 					main.putExtra("FASTING_TYPE","Fasting");

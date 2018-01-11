@@ -45,6 +45,27 @@ public class Profile {
     /** The m user weight. */
     private int mUserWeight;
 
+
+    private  String mPatientId;
+
+    private String mClinicName;
+
+    public String getPatientId() {
+        return mPatientId;
+    }
+
+    public void setPatientId(String mPatientId) {
+        this.mPatientId = mPatientId;
+    }
+
+    public String getClinicName() {
+        return mClinicName;
+    }
+
+    public void setClinicName(String mClinicName) {
+        this.mClinicName = mClinicName;
+    }
+
     /**
      * Method getUserName.
      * @return String

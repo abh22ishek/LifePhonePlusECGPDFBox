@@ -14,6 +14,25 @@ public class ActivityMeasurementModel {
     String userName;
     String height;
 
+    String patientId;
+    String clinicName;
+
+    public String getPatientId() {
+        return patientId;
+    }
+
+    public void setPatientId(String patientId) {
+        this.patientId = patientId;
+    }
+
+    public String getClinicName() {
+        return clinicName;
+    }
+
+    public void setClinicName(String clinicName) {
+        this.clinicName = clinicName;
+    }
+
     public String getUserName() {
         return userName;
     }

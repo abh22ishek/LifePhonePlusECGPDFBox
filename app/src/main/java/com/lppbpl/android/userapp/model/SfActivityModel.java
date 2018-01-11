@@ -82,8 +82,7 @@ public class SfActivityModel {
 		mProfile = new Profile();
 
 		// Load User Profile Data
-		SharedPreferences userProfile = SouthFallsUserApp
-				.getInstance()
+		SharedPreferences userProfile = SouthFallsUserApp.getInstance()
 				.getApplicationContext()
 				.getSharedPreferences(Constants.USER_PROFILE,
 						Context.MODE_PRIVATE);
@@ -93,6 +92,8 @@ public class SfActivityModel {
 			mProfile.setUserAge(userProfile.getInt("age", 40));
 			mProfile.setUserHeight(userProfile.getInt("height", 172));
 			mProfile.setUserWeight(userProfile.getInt("weight", 60));
+			mProfile.setPatientId(userProfile.getString("patientId",""));
+			mProfile.setClinicName(userProfile.getString("clinicName",""));
 		}
 
 	}
@@ -115,6 +116,9 @@ public class SfActivityModel {
 				userProfileEditor.putInt("age", mProfile.getUserAge());
 				userProfileEditor.putInt("height", mProfile.getUserHeight());
 				userProfileEditor.putInt("weight", mProfile.getUserWeight());
+				userProfileEditor.putString("patientId",mProfile.getPatientId());
+				userProfileEditor.putString("clinicName",mProfile.getClinicName());
+
 				userProfileEditor.commit();
 			}
 		}

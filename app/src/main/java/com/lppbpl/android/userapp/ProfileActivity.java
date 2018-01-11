@@ -98,11 +98,19 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 	 * @param savedInstanceState
 	 *            Bundle
 	 */
+
+
+	private EditText mPatientId;
+
+	private EditText mClinicName;
+
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		setContentView(R.layout.profile);
+		setContentView(R.layout.user_profile);
 		mGender = (RadioGroup) findViewById(R.id.radioGroup1);
 		mEdtName = (EditText) findViewById(R.id.etName);
 		// mEdtAge = (EditText)findViewById(R.id.etAge);
@@ -110,6 +118,11 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 		mEdtWeight = (EditText) findViewById(R.id.etWeight);
 		mSaveProfile = (Button) findViewById(R.id.btn_menu_positive);
 		mSaveProfile.setText(R.string.save);
+
+		mPatientId= (EditText) findViewById(R.id.etPatientId);
+		mClinicName= (EditText) findViewById(R.id.etClinicName);
+
+
 		mProfile = mActModel.getUserProfile();
 		mEdtName.setText(mProfile.getUserName());
 
@@ -119,6 +132,10 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 			mGender.check(R.id.rbFemale);
 		}
 
+
+		mPatientId.setText(mProfile.getPatientId());
+
+		mClinicName.setText(mProfile.getClinicName());
 		// try {
 		// mEdtAge.setText(Integer.toString(mProfile.getUserAge()));
 		// } catch (NumberFormatException e) {
@@ -138,6 +155,8 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 		}
 
 		boolean isSettingAct = getIntent().getBooleanExtra("Setting", false);
+
+
 		if (!isSettingAct) {
 			setCustomTitle(R.string.title_activity);
 			setCustomHeaderImage(R.drawable.ic_title_activity);
@@ -148,19 +167,17 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 		mSaveProfile.setOnClickListener(this);
 	}
 
-	/**
-	 * Method onClick.
-	 *
-	 * @param v
-	 *            View
-	 * @see android.view.View$OnClickListener#onClick(View)
-	 */
+
 	public void onClick(View v) {
 		if (isValidUserData()) {
 			mProfile.setUserName(getName());
 			// mProfile.setUserAge(getAge());
 			mProfile.setUserHeight(getHeight());
 			mProfile.setUserWeight(getWeight());
+			mProfile.setPatientId(mPatientId.getText().toString());
+			mProfile.setClinicName(mClinicName.getText().toString());
+
+
 			final int rbId = mGender.getCheckedRadioButtonId();
 			mProfile.setMale(rbId == R.id.rbMale ? true : false);
 

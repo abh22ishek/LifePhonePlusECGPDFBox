@@ -330,9 +330,9 @@ public class ActivityFinalDisplay extends AppBaseActivity implements
 	/**
 	 * Method onClick.
 	 *
-	 * @param v
-	 *            View
-	 * @see android.view.View$OnClickListener#onClick(View)
+	 * @param
+	 *
+	 *
 	 */
 	@Override
 	public void onClick(View v) {
@@ -368,6 +368,8 @@ public class ActivityFinalDisplay extends AppBaseActivity implements
 			act.setUserName(getIntent().getExtras().get("name").toString());
 			act.setHeight(getIntent().getExtras().get("height").toString());
 			act.setWeight(	getIntent().getExtras().get("weight").toString());
+			act.setPatientId(getIntent().getExtras().getString("patientId"));
+			act.setClinicName(getIntent().getExtras().getString("clinicName"));
 
 			activityMeasurementModelList.add(act);
 			View view = findViewById(R.id.scroll_v).getRootView();

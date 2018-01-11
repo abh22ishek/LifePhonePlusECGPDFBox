@@ -1,6 +1,8 @@
 package com.pdfbox;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -37,11 +39,25 @@ public class ActivityPdfBox {
     String userName;
     String mHeight;
     String mWeight;
+    String appVersion;
+
+    String patientId;
+    String clinicName;
+
 
     public  void createActivityPdfTable(Context context,List<ActivityMeasurementModel>
             activityMeasurementModelList) {
 
-       for( ActivityMeasurementModel m: activityMeasurementModelList)
+        try {
+            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            appVersion = pInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+
+        for( ActivityMeasurementModel m: activityMeasurementModelList)
        {
           totalStepsTaken= m.getTotalstepstaken();
           totalCaloriesBurnt= m.getTotalcaloriesburnt();
@@ -52,6 +68,8 @@ public class ActivityPdfBox {
            userName=m.getUserName();
            mHeight=m.getHeight();
            mWeight=m.getWeight();
+           clinicName=m.getClinicName();
+           patientId=m.getPatientId();
        }
 
         PDDocument document = new PDDocument();
@@ -83,7 +101,6 @@ public class ActivityPdfBox {
             pdPageContentStream.setNonStrokingColor(0, 0, 0); //gray background
             pdPageContentStream.addRect(cursorX, cursorY,rect_width, rect_height);
             pdPageContentStream.stroke();
-
 
 
 
@@ -159,7 +176,7 @@ public class ActivityPdfBox {
                     text="Patient Weight : "+mWeight;
                 }
                 else if(i==8){
-                    text="Patient Age : ";
+                    text="Patient Id : "+patientId;
                 }
                 else if(i==9){
                     text="Patient Name : "+userName;
@@ -173,6 +190,15 @@ public class ActivityPdfBox {
                 pdPageContentStream.endText();
                 cursorY=cursorY+unit_per_cm;
 
+
+                // Add App Version
+
+
+                pdPageContentStream.beginText();
+                pdPageContentStream.setFont(font, 11);
+                pdPageContentStream.newLineAtOffset(10f,600f);
+                pdPageContentStream.showText("App Version : "+appVersion);
+                pdPageContentStream.endText();
 
             }
 

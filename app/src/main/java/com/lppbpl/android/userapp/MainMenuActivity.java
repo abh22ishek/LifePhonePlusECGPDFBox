@@ -459,8 +459,7 @@ public class MainMenuActivity extends NetworkConnBaseActivity implements
 		 */
 
 		final Intent activityIntent = new Intent(this,
-				(null != userName || isActivityRunning()) ? ActivityON.class
-						: ProfileActivity.class);
+				(null != userName || isActivityRunning()) ? ActivityON.class : ProfileActivity.class);
 		activityIntent.putExtra("name", userName);
 		activityIntent.putExtra(Constants.SHOW_MAINMENU, true);
 		startActivity(activityIntent);
@@ -723,10 +722,22 @@ public class MainMenuActivity extends NetworkConnBaseActivity implements
 							get(R.string.device_charging), get(R.string.OK),
 							null, true);
 				} else {
-					mAppModel.createPendingRecord((v.getId() == R.id.layout_ecg) ? Measurement.ECG : Measurement.BG);
-					final Intent intent = new Intent(this, (v.getId() == R.id.layout_ecg) ? ECGActivity.class : BloodSugarActivity.class);
-					intent.putExtra(Constants.SHOW_MAINMENU, true);
-					startActivity(intent);
+                    final Profile mProfile = mActModel.getUserProfile();
+                    userName = mActModel.getUserProfile().getUserName();
+
+                    if(userName==null){
+                        final Intent activityIntent = new Intent(this,ProfileActivity.class);
+						activityIntent.putExtra("Setting", true);
+                        startActivity(activityIntent);
+                    }else{
+                        mAppModel.createPendingRecord((v.getId() == R.id.layout_ecg) ? Measurement.ECG : Measurement.BG);
+                        final Intent intent = new Intent(this,
+                                (v.getId() == R.id.layout_ecg) ? ECGActivity.class : BloodSugarActivity.class);
+
+                        intent.putExtra(Constants.SHOW_MAINMENU, true);
+                        startActivity(intent);
+                    }
+
 				}
 			} else {
 				showAlertDialog(get(R.string.information),

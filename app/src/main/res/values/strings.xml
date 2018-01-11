@@ -38,7 +38,8 @@
     <string name="remeasure_ecg">We notice an error in the ECG measurement. Do you want to re-measure?</string>
     <string name="exit_confirmation">Are you sure you want to exit?</string>
     <string name="skip_confirmation"><b>Info:</b>\nYou will have to login to upload / view the measurements.</string>
-    <string name="activity_running">We notice that your activity measurement is on. Do you want to stop the measurement?</string>
+    <string name="activity_running">We notice that your activity measurement is on.
+        Do you want to stop the measurement?</string>
     <string name="delete_consfirmation">Are you sure you want to delete?</string>
     <string name="diagnosis_received">1 new feedback received. Do you wish to view it now?</string>
     <string name="enter_currect_mobile_no">Enter the correct mobile number.</string>
@@ -128,7 +129,7 @@
     <string name="title_login">Login</string>
     <string name="title_app_name">Life Phone Plus Lite</string>
     <string name="app_name">Life Phone Plus Lite</string>
-    <string name="title_profile">Activity Profile</string>
+    <string name="title_profile">Member Profile</string>
     <string name="title_diagnosis">Feedback</string>
     <!-- <string name="title_trends">Trends</string> -->
     <string name="enter_password">Password</string>
@@ -253,6 +254,8 @@
     <string name="continue_label">Continue</string>
     <string name="delete">Delete</string>
     <string name="name">Name</string>
+    <string name="patiend_id">Patient Id</string>
+    <string name="clinic_name">Clinic Name</string>
     <string name="gender">Gender</string>
     <string name="male">Male</string>
     <string name="female">Female</string>

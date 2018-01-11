@@ -46,12 +46,7 @@ import com.lppbpl.android.userapp.constants.Constants;
 import com.lppbpl.android.userapp.util.DeletePairUtility;
 import com.lppbpl.android.userapp.util.HttpUtil;
 
-// TODO: Auto-generated Javadoc
-/**
- * This Activity is to display the settings screen for Profile, Device
- * configuration, Blood sugar calibration and changing the mobile number etc.
- *
- */
+
 public class SettingsActivity extends NetworkConnBaseActivity implements
 		OnClickListener {
 
@@ -157,12 +152,12 @@ public class SettingsActivity extends NetworkConnBaseActivity implements
 	}
 
 	/**
-	 * Method onClick.
-	 *
-	 * @param v
-	 *            View
-	 * @see android.view.View$OnClickListener#onClick(View)
-	 */
+     * Method onClick.
+     *
+     * @param v
+     *            View
+     * @see android.view.View$OnClickListener#onClick(View)
+     */
 	@Override
 	public void onClick(View v) {
 		int i = v.getId();
@@ -171,9 +166,9 @@ public class SettingsActivity extends NetworkConnBaseActivity implements
 			startActivity(createMember);
 
 		} else if (i == R.id.txt_profile) {
-			final Intent profile = new Intent(this, ProfileActivity.class);
-			profile.putExtra("Setting", true);
-			startActivity(profile);
+			final Intent profileIntent = new Intent(this, ProfileActivity.class);
+            profileIntent.putExtra("Setting", true);
+			startActivity(profileIntent);
 
 		} else if (i == R.id.txt_device_configuration) {
 			final Intent deviceConfig = new Intent(this,
@@ -204,8 +199,7 @@ public class SettingsActivity extends NetworkConnBaseActivity implements
 			}
 
 		} else if (i == R.id.txt_update_profile) {
-			final Intent updateProfile = new Intent(this,
-					UpdateProfileActivity.class);
+			final Intent updateProfile = new Intent(this, UpdateProfileActivity.class);
 			startActivity(updateProfile);
 
 		} else if (i == R.id.txt_remove_paried_device) {

@@ -1,12 +1,15 @@
 package com.pdfbox;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.pdf.PdfDocument;
 
 import com.lpp.xmldata.ConvertTexttoXml;
+import com.lppbpl.android.userapp.EcgGraphActivity;
 import com.tom_roush.pdfbox.pdmodel.PDDocument;
 import com.tom_roush.pdfbox.pdmodel.PDPage;
 import com.tom_roush.pdfbox.pdmodel.PDPageContentStream;
@@ -29,10 +32,14 @@ public class EcgPdfBox {
 
     public  String leadArr[]={"MCL6","MCL5","MCL4","MCL3","MCL2","MCL1","aVF","aVL","aVR","III","II","I"};
 
+    String appVersion;
 
 
-    public  void createtable(Context context,String comments,String patientName,String gender)
+
+    public  void createEcgTable(Context context,String clinicName,String patientName,String gender,String patientId,String symptoms)
     {
+
+
         PDDocument document = new PDDocument();
         PDPage page = new PDPage(new PDRectangle(PDRectangle.A4.getHeight(), PDRectangle.A4.getWidth()));
 
@@ -41,9 +48,12 @@ public class EcgPdfBox {
         float page_width=page.getMediaBox().getWidth();
 
 
-        System.out.println(page.getMediaBox().getHeight());
-        System.out.println(page.getMediaBox().getWidth());
-
+        try {
+            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            appVersion = pInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
         String path = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() +
                 "/Download/EcgPdfBox.pdf";
@@ -82,16 +92,16 @@ public class EcgPdfBox {
             contentStream.beginText();
             contentStream.setFont(font,11);
             contentStream.newLineAtOffset(120f,marginUpperLine+2);
-            contentStream.showText("UHID:2134325421" +" "+"Patient Name:Abhishek"+"  "+"Age:27"+
-                    " Gender:Male"+" Clinid Id:Apollo");
+            contentStream.showText("Patient Id : "+patientId +"  "+"Patient Name : "+patientName+"   "+"Gender : "+
+                    gender+"  "+"Clinic Name : "+clinicName);
+
             contentStream.endText();
 
             contentStream.setNonStrokingColor(0, 0, 0); //black text
             contentStream.beginText();
             contentStream.setFont(font,11);
             contentStream.newLineAtOffset(120f,marginUpperLine-12);
-            contentStream.showText("Symptoms:Sweating,Anxiety,Dizziness,Chest Pain"
-                    +" "+"Refereed Doctor:Dr Aryan Patil"+" "+"App Version:version_v_1.0");
+            contentStream.showText("Symptoms :"+symptoms);
 
             contentStream.endText();
 
@@ -99,7 +109,7 @@ public class EcgPdfBox {
             contentStream.beginText();
             contentStream.setFont(font,10);
             contentStream.newLineAtOffset(120f,marginUpperLine-24);
-            contentStream.showText("Comments= Heart beat is 72 bpm");
+            contentStream.showText("Comments : "+ EcgGraphActivity.mEditTxt.getText().toString());
             contentStream.endText();
 
             contentStream.setNonStrokingColor(0, 0, 0); //black text
@@ -109,8 +119,13 @@ public class EcgPdfBox {
             contentStream.showText("10mm/mV    25mm/s");
             contentStream.endText();
 
-
-
+            // Add app version
+            contentStream.setNonStrokingColor(0, 0, 0); //black text
+            contentStream.beginText();
+            contentStream.setFont(font, 8);
+            contentStream.newLineAtOffset(page_width-200,marginUpperLine-12);
+            contentStream.showText("App Version : "+appVersion);
+            contentStream.endText();
 
 
             contentStream.setNonStrokingColor(0, 0, 0); //black text
@@ -132,17 +147,17 @@ public class EcgPdfBox {
             InputStream is = null;
             InputStream alpha;
             is =  assetManager.open("bpl.png");
-            alpha =  assetManager.open("bpl.png");
+            //alpha =  assetManager.open("bpl.png");
 
-            Bitmap b= BitmapFactory.decodeStream(alpha);
+           // Bitmap b= BitmapFactory.decodeStream(alpha);
             Bitmap bitmap = BitmapFactory.decodeStream(is);
             PDImageXObject ximage = LosslessFactory.createFromImage(document,bitmap);
-            PDImageXObject yimage=LosslessFactory.createFromImage(document,b);
+          //  PDImageXObject yimage=LosslessFactory.createFromImage(document,b);
 
 
 
             contentStream.drawImage(ximage,40+4,marginLowerLine+2);
-            contentStream.drawImage(yimage,rect_width+cursorX-20,marginLowerLine);
+            //contentStream.drawImage(yimage,rect_width+cursorX-20,marginLowerLine);
 
 
 
@@ -194,7 +209,7 @@ public class EcgPdfBox {
             contentStream.setLineWidth(0.2f);
 
             contentStream.setStrokingColor(AWTColor.pink);
-            // draw minor verticl grids
+            // draw minor vertical grids
             for(int i=0;i<250;i++)
             {
                 contentStream.moveTo(cursorX,cursorY);
@@ -478,7 +493,7 @@ public class EcgPdfBox {
             createSecondPage(context,document,page_height);
 
 
-           document.save(path);
+            document.save(path);
             document.close();
 
 
@@ -511,7 +526,7 @@ public class EcgPdfBox {
         try {
             pdPageContentStream2 = new PDPageContentStream(document,page);
             document.addPage(page);
-            PDFont font = PDType1Font.TIMES_ITALIC;
+            PDFont font = PDType1Font.HELVETICA_BOLD;
             pdPageContentStream2.setNonStrokingColor(200, 200, 200); //gray background
             pdPageContentStream2.addRect(cursorX, cursorY,rect_width, rect_height);
 
@@ -525,22 +540,22 @@ public class EcgPdfBox {
 
             Bitmap bitmap= BitmapFactory.decodeStream(inputStream1);
             PDImageXObject ximage = LosslessFactory.createFromImage(document,bitmap);
-            pdPageContentStream2.drawImage(ximage,offsetX,page_height-65);
+            pdPageContentStream2.drawImage(ximage,offsetX,page_height-140);
 
             //draw text
             pdPageContentStream2.setNonStrokingColor(200, 200, 200); //black text
             pdPageContentStream2.beginText();
-            pdPageContentStream2.setFont(font,21);
-            pdPageContentStream2.newLineAtOffset(150f,page_height-50);
+            pdPageContentStream2.setFont(font,40);
+            pdPageContentStream2.newLineAtOffset(150f,page_height-130);
             pdPageContentStream2.showText("Notes to the Consulting Physician");
             pdPageContentStream2.endText();
 
-            font = PDType1Font.TIMES_BOLD;
+            font = PDType1Font.HELVETICA_BOLD;
 
             pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
             pdPageContentStream2.beginText();
-            pdPageContentStream2.setFont(font,12);
-            pdPageContentStream2.newLineAtOffset(offsetX,page_height-85);
+            pdPageContentStream2.setFont(font,20f);
+            pdPageContentStream2.newLineAtOffset(offsetX,page_height-170);
             pdPageContentStream2.showText("* The 12 ECG report was generated from ECG obtained in 4 sequential steps");
             pdPageContentStream2.endText();
 
@@ -553,55 +568,55 @@ public class EcgPdfBox {
             PDImageXObject ximage2 = LosslessFactory.createFromImage(document,bitmap2);
 
 
-            pdPageContentStream2.drawImage(ximage2,offsetX,page_height-220);
+           pdPageContentStream2.drawImage(ximage2,offsetX,page_height-340);
 
-            font = PDType1Font.TIMES_BOLD_ITALIC;
+            font = PDType1Font.HELVETICA_BOLD;
             //draw text
             pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
             pdPageContentStream2.beginText();
-            pdPageContentStream2.setFont(font,13);
-            pdPageContentStream2.newLineAtOffset(offsetX,page_height-260);
-            pdPageContentStream2.showText("* Step1 : Lead I,II,III,aVR,aVL,aVF were simultaneously acquired");
+            pdPageContentStream2.setFont(font,22f);
+            pdPageContentStream2.newLineAtOffset(offsetX,190f);
+            pdPageContentStream2.showText("*Lead I,II,III,aVR,aVL,aVF were simultaneously acquired in Step 1");
             pdPageContentStream2.endText();
 
             pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
             pdPageContentStream2.beginText();
-            pdPageContentStream2.setFont(font,13);
-            pdPageContentStream2.newLineAtOffset(offsetX,page_height-290);
-            pdPageContentStream2.showText("* Step 2 : Leads MCL1,MCL2 were acquired by STEP 1");
+            pdPageContentStream2.setFont(font,22f);
+            pdPageContentStream2.newLineAtOffset(offsetX,160f);
+            pdPageContentStream2.showText("*Leads MCL1,MCL2 were simultaneously acquired in Step 2");
 
             pdPageContentStream2.endText();
 
             pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
             pdPageContentStream2.beginText();
-            pdPageContentStream2.setFont(font,13);
-            pdPageContentStream2.newLineAtOffset(offsetX,page_height-320);
-            pdPageContentStream2.showText("* Step 3 : Leads MCL3,MCL4 were acquired by STEP 2");
+            pdPageContentStream2.setFont(font,22f);
+            pdPageContentStream2.newLineAtOffset(offsetX,130f);
+            pdPageContentStream2.showText("*Leads MCL3,MCL4 were simultaneously acquired in Step 3");
             pdPageContentStream2.endText();
 
 
             pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
             pdPageContentStream2.beginText();
-            pdPageContentStream2.setFont(font,13);
-            pdPageContentStream2.newLineAtOffset(offsetX,page_height-350);
-            pdPageContentStream2.showText("* Step 4 : Leads MCL5,MCL6 were acquired by STEP 3");
+            pdPageContentStream2.setFont(font,22f);
+            pdPageContentStream2.newLineAtOffset(offsetX,100f);
+            pdPageContentStream2.showText("*Leads MCL5,MCL6 were simultaneously acquired in Step 4 ");
             pdPageContentStream2.endText();
 
 
 
-            font = PDType1Font.TIMES_BOLD;
+            font = PDType1Font.HELVETICA_BOLD;
             pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
             pdPageContentStream2.beginText();
-            pdPageContentStream2.setFont(font,13);
-            pdPageContentStream2.newLineAtOffset(offsetX,page_height-450);
-            pdPageContentStream2.showText("* This sequential ECG report does not replace the 12-lead resting ECG disclosure from a diagnostic electrocardiograph.  " );
+            pdPageContentStream2.setFont(font,17f);
+            pdPageContentStream2.newLineAtOffset(offsetX,40f);
+            pdPageContentStream2.showText("* This sequential ECG report does not replace the 12-lead resting ECG disclosure from a" );
             //"resting ECG disclosure from a diagnostic electrocardiograph." +"\n"+"The pacemaker spike positions are not indicated");
             pdPageContentStream2.endText();
             pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
             pdPageContentStream2.beginText();
-            pdPageContentStream2.setFont(font,13);
-            pdPageContentStream2.newLineAtOffset(offsetX,page_height-465);
-            pdPageContentStream2.showText("The pacemaker spike positions are not indicated" );
+            pdPageContentStream2.setFont(font,17f);
+            pdPageContentStream2.newLineAtOffset(offsetX,15f);
+            pdPageContentStream2.showText("diagnostic electrocardiograph.The pacemaker spike positions are not indicated" );
             //"resting ECG disclosure from a diagnostic electrocardiograph." +"\n"+"The pacemaker spike positions are not indicated");
             pdPageContentStream2.endText();
             pdPageContentStream2.close();

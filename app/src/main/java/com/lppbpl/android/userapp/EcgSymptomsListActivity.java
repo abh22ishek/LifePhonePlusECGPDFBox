@@ -56,6 +56,7 @@ import com.lppbpl.android.userapp.constants.Constants;
 import com.lppbpl.android.userapp.controller.SfUploadManager;
 import com.lppbpl.android.userapp.db.PendingRecordDb;
 import com.lppbpl.android.userapp.model.PendingRecord;
+import com.lppbpl.android.userapp.model.Profile;
 import com.lppbpl.android.userapp.model.SfSendModel;
 import com.lppbpl.android.userapp.util.HttpUtil;
 import com.pdfbox.EcgPdfBox;
@@ -124,6 +125,14 @@ public class EcgSymptomsListActivity extends NetworkConnBaseActivity implements
 	String symptom_3="";
 	String symptom_4="";
 	String symptom_5="";
+
+	String clinicName;
+	String patientName;
+	String patientId;
+	String Gender;
+	String age;
+
+	String symptoms_selected="";
 
 	@Override
 	public void onCreate(Bundle icicle) {
@@ -489,7 +498,21 @@ public class EcgSymptomsListActivity extends NetworkConnBaseActivity implements
 	@Override
 	public void onClick(View v) {
 		if (v.getId() == R.id.btn_menu_positive) {
-			String symptoms_selected="";
+
+			final Profile mProfile = mActModel.getUserProfile();
+
+			patientId=mProfile.getPatientId();
+			clinicName=mProfile.getClinicName();
+			age= String.valueOf(mProfile.getUserAge());
+			patientName=mProfile.getUserName();
+
+			if(mProfile.isMale())
+				Gender="Male";
+			else
+				Gender="Female";
+
+
+
 			//symptoms_selected=symptom_1+" "+symptom_2+" "+symptom_3+" "+symptom_4+" "+symptom_5;
 			List<String> symptoms_list=new ArrayList<String>();
 
@@ -575,10 +598,12 @@ public class EcgSymptomsListActivity extends NetworkConnBaseActivity implements
 
 		ProgressDialog progressDialog;
 
+
+
 		@Override
 		protected Void doInBackground(Void... voids) {
-			new EcgPdfBox().createtable(EcgSymptomsListActivity.this,"Heart beat is 79","Patient 1",
-					"Male");
+			new EcgPdfBox().createEcgTable(EcgSymptomsListActivity.this,clinicName,patientName,Gender,
+					patientId,symptoms_selected);
 			return null;
 		}
 

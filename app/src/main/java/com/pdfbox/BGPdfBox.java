@@ -1,6 +1,8 @@
 package com.pdfbox;
 
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -26,10 +28,24 @@ import java.util.List;
 
 public class BGPdfBox {
 
+    String appVersion;
+    String bloodGlucose,dateOfTest,fastingType,mSymptoms,userComments,height,weight;
+    String patientId,clinicName,patientName;
+
+
+
     public void createBGTable(Context context, boolean isCalibaration, List<BgMeasurementModel> BGList)
     {
 
-        String bloodGlucose="",dateOfTest="",fastingType="",mSymptoms = "",userComments = "";
+        try {
+            PackageInfo pInfo = context.getPackageManager().getPackageInfo(context.getPackageName(), 0);
+            appVersion = pInfo.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            e.printStackTrace();
+        }
+
+
+
 
 
         for( BgMeasurementModel m: BGList)
@@ -39,6 +55,13 @@ public class BGPdfBox {
             fastingType=m.getFasting_type();
             mSymptoms=m.getSymptoms();
             userComments=m.getUsercomments();
+            patientId=m.getPatientId();
+            clinicName=m.getClinicName();
+            height=m.getHeight();
+            weight=m.getWeight();
+            patientName=m.getUserName();
+
+
         }
 
 
@@ -139,20 +162,20 @@ public class BGPdfBox {
                     text="Fasting Type : "+fastingType;
                 }else if(i==4)
                 {
-                    text="Blood Glucose Value : "+bloodGlucose;
+                    text="Blood Glucose Value : "+bloodGlucose+" mg/dL";
                 }else if(i==5)
                 {
-                    text="Patient Height : ";
+                    text="Patient Height : "+height;
                 }else if(i==6){
                     text="Gender";
                 }else if(i==7){
-                    text="Patient Weight : ";
+                    text="Patient Weight : "+weight;
                 }
                 else if(i==8){
-                    text="Patient Age : ";
+                    text="Patient Id : "+patientId;
                 }
                 else if(i==9){
-                    text="Patient Name : ";
+                    text="Patient Name : "+patientName;
                 }
 
 
@@ -166,6 +189,13 @@ public class BGPdfBox {
 
             }
 
+            // Add App Version
+
+            pdPageContentStream.beginText();
+            pdPageContentStream.setFont(font, 11);
+            pdPageContentStream.newLineAtOffset(10f,600f);
+            pdPageContentStream.showText("App Version : "+appVersion);
+            pdPageContentStream.endText();
 
             pdPageContentStream.close();
             document.save(path);

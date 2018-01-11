@@ -254,8 +254,8 @@ public class ActivityON extends AppBaseActivity implements OnClickListener {
 	 * Method onClick.
 	 *
 	 * @param view
-	 *            View
-	 * @see android.view.View$OnClickListener#onClick(View)
+	 *
+	 * @see
 	 */
 	@Override
 	public void onClick(View view) {
@@ -277,6 +277,11 @@ public class ActivityON extends AppBaseActivity implements OnClickListener {
 		intent.putExtra("name",userName);
 		intent.putExtra("height",String.valueOf(mProfile.getUserHeight()));
 		intent.putExtra("weight",String.valueOf(mProfile.getUserWeight()));
+
+		intent.putExtra("patientId",mProfile.getPatientId());
+		intent.putExtra("clinicName",mProfile.getClinicName());
+
+
 		startActivity(intent);
 		finish();
 	}

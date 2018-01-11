@@ -51,6 +51,7 @@ import com.lppbpl.android.userapp.controller.SfUploadManager;
 import com.lppbpl.android.userapp.db.PendingRecordDb;
 import com.lppbpl.android.userapp.model.BgMeasurementModel;
 import com.lppbpl.android.userapp.model.PendingRecord;
+import com.lppbpl.android.userapp.model.Profile;
 import com.lppbpl.android.userapp.model.SfSendModel;
 import com.lppbpl.android.userapp.util.HttpUtil;
 import com.lppbpl.android.userapp.util.Util;
@@ -131,20 +132,7 @@ public class BgSymtemsActivity extends NetworkConnBaseActivity implements
 		mShowUnsavedRecord = getIntent().getBooleanExtra(
 				Constants.UNSAVED_RECORD, false);
 		BgMeasurementList=new ArrayList<BgMeasurementModel>();
-		if(getIntent()!=null)
-		{
 
-			data="Blood Glucose "+getIntent().getExtras().getString("BLOODSUGAR")+
-					"\n"+ "Date and Time "+getIntent().getExtras().getString("TimeStamp")+"\n"
-					+"User Comments "+getIntent().getExtras().getString("Comments");
-
-
-			BgMeasurementModel bg=new BgMeasurementModel(getIntent().getExtras().getString("BLOODSUGAR"),
-					getIntent().getExtras().getString("TimeStamp"),getIntent().getExtras().getString("Comments")
-			,getIntent().getExtras().getString("FASTING_TYPE"));
-			BgMeasurementList.add(bg);
-
-		}
 
 		mProgDialog.setOnCancelListener(new OnCancelListener() {
 			public void onCancel(DialogInterface arg) {
@@ -266,6 +254,7 @@ public class BgSymtemsActivity extends NetworkConnBaseActivity implements
 			}
 */
 
+			Profile mProfile = mActModel.getUserProfile();
 
 			List<String> symptoms_list=new ArrayList<String>();
 
@@ -315,7 +304,22 @@ public class BgSymtemsActivity extends NetworkConnBaseActivity implements
 
 			}
 
+			if(getIntent()!=null)
+			{
 
+				data="Blood Glucose "+getIntent().getExtras().getString("BLOODSUGAR")+
+						"\n"+ "Date and Time "+getIntent().getExtras().getString("TimeStamp")+"\n"
+						+"User Comments "+getIntent().getExtras().getString("Comments");
+
+
+				BgMeasurementModel bg=new BgMeasurementModel(getIntent().getExtras().getString("BLOODSUGAR"),
+						getIntent().getExtras().getString("TimeStamp"),getIntent().getExtras().getString("Comments"),symptoms_selected
+						,getIntent().getExtras().getString("FASTING_TYPE"),mProfile.getUserName(),mProfile.getPatientId(),
+						mProfile.getClinicName(),String.valueOf(mProfile.getUserHeight()),
+						String.valueOf(mProfile.getUserWeight()));
+				BgMeasurementList.add(bg);
+
+			}
 
 			new ExecutePdfOperation().execute();
 			//ReadFileResponse f=new ReadFileResponse(BgSymtemsActivity.this);
