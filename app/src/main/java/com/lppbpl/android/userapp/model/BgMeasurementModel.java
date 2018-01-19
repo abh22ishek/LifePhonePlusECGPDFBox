@@ -16,6 +16,26 @@ public class BgMeasurementModel {
 	String height;
 	String weight;
 
+	String age;
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	String gender;
+
+	public String getAge() {
+		return age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
+	}
+
 	public String getHeight() {
 		return height;
 	}
@@ -53,7 +73,7 @@ public class BgMeasurementModel {
 	}
 
 	public BgMeasurementModel(String bloodglucose, String dateOftest, String usercomments, String symptoms, String fasting_type,
-							  String userName, String patientId, String clinicName, String height, String weight) {
+							  String userName, String patientId, String clinicName, String height, String weight,String age,String gender) {
 		Bloodglucose = bloodglucose;
 		this.dateOftest = dateOftest;
 		Usercomments = usercomments;
@@ -64,6 +84,8 @@ public class BgMeasurementModel {
 		this.clinicName = clinicName;
 		this.height = height;
 		this.weight = weight;
+		this.age=age;
+		this.gender=gender;
 	}
 
 	public void setClinicName(String clinicName) {

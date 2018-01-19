@@ -603,7 +603,7 @@ public class EcgSymptomsListActivity extends NetworkConnBaseActivity implements
 		@Override
 		protected Void doInBackground(Void... voids) {
 			new EcgPdfBox().createEcgTable(EcgSymptomsListActivity.this,clinicName,patientName,Gender,
-					patientId,symptoms_selected);
+					patientId,symptoms_selected,age);
 			return null;
 		}
 

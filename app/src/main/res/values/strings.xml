@@ -53,6 +53,8 @@
     <string name="valid_name">Please enter a valid name.</string>
     <string name="valid_height">Please enter a valid height.</string>
     <string name="valid_weight">Please enter a valid weight.</string>
+    <string name="valid_age">Please enter a valid Age.</string>
+
     <string name="device_charging">Device is charging.</string>
     <string name="please_cant_default">New PIN cannot be same as the default PIN.</string>
     <string name="quick_registration">Account registration is successful. You can access the services once your account is approved by the administrator. For any help please call %1$s.</string>
@@ -127,8 +129,8 @@
     <string name="device_sw_minor_version">01</string>
     <string name="title_registration">Registration</string>
     <string name="title_login">Login</string>
-    <string name="title_app_name">Life Phone Plus Lite</string>
-    <string name="app_name">Life Phone Plus Lite</string>
+    <string name="title_app_name">ConsumerApp Lite</string>
+    <string name="app_name">ConsumerApp Lite</string>
     <string name="title_profile">Member Profile</string>
     <string name="title_diagnosis">Feedback</string>
     <!-- <string name="title_trends">Trends</string> -->
@@ -254,6 +256,7 @@
     <string name="continue_label">Continue</string>
     <string name="delete">Delete</string>
     <string name="name">Name</string>
+    <string name="age">Age</string>
     <string name="patiend_id">Patient Id</string>
     <string name="clinic_name">Clinic Name</string>
     <string name="gender">Gender</string>

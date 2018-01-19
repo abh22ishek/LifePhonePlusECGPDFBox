@@ -14,8 +14,20 @@ public class ActivityMeasurementModel {
     String userName;
     String height;
 
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
     String patientId;
     String clinicName;
+    String age;
+    String gender;
+
+
 
     public String getPatientId() {
         return patientId;
@@ -59,7 +71,13 @@ public class ActivityMeasurementModel {
 
     String weight;
 
+    public String getAge() {
+        return age;
+    }
 
+    public void setAge(String age) {
+        this.age = age;
+    }
 
     public String getTotalmetrestravelled() {
         return totalmetrestravelled;

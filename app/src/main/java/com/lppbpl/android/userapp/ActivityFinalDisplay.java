@@ -54,6 +54,7 @@ import com.lppbpl.android.userapp.controller.SfUploadManager;
 import com.lppbpl.android.userapp.db.PendingRecordDb;
 import com.lppbpl.android.userapp.model.ActivityMeasurementModel;
 import com.lppbpl.android.userapp.model.PendingRecord;
+import com.lppbpl.android.userapp.model.Profile;
 import com.lppbpl.android.userapp.model.SfSendModel;
 import com.lppbpl.android.userapp.util.HttpUtil;
 import com.pdfbox.ActivityPdfBox;
@@ -334,10 +335,18 @@ public class ActivityFinalDisplay extends AppBaseActivity implements
 	 *
 	 *
 	 */
+
+
 	@Override
 	public void onClick(View v) {
 
 		if (v == mSave) {
+			String gender;
+			Profile mProfile = mActModel.getUserProfile();
+			if(mProfile.isMale())
+					gender="Male";
+			else
+				gender="Female";
 		/*	if (mPinModel.isLoginForSessionSuccess()) {
 				uploadData(true); // save and upload
 			} else {
@@ -370,6 +379,8 @@ public class ActivityFinalDisplay extends AppBaseActivity implements
 			act.setWeight(	getIntent().getExtras().get("weight").toString());
 			act.setPatientId(getIntent().getExtras().getString("patientId"));
 			act.setClinicName(getIntent().getExtras().getString("clinicName"));
+			act.setGender(gender);
+			act.setAge(String.valueOf(mProfile.getUserAge()));
 
 			activityMeasurementModelList.add(act);
 			View view = findViewById(R.id.scroll_v).getRootView();

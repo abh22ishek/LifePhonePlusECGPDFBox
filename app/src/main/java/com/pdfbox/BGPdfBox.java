@@ -30,7 +30,7 @@ public class BGPdfBox {
 
     String appVersion;
     String bloodGlucose,dateOfTest,fastingType,mSymptoms,userComments,height,weight;
-    String patientId,clinicName,patientName;
+    String patientId,clinicName,patientName,age, gender;
 
 
 
@@ -60,6 +60,8 @@ public class BGPdfBox {
             height=m.getHeight();
             weight=m.getWeight();
             patientName=m.getUserName();
+            age=m.getAge();
+            gender=m.getGender();
 
 
         }
@@ -165,11 +167,18 @@ public class BGPdfBox {
                     text="Blood Glucose Value : "+bloodGlucose+" mg/dL";
                 }else if(i==5)
                 {
-                    text="Patient Height : "+height;
+                    text="Patient Age : "+age;
                 }else if(i==6){
-                    text="Gender";
+                    text="Gender : "+gender;
                 }else if(i==7){
-                    text="Patient Weight : "+weight;
+                    text="Patient Weight : "+weight+"Kg";
+                    pdPageContentStream.beginText();
+                    pdPageContentStream.setFont(font, 11);
+                    pdPageContentStream.newLineAtOffset(cursorX+200f,cursorY+10f);
+                    pdPageContentStream.showText("Height : "+height+"CM");
+                    pdPageContentStream.endText();
+
+
                 }
                 else if(i==8){
                     text="Patient Id : "+patientId;
@@ -178,15 +187,12 @@ public class BGPdfBox {
                     text="Patient Name : "+patientName;
                 }
 
-
                 pdPageContentStream.beginText();
                 pdPageContentStream.setFont(font, 11);
                 pdPageContentStream.newLineAtOffset(cursorX+5f,cursorY+10f);
                 pdPageContentStream.showText(text);
                 pdPageContentStream.endText();
                 cursorY=cursorY+unit_per_cm;
-
-
             }
 
             // Add App Version

@@ -43,6 +43,9 @@ public class ActivityPdfBox {
 
     String patientId;
     String clinicName;
+    String age;
+
+    String gender;
 
 
     public  void createActivityPdfTable(Context context,List<ActivityMeasurementModel>
@@ -70,6 +73,8 @@ public class ActivityPdfBox {
            mWeight=m.getWeight();
            clinicName=m.getClinicName();
            patientId=m.getPatientId();
+           age=m.getAge();
+           gender=m.getGender();
        }
 
         PDDocument document = new PDDocument();
@@ -122,9 +127,7 @@ public class ActivityPdfBox {
             InputStream inputStream;
             inputStream =  assetManager.open("bpl.png");
             Bitmap bitmap=BitmapFactory.decodeStream(inputStream);
-
             PDImageXObject imageXObject=LosslessFactory.createFromImage(document,bitmap);
-
             pdPageContentStream.drawImage(imageXObject,cursorX+5f,cursorY+5f);// cursor y value updated
 
             PDFont font = PDType1Font.TIMES_BOLD_ITALIC;
@@ -171,12 +174,25 @@ public class ActivityPdfBox {
                 {
                     text="Activity Measurement Time : "+startEndTime;
                 }else if(i==6){
-                    text="Gender : ";
+                    text="Gender : " +gender;
                 }else if(i==7){
-                    text="Patient Weight : "+mWeight;
+                    text="Patient Weight : "+mWeight+"Kg";
+
+                    pdPageContentStream.beginText();
+                    pdPageContentStream.setFont(font, 11);
+                    pdPageContentStream.newLineAtOffset(cursorX+200f,cursorY+10f);
+                    pdPageContentStream.showText("Height : "+mHeight+"CM");
+                    pdPageContentStream.endText();
+
                 }
                 else if(i==8){
                     text="Patient Id : "+patientId;
+
+                    pdPageContentStream.beginText();
+                    pdPageContentStream.setFont(font, 11);
+                    pdPageContentStream.newLineAtOffset(cursorX+200f,cursorY+10f);
+                    pdPageContentStream.showText("Age : "+age);
+                    pdPageContentStream.endText();
                 }
                 else if(i==9){
                     text="Patient Name : "+userName;
@@ -194,11 +210,11 @@ public class ActivityPdfBox {
                 // Add App Version
 
 
-                pdPageContentStream.beginText();
+              /*  pdPageContentStream.beginText();
                 pdPageContentStream.setFont(font, 11);
                 pdPageContentStream.newLineAtOffset(10f,600f);
                 pdPageContentStream.showText("App Version : "+appVersion);
-                pdPageContentStream.endText();
+                pdPageContentStream.endText();*/
 
             }
 

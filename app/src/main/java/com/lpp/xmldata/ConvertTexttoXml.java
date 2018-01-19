@@ -17,6 +17,7 @@ import com.lppbpl.android.userapp.constants.Constants;
 import com.lppbpl.android.userapp.listener.EcgLLeadsListner;
 import com.lppbpl.android.userapp.model.ActivityMeasurementModel;
 import com.lppbpl.android.userapp.model.BgMeasurementModel;
+import com.lppbpl.android.userapp.model.SfSendModel;
 
 import org.xmlpull.v1.XmlSerializer;
 
@@ -465,8 +466,11 @@ public class ConvertTexttoXml {
 
 		String heart_rate_tag="\n"+"<HeartRate>";
 		String heart_rate_end_tag="</HeartRate>";
-
-		String user_comments=EcgGraphActivity.mEditTxt.getText().toString();
+		String user_comments="";
+	 if(SfSendModel.getInstance().getUserComment()!=null)
+		{
+		 user_comments= SfSendModel.getInstance().getUserComment();
+		}
 
 		if(mSave)
 		{

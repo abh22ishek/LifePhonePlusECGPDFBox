@@ -121,6 +121,7 @@ public class BgSymtemsActivity extends NetworkConnBaseActivity implements
 	String symptom_4="";
 	String symptom_5="";
 	String symptoms_selected="";
+	String gender="";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -256,6 +257,11 @@ public class BgSymtemsActivity extends NetworkConnBaseActivity implements
 
 			Profile mProfile = mActModel.getUserProfile();
 
+			if(mProfile.isMale())
+				gender="Male";
+			else
+				gender="Female";
+
 			List<String> symptoms_list=new ArrayList<String>();
 
 			symptoms_list.add(symptom_1);
@@ -316,7 +322,7 @@ public class BgSymtemsActivity extends NetworkConnBaseActivity implements
 						getIntent().getExtras().getString("TimeStamp"),getIntent().getExtras().getString("Comments"),symptoms_selected
 						,getIntent().getExtras().getString("FASTING_TYPE"),mProfile.getUserName(),mProfile.getPatientId(),
 						mProfile.getClinicName(),String.valueOf(mProfile.getUserHeight()),
-						String.valueOf(mProfile.getUserWeight()));
+						String.valueOf(mProfile.getUserWeight()),String.valueOf(mProfile.getUserAge()),gender);
 				BgMeasurementList.add(bg);
 
 			}

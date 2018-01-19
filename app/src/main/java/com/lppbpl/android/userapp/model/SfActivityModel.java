@@ -119,6 +119,7 @@ public class SfActivityModel {
 				userProfileEditor.putString("patientId",mProfile.getPatientId());
 				userProfileEditor.putString("clinicName",mProfile.getClinicName());
 
+
 				userProfileEditor.commit();
 			}
 		}

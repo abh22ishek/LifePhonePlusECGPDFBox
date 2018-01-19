@@ -61,7 +61,7 @@ public class EcgGraphActivity extends AppBaseActivity implements
 	private final static String TAG = EcgGraphActivity.class.getName();
 
 	/** The m edit txt. */
-	public static EditText mEditTxt;
+	private   EditText mEditTxt;
 
 	/** The m comment. */
 	private TextView mComment;
@@ -135,8 +135,7 @@ public class EcgGraphActivity extends AppBaseActivity implements
 		final TextView hrdataView = (TextView) findViewById(R.id.tvHrRate);
 		final TextView ecgTimestamp = (TextView) findViewById(R.id.tvecgTimestamp);
 
-		ecgTimestamp
-				.setText(Util.formatDateTime(penRecord.getMeasurementTime()));
+		ecgTimestamp.setText(Util.formatDateTime(penRecord.getMeasurementTime()));
 
 		final RelativeLayout layout = (RelativeLayout) findViewById(R.id.tvHrdataLayout);
 		// layout.setVisibility(penRecord.getHeartRate() > 0 ? View.VISIBLE :

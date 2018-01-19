@@ -50,6 +50,10 @@ public class Profile {
 
     private String mClinicName;
 
+
+
+
+
     public String getPatientId() {
         return mPatientId;
     }

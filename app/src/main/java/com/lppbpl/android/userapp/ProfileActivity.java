@@ -59,6 +59,8 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 	/** The m edt weight. */
 	private EditText mEdtWeight;
 
+	private EditText etAge;
+
 	/** The m save profile. */
 	private Button mSaveProfile;
 
@@ -92,6 +94,7 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 	/** The Constant AGE_VAL. */
 	public static final int AGE_VAL = 40;
 
+
 	/**
 	 * Method onCreate.
 	 *
@@ -113,7 +116,7 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 		setContentView(R.layout.user_profile);
 		mGender = (RadioGroup) findViewById(R.id.radioGroup1);
 		mEdtName = (EditText) findViewById(R.id.etName);
-		// mEdtAge = (EditText)findViewById(R.id.etAge);
+
 		mEdtHeight = (EditText) findViewById(R.id.etHight);
 		mEdtWeight = (EditText) findViewById(R.id.etWeight);
 		mSaveProfile = (Button) findViewById(R.id.btn_menu_positive);
@@ -121,6 +124,8 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 
 		mPatientId= (EditText) findViewById(R.id.etPatientId);
 		mClinicName= (EditText) findViewById(R.id.etClinicName);
+
+		etAge= (EditText) findViewById(R.id.etAge);
 
 
 		mProfile = mActModel.getUserProfile();
@@ -134,13 +139,13 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 
 
 		mPatientId.setText(mProfile.getPatientId());
-
 		mClinicName.setText(mProfile.getClinicName());
-		// try {
-		// mEdtAge.setText(Integer.toString(mProfile.getUserAge()));
-		// } catch (NumberFormatException e) {
-		// mEdtAge.setText("0");
-		// }
+
+		 try {
+			 etAge.setText(Integer.toString(mProfile.getUserAge()));
+		 } catch (NumberFormatException e) {
+			 etAge.setText("0");
+		 }
 		try {
 			mEdtHeight.setText(Integer.toString(mProfile.getUserHeight()));
 		} catch (NumberFormatException e) {
@@ -171,11 +176,12 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 	public void onClick(View v) {
 		if (isValidUserData()) {
 			mProfile.setUserName(getName());
-			// mProfile.setUserAge(getAge());
+			 mProfile.setUserAge(getAge());
 			mProfile.setUserHeight(getHeight());
 			mProfile.setUserWeight(getWeight());
 			mProfile.setPatientId(mPatientId.getText().toString());
 			mProfile.setClinicName(mClinicName.getText().toString());
+
 
 
 			final int rbId = mGender.getCheckedRadioButtonId();
@@ -218,6 +224,9 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 			showAlertDialog(get(R.string.title_profile),
 					get(R.string.valid_weight), get(R.string.OK), null, true);
 			valid = false;
+		}else if((getAge()<AGE_MIN) || (getAge()>AGE_MAX)){
+		    showAlertDialog(get(R.string.title_profile),get(R.string.valid_age),get(R.string.OK),null,true);
+        	valid=false;
 		}
 		return valid;
 	}
@@ -269,4 +278,23 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 		}
 		return weight;
 	}
+
+
+
+	private int getAge()
+    {
+        int age=0;
+
+        if(etAge.getText().toString().length()>0){
+            try {
+                age = (Integer.valueOf(etAge.getText().toString()).intValue());
+            } catch (NumberFormatException e) {
+                Logger.log(Level.DEBUG, TAG,
+                        "Error occured : " + e.getMessage());
+            }
+        }
+
+
+        return age;
+    }
 }

@@ -10,6 +10,7 @@ import android.graphics.pdf.PdfDocument;
 
 import com.lpp.xmldata.ConvertTexttoXml;
 import com.lppbpl.android.userapp.EcgGraphActivity;
+import com.lppbpl.android.userapp.model.SfSendModel;
 import com.tom_roush.pdfbox.pdmodel.PDDocument;
 import com.tom_roush.pdfbox.pdmodel.PDPage;
 import com.tom_roush.pdfbox.pdmodel.PDPageContentStream;
@@ -36,7 +37,7 @@ public class EcgPdfBox {
 
 
 
-    public  void createEcgTable(Context context,String clinicName,String patientName,String gender,String patientId,String symptoms)
+    public  void createEcgTable(Context context,String clinicName,String patientName,String gender,String patientId,String symptoms,String age)
     {
 
 
@@ -92,7 +93,7 @@ public class EcgPdfBox {
             contentStream.beginText();
             contentStream.setFont(font,11);
             contentStream.newLineAtOffset(120f,marginUpperLine+2);
-            contentStream.showText("Patient Id : "+patientId +"  "+"Patient Name : "+patientName+"   "+"Gender : "+
+            contentStream.showText("Patient Id : "+patientId +"   "+"Patient Name : "+patientName+"   "+"Age : "+age+"   "+"Gender : "+
                     gender+"  "+"Clinic Name : "+clinicName);
 
             contentStream.endText();
@@ -109,7 +110,7 @@ public class EcgPdfBox {
             contentStream.beginText();
             contentStream.setFont(font,10);
             contentStream.newLineAtOffset(120f,marginUpperLine-24);
-            contentStream.showText("Comments : "+ EcgGraphActivity.mEditTxt.getText().toString());
+            contentStream.showText("Comments : "+ ((SfSendModel.getInstance().getUserComment()==null)? "" : SfSendModel.getInstance().getUserComment()));
             contentStream.endText();
 
             contentStream.setNonStrokingColor(0, 0, 0); //black text
@@ -123,9 +124,18 @@ public class EcgPdfBox {
             contentStream.setNonStrokingColor(0, 0, 0); //black text
             contentStream.beginText();
             contentStream.setFont(font, 8);
-            contentStream.newLineAtOffset(page_width-200,marginUpperLine-12);
+            contentStream.newLineAtOffset(page_width-150,marginUpperLine+2f);
             contentStream.showText("App Version : "+appVersion);
             contentStream.endText();
+
+            // Add text
+            contentStream.setNonStrokingColor(0, 0, 0); //black text
+            contentStream.beginText();
+            contentStream.setFont(font, 8);
+            contentStream.newLineAtOffset(page_width-380,cursorY+5);
+            contentStream.showText("[ This report is intended to be read, only by a qualified medical professional. ]");
+            contentStream.endText();
+
 
 
             contentStream.setNonStrokingColor(0, 0, 0); //black text
@@ -172,9 +182,6 @@ public class EcgPdfBox {
            /* contentStream.moveTo(rect_width+cursorX-20,marginLowerLine);
             contentStream.lineTo(rect_width+cursorX-20,marginUpperLine+15);
             contentStream.stroke();*/
-
-
-
 
 
 
@@ -469,7 +476,7 @@ public class EcgPdfBox {
                 }
 
                 mX=mX+widthScale;
-                System.out.println("count mx="+count++  +"mX value="+mX);
+               // System.out.println("count mx="+count++  +"mX value="+mX);
 
 
 
@@ -641,14 +648,14 @@ public class EcgPdfBox {
             pdPageContentStream2.beginText();
             pdPageContentStream2.setFont(font,17f);
             pdPageContentStream2.newLineAtOffset(offsetX,40f);
-            pdPageContentStream2.showText("* This sequential ECG report does not replace the 12-lead resting ECG disclosure from a" );
+            pdPageContentStream2.showText("* This sequential ECG report is for screening purpose only. Not suitable " );
             //"resting ECG disclosure from a diagnostic electrocardiograph." +"\n"+"The pacemaker spike positions are not indicated");
             pdPageContentStream2.endText();
             pdPageContentStream2.setNonStrokingColor(0, 0, 0); //black text
             pdPageContentStream2.beginText();
             pdPageContentStream2.setFont(font,17f);
             pdPageContentStream2.newLineAtOffset(offsetX,15f);
-            pdPageContentStream2.showText("diagnostic electrocardiograph.The pacemaker spike positions are not indicated" );
+            pdPageContentStream2.showText("for use on patient with cardiac pacemaker. " );
             //"resting ECG disclosure from a diagnostic electrocardiograph." +"\n"+"The pacemaker spike positions are not indicated");
             pdPageContentStream2.endText();
             pdPageContentStream2.close();
