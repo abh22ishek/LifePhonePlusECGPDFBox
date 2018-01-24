@@ -131,7 +131,7 @@
     <string name="title_login">Login</string>
     <string name="title_app_name">ConsumerApp Lite</string>
     <string name="app_name">ConsumerApp Lite</string>
-    <string name="title_profile">Member Profile</string>
+    <string name="title_profile">User Profile</string>
     <string name="title_diagnosis">Feedback</string>
     <!-- <string name="title_trends">Trends</string> -->
     <string name="enter_password">Password</string>

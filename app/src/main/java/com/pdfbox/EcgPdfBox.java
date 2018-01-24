@@ -8,6 +8,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.pdf.PdfDocument;
 
+import com.logging.Level;
+import com.logging.Logger;
 import com.lpp.xmldata.ConvertTexttoXml;
 import com.lppbpl.android.userapp.EcgGraphActivity;
 import com.lppbpl.android.userapp.model.SfSendModel;
@@ -21,6 +23,7 @@ import com.tom_roush.pdfbox.pdmodel.graphics.image.LosslessFactory;
 import com.tom_roush.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import com.tom_roush.pdfbox.util.awt.AWTColor;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -56,8 +59,33 @@ public class EcgPdfBox {
             e.printStackTrace();
         }
 
-        String path = android.os.Environment.getExternalStorageDirectory().getAbsolutePath() +
-                "/Download/EcgPdfBox.pdf";
+
+
+        String fileNameDirectory="LppConsumerLite";
+
+        File file =new File(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),fileNameDirectory);
+
+        if(!file.exists())
+        {
+            file.mkdir();
+
+        }
+
+
+        // String path = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()
+        //        + "/Documents/"+userName+"_"+System.currentTimeMillis()+"_LPP_ACT.pdf";
+
+        String path="";
+        try{
+            path=file+"/"+patientName+"_"+System.currentTimeMillis()+"_LPP_ECG.pdf";
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+            Logger.log(Level.WARNING,"***Error in File**","Unable to get File path");
+        }
+
+
+
         document.addPage(page);
 
         float cursorX =60f;
@@ -125,25 +153,20 @@ public class EcgPdfBox {
             contentStream.beginText();
             contentStream.setFont(font, 8);
             contentStream.newLineAtOffset(page_width-150,marginUpperLine+2f);
-            contentStream.showText("App Version : "+appVersion);
+            contentStream.showText("    App Version :"+appVersion);
             contentStream.endText();
 
-            // Add text
+
+
+          // Add text
             contentStream.setNonStrokingColor(0, 0, 0); //black text
             contentStream.beginText();
             contentStream.setFont(font, 8);
-            contentStream.newLineAtOffset(page_width-380,cursorY+5);
-            contentStream.showText("[ This report is intended to be read, only by a qualified medical professional. ]");
+            contentStream.newLineAtOffset(page_width-320,marginUpperLine-12);
+            contentStream.showText("This report is intended to be read, only by a qualified medical professional.");
             contentStream.endText();
 
 
-
-            contentStream.setNonStrokingColor(0, 0, 0); //black text
-            contentStream.beginText();
-            contentStream.setFont(font, 10);
-            contentStream.newLineAtOffset(5*cursorX-10,cursorY+5);
-            contentStream.showText("0.3Hz  to  25Hz");
-            contentStream.endText();
 
 
 
@@ -494,6 +517,18 @@ public class EcgPdfBox {
                 contentStream.drawString(leadArr[x-1]);
                 contentStream.endText();
             }
+
+
+
+
+            contentStream.setNonStrokingColor(0, 0, 0); //black text
+            contentStream.beginText();
+            contentStream.setFont(font, 10);
+            contentStream.newLineAtOffset(5*60f-10,20f+5);
+            contentStream.showText("0.3Hz  to  25Hz "+"App Version :"+appVersion);
+            contentStream.endText();
+
+
 
 
             // Add calibration in ECG Page

@@ -6,7 +6,11 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Environment;
+import android.util.Log;
 
+import com.logging.Level;
+import com.logging.Logger;
 import com.lpp.xmldata.ConvertTexttoXml;
 import com.lppbpl.android.userapp.ActivityFinalDisplay;
 import com.lppbpl.android.userapp.model.ActivityMeasurementModel;
@@ -20,6 +24,8 @@ import com.tom_roush.pdfbox.pdmodel.graphics.image.LosslessFactory;
 import com.tom_roush.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import com.tom_roush.pdfbox.util.awt.AWTColor;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -83,8 +89,35 @@ public class ActivityPdfBox {
         float f = 0;
         System.out.println("float increment=" + f++);
 
-        String path = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()
-                + "/Download/ActivityTable.pdf";
+        String fileNameDirectory="LppConsumerLite";
+
+        File file =new File(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),fileNameDirectory);
+
+        if(!file.exists())
+        {
+            file.mkdir();
+
+        }
+
+
+       // String path = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()
+        //        + "/Documents/"+userName+"_"+System.currentTimeMillis()+"_LPP_ACT.pdf";
+
+        String path="";
+        try{
+             path=file+"/"+userName+"_"+System.currentTimeMillis()+"_LPP_ACT.pdf";
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+            Logger.log(Level.WARNING,"***Error in File**","Unable to get File path");
+        }
+
+
+
+
+
+
+
         document.addPage(page);
         float unit_per_cm = 28.34f;
 
@@ -236,6 +269,13 @@ public class ActivityPdfBox {
 
 
 
+
+
+    }
+
+
+    private  void saveActivityinFile()
+    {
 
 
     }

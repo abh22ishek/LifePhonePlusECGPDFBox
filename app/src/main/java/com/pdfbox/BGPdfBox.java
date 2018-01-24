@@ -7,6 +7,8 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.logging.Level;
+import com.logging.Logger;
 import com.lppbpl.android.userapp.model.ActivityMeasurementModel;
 import com.lppbpl.android.userapp.model.BgMeasurementModel;
 import com.tom_roush.pdfbox.pdmodel.PDDocument;
@@ -18,6 +20,7 @@ import com.tom_roush.pdfbox.pdmodel.font.PDType1Font;
 import com.tom_roush.pdfbox.pdmodel.graphics.image.LosslessFactory;
 import com.tom_roush.pdfbox.pdmodel.graphics.image.PDImageXObject;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -72,8 +75,28 @@ public class BGPdfBox {
         PDPage page = new PDPage(new PDRectangle(PDRectangle.A4.getHeight(), PDRectangle.A4.getWidth()));
 
 
-        String path = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()
-                + "/Download/BloodGlucoseTable.pdf";
+        String fileNameDirectory="LppConsumerLite";
+
+        File file =new File(android.os.Environment.getExternalStorageDirectory().getAbsolutePath(),fileNameDirectory);
+
+        if(!file.exists())
+        {
+            file.mkdir();
+
+        }
+
+
+        // String path = android.os.Environment.getExternalStorageDirectory().getAbsolutePath()
+        //        + "/Documents/"+userName+"_"+System.currentTimeMillis()+"_LPP_ACT.pdf";
+
+        String path="";
+        try{
+            path=file+"/"+patientName+"_"+System.currentTimeMillis()+"_LPP_BG.pdf";
+        }catch(Exception e)
+        {
+            e.printStackTrace();
+            Logger.log(Level.WARNING,"***Error in File**","Unable to get File path");
+        }
         document.addPage(page);
         float unit_per_cm = 28.34f;
 
