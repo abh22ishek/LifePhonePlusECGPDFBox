@@ -227,8 +227,7 @@ public class TnCnPrivacyActivity extends AppBaseActivity implements
 					.getCommonRequestHeader();
 			final SortedMap<String, String> reqParams = new TreeMap<String, String>();
 			reqHeaders.put(HttpUtil.ACCEPT_TYPE, HttpUtil.APPLICATION_JSON);
-			reqHeaders
-					.put(HttpUtil.CONTENT_TYPE, HttpUtil.FORM_URLENCODED_TYPE);
+			reqHeaders.put(HttpUtil.CONTENT_TYPE, HttpUtil.FORM_URLENCODED_TYPE);
 
 			// reqParams.put("usertype", "deviceUser");
 

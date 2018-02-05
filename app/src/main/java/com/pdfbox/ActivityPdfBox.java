@@ -28,6 +28,8 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -105,7 +107,7 @@ public class ActivityPdfBox {
 
         String path="";
         try{
-             path=file+"/"+userName+"_"+System.currentTimeMillis()+"_LPP_ACT.pdf";
+             path=file+"/"+userName+"_"+getDateTime()+"_LPP_ACT.pdf";
         }catch(Exception e)
         {
             e.printStackTrace();
@@ -168,7 +170,14 @@ public class ActivityPdfBox {
             pdPageContentStream.beginText();
             pdPageContentStream.setFont(font, 20);
             pdPageContentStream.newLineAtOffset(5*cursorX,cursorY+10f);
-            pdPageContentStream.showText("Activity Profile Report");
+            pdPageContentStream.showText("Activity Log Report");
+            pdPageContentStream.endText();
+
+
+            pdPageContentStream.beginText();
+            pdPageContentStream.setFont(font, 8);
+            pdPageContentStream.newLineAtOffset(10*cursorX,cursorY+10f);
+            pdPageContentStream.showText("( App Version : "+appVersion+" )");
             pdPageContentStream.endText();
 
 
@@ -202,20 +211,16 @@ public class ActivityPdfBox {
                     text="No. of steps walked : "+totalStepsTaken;
                 }else if(i==4)
                 {
-                    text="Duration";
+                    text="Activity Measurement Time : "+startEndTime;
                 }else if(i==5)
                 {
-                    text="Activity Measurement Time : "+startEndTime;
+                    text="Height : "+mHeight+"CM";
                 }else if(i==6){
                     text="Gender : " +gender;
                 }else if(i==7){
                     text="Patient Weight : "+mWeight+"Kg";
 
-                    pdPageContentStream.beginText();
-                    pdPageContentStream.setFont(font, 11);
-                    pdPageContentStream.newLineAtOffset(cursorX+200f,cursorY+10f);
-                    pdPageContentStream.showText("Height : "+mHeight+"CM");
-                    pdPageContentStream.endText();
+
 
                 }
                 else if(i==8){
@@ -224,7 +229,7 @@ public class ActivityPdfBox {
                     pdPageContentStream.beginText();
                     pdPageContentStream.setFont(font, 11);
                     pdPageContentStream.newLineAtOffset(cursorX+200f,cursorY+10f);
-                    pdPageContentStream.showText("Age : "+age);
+                    pdPageContentStream.showText("Age : "+age+"Years");
                     pdPageContentStream.endText();
                 }
                 else if(i==9){
@@ -273,11 +278,10 @@ public class ActivityPdfBox {
 
     }
 
-
-    private  void saveActivityinFile()
+    public  String getDateTime()
     {
-
-
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        Date date = new Date();
+        return  df.format(date);
     }
-
 }

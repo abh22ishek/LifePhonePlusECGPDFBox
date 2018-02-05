@@ -432,7 +432,7 @@ public class ActivityFinalDisplay extends AppBaseActivity implements
 			progressDialog=new ProgressDialog(ActivityFinalDisplay.this);
 			progressDialog.setCancelable(true);
 			progressDialog.setIndeterminate(true);
-			progressDialog.setMessage("Generating Pdf !. Please wait .....");
+			progressDialog.setMessage("Generating Report !. Please wait .....");
 			progressDialog.show();
 
 		}

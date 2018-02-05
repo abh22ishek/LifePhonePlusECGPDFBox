@@ -123,7 +123,7 @@
     <string name="cancel_registration">Are you sure you want to cancel the registration?</string>
     <string name="pending_record_upload">Upload is in progress, please try after some time.</string>
 
-    <integer name="anotation_max_length">200</integer>
+    <integer name="anotation_max_length">60</integer>
 
     <string name="device_sw_major_version">1</string>
     <string name="device_sw_minor_version">01</string>
@@ -402,5 +402,41 @@
     
     <string name="update">Update</string>
     <string name="retry">Retry</string>
+
+    <string name="t_and_c_text">Hello
+
+        Terms and condition . Terms and condition
+        Terms and condition
+        Terms and condition
+        Terms and condition Terms and condition
+        Terms and condition Terms and condition
+        Terms and condition
+        Terms and condition Terms and condition
+        Terms and condition
+        Terms and condition
+        Terms and condition
+        Terms and condition
+        Terms and condition
+
+        Terms and condition
+        Terms and condition
+        Terms and condition
+
+ Terms and condition Terms and condition
+         Terms and condition
+         Terms and condition
+         Terms and condition Terms and condition  Terms and condition v
+
+fedfdf fdsfdsf fdfkld kfokoerkfg fgrekglreg  fewgfoerg fregre fermgkmm gregmerm gregmkre gregmkrem
+
+
+dejfdejwfi fwdjbfhref fnernfjlner jnfioerjnkfner freijfkre jrnekjfkre nfkjlerfkjre jnrekl
+        rejlnjfnvjnfjvlef ven f vjlner  fnrklfjilrek mjewnfkljewfm ml
+        wlfklrenfjnerjlfnref frfref
+
+
+
+    </string>
+
 
 </resources>

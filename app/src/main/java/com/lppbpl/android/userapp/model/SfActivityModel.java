@@ -94,6 +94,7 @@ public class SfActivityModel {
 			mProfile.setUserWeight(userProfile.getInt("weight", 60));
 			mProfile.setPatientId(userProfile.getString("patientId",""));
 			mProfile.setClinicName(userProfile.getString("clinicName",""));
+			mProfile.setTermsAndConditionCheckBox(userProfile.getBoolean("tandc",false));
 		}
 
 	}
@@ -118,6 +119,7 @@ public class SfActivityModel {
 				userProfileEditor.putInt("weight", mProfile.getUserWeight());
 				userProfileEditor.putString("patientId",mProfile.getPatientId());
 				userProfileEditor.putString("clinicName",mProfile.getClinicName());
+				userProfileEditor.putBoolean("tandc",mProfile.isTermsAndConditionCheckBox());
 
 
 				userProfileEditor.commit();

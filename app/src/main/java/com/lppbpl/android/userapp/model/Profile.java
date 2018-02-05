@@ -50,8 +50,15 @@ public class Profile {
 
     private String mClinicName;
 
+    public boolean isTermsAndConditionCheckBox() {
+        return termsAndConditionCheckBox;
+    }
 
+    public void setTermsAndConditionCheckBox(boolean termsAndConditionCheckBox) {
+        this.termsAndConditionCheckBox = termsAndConditionCheckBox;
+    }
 
+    private boolean termsAndConditionCheckBox;
 
 
     public String getPatientId() {

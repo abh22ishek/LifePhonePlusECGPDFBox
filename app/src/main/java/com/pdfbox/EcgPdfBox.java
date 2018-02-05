@@ -7,7 +7,6 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.pdf.PdfDocument;
-
 import com.logging.Level;
 import com.logging.Logger;
 import com.lpp.xmldata.ConvertTexttoXml;
@@ -26,6 +25,8 @@ import com.tom_roush.pdfbox.util.awt.AWTColor;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by abhishek.raj on 28-12-2017.
@@ -42,7 +43,6 @@ public class EcgPdfBox {
 
     public  void createEcgTable(Context context,String clinicName,String patientName,String gender,String patientId,String symptoms,String age)
     {
-
 
         PDDocument document = new PDDocument();
         PDPage page = new PDPage(new PDRectangle(PDRectangle.A4.getHeight(), PDRectangle.A4.getWidth()));
@@ -77,7 +77,7 @@ public class EcgPdfBox {
 
         String path="";
         try{
-            path=file+"/"+patientName+"_"+System.currentTimeMillis()+"_LPP_ECG.pdf";
+            path=file+"/"+patientName+"_"+getDateTime()+"_LPP_ECG.pdf";
         }catch(Exception e)
         {
             e.printStackTrace();
@@ -108,7 +108,6 @@ public class EcgPdfBox {
             //contentStream.setNonStrokingColor(200, 200, 200); //gray background
 
             contentStream.addRect(40f,16f,rectangle_X,marginUpperLine);
-
             contentStream.setStrokingColor(AWTColor.BLACK);
             contentStream.setLineWidth(1.4f);
 
@@ -141,19 +140,14 @@ public class EcgPdfBox {
             contentStream.showText("Comments : "+ ((SfSendModel.getInstance().getUserComment()==null)? "" : SfSendModel.getInstance().getUserComment()));
             contentStream.endText();
 
-            contentStream.setNonStrokingColor(0, 0, 0); //black text
-            contentStream.beginText();
-            contentStream.setFont(font, 10);
-            contentStream.newLineAtOffset(2*cursorX,cursorY+5);
-            contentStream.showText("10mm/mV    25mm/s");
-            contentStream.endText();
+
 
             // Add app version
             contentStream.setNonStrokingColor(0, 0, 0); //black text
             contentStream.beginText();
             contentStream.setFont(font, 8);
-            contentStream.newLineAtOffset(page_width-150,marginUpperLine+2f);
-            contentStream.showText("    App Version :"+appVersion);
+            contentStream.newLineAtOffset(page_width-160,marginUpperLine+2f);
+            contentStream.showText("Date :"+getDateTime().substring(0,10) +" Time :"+getDateTime().substring(11,16));
             contentStream.endText();
 
 
@@ -161,16 +155,48 @@ public class EcgPdfBox {
           // Add text
             contentStream.setNonStrokingColor(0, 0, 0); //black text
             contentStream.beginText();
-            contentStream.setFont(font, 8);
-            contentStream.newLineAtOffset(page_width-320,marginUpperLine-12);
-            contentStream.showText("This report is intended to be read, only by a qualified medical professional.");
+            contentStream.setFont(font, 6);
+            contentStream.newLineAtOffset(page_width-330,marginUpperLine-12);
+            contentStream.showText("This report is intended to be read, only by a qualified medical professional."
+                    +"( App Version :"+appVersion+" )");
+            contentStream.endText();
+
+
+            // Add 40 s
+            contentStream.setNonStrokingColor(0, 0, 0); //black text
+            contentStream.beginText();
+            contentStream.setFont(font, 6);
+            contentStream.newLineAtOffset((cursorX+26*unit_per_cm)+0.75f,cursorY+3f);
+            contentStream.showText("40s");
+            contentStream.endText();
+
+            // Add 30s
+            contentStream.setNonStrokingColor(0, 0, 0); //black text
+            contentStream.beginText();
+            contentStream.setFont(font, 6);
+            contentStream.newLineAtOffset((cursorX+26*unit_per_cm)+0.5f,cursorY+4*unit_per_cm);
+            contentStream.showText("30s");
+            contentStream.endText();
+
+
+            // Add 20s
+            contentStream.setNonStrokingColor(0, 0, 0); //black text
+            contentStream.beginText();
+            contentStream.setFont(font, 6);
+            contentStream.newLineAtOffset((cursorX+26*unit_per_cm)+0.5f,cursorY+7*unit_per_cm);
+            contentStream.showText("20s");
             contentStream.endText();
 
 
 
+            // Add 10s
 
-
-
+            contentStream.setNonStrokingColor(0, 0, 0); //black text
+            contentStream.beginText();
+            contentStream.setFont(font, 6);
+            contentStream.newLineAtOffset(cursorX+26*unit_per_cm,cursorY+10*unit_per_cm);
+            contentStream.showText("10s");
+            contentStream.endText();
 
 
 
@@ -189,12 +215,12 @@ public class EcgPdfBox {
 
 
 
-            contentStream.drawImage(ximage,40+4,marginLowerLine+2);
+            contentStream.drawImage(ximage,40+5f,marginLowerLine+0.5f);
             //contentStream.drawImage(yimage,rect_width+cursorX-20,marginLowerLine);
 
 
 
-            contentStream.moveTo(100f,marginLowerLine+2);
+            contentStream.moveTo(100f,marginLowerLine+2f);
             contentStream.lineTo(100f,marginUpperLine+15);
             contentStream.stroke();
 
@@ -212,7 +238,7 @@ public class EcgPdfBox {
             // vertical grids
             contentStream.setStrokingColor(AWTColor.PINK);
 
-            for(int i=0;i<26;i++)
+            for(int i=0;i<27;i++)
             {
                 contentStream.moveTo(cursorX,cursorY);
                 contentStream.lineTo(cursorX,rect_height+cursorY);
@@ -231,7 +257,7 @@ public class EcgPdfBox {
             for(int i=0;i<19;i++)
             {
                 contentStream.moveTo(cursorX,cursorY);
-                contentStream.lineTo(cursorX+rect_width,cursorY);
+                contentStream.lineTo(cursorX+rect_width+unit_per_cm,cursorY);
                 contentStream.stroke();
                 cursorY=cursorY+unit_per_cm;
             }
@@ -243,7 +269,7 @@ public class EcgPdfBox {
 
             contentStream.setStrokingColor(AWTColor.pink);
             // draw minor vertical grids
-            for(int i=0;i<250;i++)
+            for(int i=0;i<260;i++)
             {
                 contentStream.moveTo(cursorX,cursorY);
                 contentStream.lineTo(cursorX,rect_height+cursorY);
@@ -263,7 +289,7 @@ public class EcgPdfBox {
             for(int i=0;i<180;i++)
             {
                 contentStream.moveTo(cursorX,cursorY);
-                contentStream.lineTo(cursorX+rect_width,cursorY);
+                contentStream.lineTo(cursorX+rect_width+unit_per_cm,cursorY);
                 contentStream.stroke();
                 cursorY=cursorY+unit_per_cm/10f;
             }
@@ -308,7 +334,8 @@ public class EcgPdfBox {
 
             float mP12 = 10f, mPp12 = 10f;
 
-            float mX=60f;
+            float mX=60f+unit_per_cm; // add 1 cm to  starting point
+
             mP1 = mP2 = mP3 = 0;
             mP4 = mP5 = mP6 = mP7 = mP8 = mP9 = mP10 = mP11 = mP12 = 0;
 
@@ -513,26 +540,38 @@ public class EcgPdfBox {
                 contentStream.setNonStrokingColor(0, 0, 0); //black text
                 contentStream.beginText();
                 contentStream.setFont(font,10);
-                contentStream.moveTextPositionByAmount(cursorX,(x*graphHeight)+4f);
+                if(x==7){
+                    contentStream.moveTextPositionByAmount(cursorX,(x*graphHeight));
+                }else{
+                    contentStream.moveTextPositionByAmount(cursorX,(x*graphHeight)+4f);
+                }
+
                 contentStream.drawString(leadArr[x-1]);
                 contentStream.endText();
             }
 
 
+            contentStream.setNonStrokingColor(0, 0, 0); //black text
+            contentStream.beginText();
+            contentStream.setFont(font, 10);
+            contentStream.newLineAtOffset(2*60f,20f+5);
+            contentStream.showText("10mm/mV    25mm/s");
+            contentStream.endText();
 
 
             contentStream.setNonStrokingColor(0, 0, 0); //black text
             contentStream.beginText();
             contentStream.setFont(font, 10);
             contentStream.newLineAtOffset(5*60f-10,20f+5);
-            contentStream.showText("0.3Hz  to  25Hz "+"App Version :"+appVersion);
+            contentStream.showText("0.3Hz  to  25Hz ");
             contentStream.endText();
 
 
 
 
             // Add calibration in ECG Page
-            cursorX=42f;
+            //cursorX=42f;
+            cursorX=60f;
             cursorY=page_height/2+10f;
 
             contentStream.moveTo(cursorX,cursorY);
@@ -603,7 +642,6 @@ public class EcgPdfBox {
             PDFont font = PDType1Font.HELVETICA_BOLD;
             pdPageContentStream2.setNonStrokingColor(200, 200, 200); //gray background
             pdPageContentStream2.addRect(cursorX, cursorY,rect_width, rect_height);
-
 
 
             // draw image
@@ -702,6 +740,14 @@ public class EcgPdfBox {
         }
 
 
+
     }
 
+
+    public  String getDateTime()
+    {
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        Date date = new Date();
+        return  df.format(date);
+    }
 }

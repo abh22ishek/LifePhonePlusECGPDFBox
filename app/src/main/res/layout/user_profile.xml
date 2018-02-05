@@ -27,6 +27,7 @@
                 android:layout_marginLeft="@dimen/default_margin_left"
                 android:layout_marginTop="@dimen/default_margin_top"
                 android:text="@string/patiend_id"
+
                 android:textColor="@color/heading_color"
                 android:textSize="@dimen/text_size" />
 
@@ -44,6 +45,7 @@
                 android:background="@xml/edit_text_selector"
                 android:inputType="number"
                 android:singleLine="true"
+                android:maxLength="8"
                 android:padding="5dp"
                 android:textSize="@dimen/text_size" />
 
@@ -72,6 +74,7 @@
                 android:inputType="textCapWords"
                 android:singleLine="true"
                 android:padding="5dp"
+                android:maxLength="12"
                 android:textSize="@dimen/text_size" />
 
 
@@ -243,8 +246,41 @@
                 android:layout_marginTop="@dimen/textfield_margin_top"
                 android:background="@xml/edit_text_selector"
                 android:inputType="text"
+                android:maxLength="12"
                 android:padding="@dimen/default_padding"
                 android:textSize="@dimen/text_size" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_below="@+id/etClinicName"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+
+                <CheckBox
+                    android:id="@+id/tvtermCheck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/default_margin"
+                    android:layout_marginLeft="@dimen/default_margin"
+                    android:layout_marginRight="@dimen/default_margin"
+                    android:layout_marginTop="@dimen/textfield_margin_top"
+                    >
+                </CheckBox>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/txtTermsConditions"
+                    android:textSize="17sp"
+                    android:text="@string/tncn_check"
+                    android:textStyle="italic|bold"
+                    android:textColor="@color/heading_color"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+
+
 
         </RelativeLayout>
     </ScrollView>

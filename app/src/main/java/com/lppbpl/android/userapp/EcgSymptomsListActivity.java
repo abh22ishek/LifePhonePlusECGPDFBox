@@ -613,7 +613,7 @@ public class EcgSymptomsListActivity extends NetworkConnBaseActivity implements
 			progressDialog=new ProgressDialog(EcgSymptomsListActivity.this);
 			progressDialog.setCancelable(true);
 			progressDialog.setIndeterminate(true);
-			progressDialog.setMessage("Generating Pdf !. Please wait .....");
+			progressDialog.setMessage("Generating Report !. Please wait .....");
 			progressDialog.show();
 
 		}

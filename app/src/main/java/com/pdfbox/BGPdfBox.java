@@ -23,6 +23,8 @@ import com.tom_roush.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -46,9 +48,6 @@ public class BGPdfBox {
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
         }
-
-
-
 
 
         for( BgMeasurementModel m: BGList)
@@ -82,7 +81,6 @@ public class BGPdfBox {
         if(!file.exists())
         {
             file.mkdir();
-
         }
 
 
@@ -91,7 +89,7 @@ public class BGPdfBox {
 
         String path="";
         try{
-            path=file+"/"+patientName+"_"+System.currentTimeMillis()+"_LPP_BG.pdf";
+            path=file+"/"+patientName+"_"+getDateTime()+"_LPP_BG.pdf";
         }catch(Exception e)
         {
             e.printStackTrace();
@@ -110,9 +108,9 @@ public class BGPdfBox {
         float rect_height = unit_per_cm * 12f;
 
 
-        String bG="Blood Glucose Calibration Report";
+        String bG="Blood Glucose  Report";
         if(!isCalibaration)
-            bG="Blood Glucose Value Report";
+            bG="Blood Glucose Report";
 
 
         try {
@@ -134,7 +132,6 @@ public class BGPdfBox {
                 pdPageContentStream.stroke();
                 cursorY=cursorY+unit_per_cm;
 
-
             }
 
 
@@ -155,6 +152,14 @@ public class BGPdfBox {
             pdPageContentStream.newLineAtOffset(5*cursorX,cursorY+10f);
             pdPageContentStream.showText(bG);
             pdPageContentStream.endText();
+
+
+            pdPageContentStream.beginText();
+            pdPageContentStream.setFont(font, 8);
+            pdPageContentStream.newLineAtOffset(10*cursorX,cursorY+10f);
+            pdPageContentStream.showText("( App Version : "+appVersion+" )");
+            pdPageContentStream.endText();
+
 
 
             // add vertical line for logo
@@ -179,10 +184,8 @@ public class BGPdfBox {
                 {
                     text="Symptoms : "+mSymptoms;
                 }else if(i==2){
-                    text="Measurement Time : "+dateOfTest;
-
+                    text="Measurement Date And Time : "+dateOfTest;
                 }
-
                 else if(i==3){
                     text="Fasting Type : "+fastingType;
                 }else if(i==4)
@@ -190,7 +193,7 @@ public class BGPdfBox {
                     text="Blood Glucose Value : "+bloodGlucose+" mg/dL";
                 }else if(i==5)
                 {
-                    text="Patient Age : "+age;
+                    text="Patient Age : "+age+"Years";
                 }else if(i==6){
                     text="Gender : "+gender;
                 }else if(i==7){
@@ -200,7 +203,6 @@ public class BGPdfBox {
                     pdPageContentStream.newLineAtOffset(cursorX+200f,cursorY+10f);
                     pdPageContentStream.showText("Height : "+height+"CM");
                     pdPageContentStream.endText();
-
 
                 }
                 else if(i==8){
@@ -220,11 +222,6 @@ public class BGPdfBox {
 
             // Add App Version
 
-            pdPageContentStream.beginText();
-            pdPageContentStream.setFont(font, 11);
-            pdPageContentStream.newLineAtOffset(10f,600f);
-            pdPageContentStream.showText("App Version : "+appVersion);
-            pdPageContentStream.endText();
 
             pdPageContentStream.close();
             document.save(path);
@@ -238,6 +235,14 @@ public class BGPdfBox {
         }
 
 
+    }
+
+
+    public  String getDateTime()
+    {
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        Date date = new Date();
+        return  df.format(date);
     }
 
 }

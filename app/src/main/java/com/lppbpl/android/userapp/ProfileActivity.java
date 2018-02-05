@@ -26,11 +26,15 @@ package com.lppbpl.android.userapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.logging.Level;
 import com.logging.Logger;
@@ -107,7 +111,9 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 
 	private EditText mClinicName;
 
+	private CheckBox tvtermCheck;
 
+	private TextView txtTermsConditions;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -127,6 +133,23 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 
 		etAge= (EditText) findViewById(R.id.etAge);
 
+		tvtermCheck= (CheckBox) findViewById(R.id.tvtermCheck);
+
+		txtTermsConditions= (TextView) findViewById(R.id.txtTermsConditions);
+
+		txtTermsConditions.setOnTouchListener(new View.OnTouchListener() {
+			@Override
+			public boolean onTouch(View view, MotionEvent motionEvent) {
+
+				if(motionEvent.getAction()==MotionEvent.ACTION_DOWN)
+				{
+					showAlertDialog(getString(R.string.title_tnc),getString(R.string.t_and_c_text),"OK",
+							null,true);
+				}
+
+				return true;
+			}
+		});
 
 		mProfile = mActModel.getUserProfile();
 		mEdtName.setText(mProfile.getUserName());
@@ -136,6 +159,11 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 		} else {
 			mGender.check(R.id.rbFemale);
 		}
+
+
+
+			tvtermCheck.setVisibility(View.VISIBLE);
+			txtTermsConditions.setVisibility(View.VISIBLE);
 
 
 		mPatientId.setText(mProfile.getPatientId());
@@ -175,12 +203,20 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 
 	public void onClick(View v) {
 		if (isValidUserData()) {
+
+			if(!tvtermCheck.isChecked() && tvtermCheck.getVisibility()==View.VISIBLE){
+				Toast.makeText(this,"Please Accept the terms and conditions",Toast.LENGTH_SHORT).show();
+				return;
+			}
+
+
 			mProfile.setUserName(getName());
-			 mProfile.setUserAge(getAge());
+			mProfile.setUserAge(getAge());
 			mProfile.setUserHeight(getHeight());
 			mProfile.setUserWeight(getWeight());
 			mProfile.setPatientId(mPatientId.getText().toString());
 			mProfile.setClinicName(mClinicName.getText().toString());
+			mProfile.setTermsAndConditionCheckBox(true);
 
 
 
@@ -208,6 +244,8 @@ public class ProfileActivity extends AppBaseActivity implements OnClickListener 
 	 */
 	private boolean isValidUserData() {
 		boolean valid = true;
+
+
 		if (null == getName() || 0 == getName().trim().length()) {
 			showAlertDialog(get(R.string.title_profile),
 					get(R.string.name_empty), get(R.string.OK), null, true);

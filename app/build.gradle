@@ -10,7 +10,7 @@ android {
         minSdkVersion 9
         targetSdkVersion 10
         versionCode 64
-        versionName "LPP.1.01"
+        versionName "LPP.1.02"
     }
     buildTypes {
         release {

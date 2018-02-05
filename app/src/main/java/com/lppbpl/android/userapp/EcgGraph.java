@@ -106,9 +106,7 @@ public class EcgGraph extends View {
 	private void init() {
 		mPaint = new Paint();
 		final float density = getResources().getDisplayMetrics().densityDpi;
-
 		mPixelsPerCm = (int) (density / Constants.CMS_PER_INCH + 0.5f);
-
 		setMinimumWidth(25 * mPixelsPerCm);
 	}
 
